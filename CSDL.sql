@@ -93,3 +93,5 @@ select*from Nguoi_Hoc
 select * from Chuyen_De
 select * from Khoa_Hoc
 select*from Hoc_Vien
+
+chinh o tren may
