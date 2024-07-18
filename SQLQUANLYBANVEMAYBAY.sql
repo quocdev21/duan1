@@ -23,6 +23,7 @@ VALUES('VN-A101','VN - Vietnam Airlines','Vietnam Airlines',250),
 CREATE TABLE CHUYENBAY(
 	IDChuyenBay VARCHAR(50) PRIMARY KEY,
 	IDMayBay VARCHAR(50) FOREIGN KEY REFERENCES MAYBAY(IDMayBay),
+	HangHangKhong nvarchar(225) not null,
 	ThoiGianDi INT NOT NULL,
 	ThoiGianDen INT NOT NULL,
 	ThoiGianTre INT NOT NULL,
@@ -30,15 +31,15 @@ CREATE TABLE CHUYENBAY(
 )
 
 INSERT INTO CHUYENBAY
-VALUES('VN112','VN-A103',1920,2130,20,'Chuyen bay di HCM'),
-('VJ113','VJ-A102',800,950,0,'Chuyen bay di Nha Trang'),
-('VN114','VN-A101',400,530,0,'Chuyen bay di Hue'),
-('VJ115','VJ-A104',1120,1240,0,'Chuyen bay di Da Nang'),
-('VN116','VN-A106',120,320,0,'Chuyen bay di Ha Noi'),
-('VJ117','VJ-A105',2020,2150,0,'Chuyen bay di Da Nang'),
-('VN118','VN-A107',1520,1650,0,'Chuyen bay di Hue'),
-('VN119','VN-A108',1920,2130,0,'Chuyen bay di HCM'),
-('VJ111','VJ-A109',1220,1400,0,'Chuyen bay di Nha Trang')
+VALUES('VN112','VN-A103','VietNam Airlines',1920,2130,20,'Chuyen bay di HCM'),
+('VJ113','VJ-A102','Vietjet Air',800,950,0,'Chuyen bay di Nha Trang'),
+('VN114','VN-A101','VietNam Airlines',400,530,0,'Chuyen bay di Hue'),
+('VJ115','VJ-A104','Vietjet Air',1120,1240,0,'Chuyen bay di Da Nang'),
+('VN116','VN-A106','VietNam Airlines',120,320,0,'Chuyen bay di Ha Noi'),
+('VJ117','VJ-A105','Vietjet Air',2020,2150,0,'Chuyen bay di Da Nang'),
+('VN118','VN-A107','VietNam Airlines',1520,1650,0,'Chuyen bay di Hue'),
+('VN119','VN-A108','VietNam Airlines',1920,2130,0,'Chuyen bay di HCM'),
+('VJ111','VJ-A109','Vietjet Air',1220,1400,0,'Chuyen bay di Nha Trang')
 
 CREATE TABLE VE(
 	IDVe VARCHAR(50) PRIMARY KEY,
