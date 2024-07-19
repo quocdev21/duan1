@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import Model.KhachHang;
-import Utils.ConnectDB;
+import config.DBConnect;
 /**
  *
  * @author Admin
@@ -17,7 +17,7 @@ public class KhachHangRepo {
     private Connection conn;
 
     public KhachHangRepo() {
-        conn = ConnectDB.getConnection();
+        conn = DBConnect.getConnection();
     }
 
     public List<KhachHang> getListKhachHang() {

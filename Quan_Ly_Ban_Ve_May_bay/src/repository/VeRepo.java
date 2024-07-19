@@ -5,7 +5,7 @@
 package repositories;
 
 import Model.Ve;
-import Utils.ConnectDB;
+import config.DBConnect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -20,7 +20,7 @@ public class VeRepo {
         private Connection conn;
 
     public VeRepo() {
-        conn = ConnectDB.getConnection();
+        conn = DBConnect.getConnection();
     }
 
     public List<Ve> getListKhachHang() {
