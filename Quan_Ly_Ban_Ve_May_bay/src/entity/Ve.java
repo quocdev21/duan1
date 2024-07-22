@@ -4,97 +4,86 @@
  */
 package entity;
 
+import java.util.Date;
+
 /**
  *
  * @author Admin
  */
 public class Ve {
-        private String IDVe;
-        private String IDChuyenBay;
-        private String MaGHe;
-        private String DiaDiemDi;
-        private String DiaDiemDen;
-        private String IDHang;
-        private String NgayMua;
-        private String GiaTien;
+    private String idVe;
+    private String maGhe;
+    private Date ngayMua;
+    private Float giaTien;
+    
+    private ChuyenBay chuyenBay;
+    private KhachHang khachHang;
 
     public Ve() {
     }
 
-    public Ve(String IDVe, String IDChuyenBay, String MaGHe, String DiaDiemDi, String DiaDiemDen, String IDHang, String NgayMua, String GiaTien) {
-        this.IDVe = IDVe;
-        this.IDChuyenBay = IDChuyenBay;
-        this.MaGHe = MaGHe;
-        this.DiaDiemDi = DiaDiemDi;
-        this.DiaDiemDen = DiaDiemDen;
-        this.IDHang = IDHang;
-        this.NgayMua = NgayMua;
-        this.GiaTien = GiaTien;
+    public Ve(String idVe, String maGhe, Date ngayMua, Float giaTien, ChuyenBay chuyenBay, KhachHang khachHang) {
+        this.idVe = idVe;
+        this.maGhe = maGhe;
+        this.ngayMua = ngayMua;
+        this.giaTien = giaTien;
+        this.chuyenBay = chuyenBay;
+        this.khachHang = khachHang;
     }
 
-    public String getIDVe() {
-        return IDVe;
+    public String getIdVe() {
+        return idVe;
     }
 
-    public void setIDVe(String IDVe) {
-        this.IDVe = IDVe;
+    public void setIdVe(String idVe) {
+        this.idVe = idVe;
     }
 
-    public String getIDChuyenBay() {
-        return IDChuyenBay;
+    public String getMaGhe() {
+        return maGhe;
     }
 
-    public void setIDChuyenBay(String IDChuyenBay) {
-        this.IDChuyenBay = IDChuyenBay;
+    public void setMaGhe(String maGhe) {
+        this.maGhe = maGhe;
     }
 
-    public String getMaGHe() {
-        return MaGHe;
+    public Date getNgayMua() {
+        return ngayMua;
     }
 
-    public void setMaGHe(String MaGHe) {
-        this.MaGHe = MaGHe;
+    public void setNgayMua(Date ngayMua) {
+        this.ngayMua = ngayMua;
     }
 
-    public String getDiaDiemDi() {
-        return DiaDiemDi;
+    public Float getGiaTien() {
+        return giaTien;
     }
 
-    public void setDiaDiemDi(String DiaDiemDi) {
-        this.DiaDiemDi = DiaDiemDi;
+    public void setGiaTien(Float giaTien) {
+        this.giaTien = giaTien;
     }
 
-    public String getDiaDiemDen() {
-        return DiaDiemDen;
+    public ChuyenBay getChuyenBay() {
+        return chuyenBay;
     }
 
-    public void setDiaDiemDen(String DiaDiemDen) {
-        this.DiaDiemDen = DiaDiemDen;
+    public void setChuyenBay(ChuyenBay chuyenBay) {
+        this.chuyenBay = chuyenBay;
     }
 
-    public String getIDHang() {
-        return IDHang;
+    public KhachHang getKhachHang() {
+        return khachHang;
     }
 
-    public void setIDHang(String IDHang) {
-        this.IDHang = IDHang;
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
     }
 
-    public String getNgayMua() {
-        return NgayMua;
+    @Override
+    public String toString() {
+        return "Ve{" + "idVe=" + idVe + ", maGhe=" + maGhe + ", ngayMua=" + ngayMua + ", giaTien=" + giaTien + ", chuyenBay=" + chuyenBay + ", khachHang=" + khachHang + '}';
     }
-
-    public void setNgayMua(String NgayMua) {
-        this.NgayMua = NgayMua;
-    }
-
-    public String getGiaTien() {
-        return GiaTien;
-    }
-
-    public void setGiaTien(String GiaTien) {
-        this.GiaTien = GiaTien;
-    }
-
     
+    
+
 }
