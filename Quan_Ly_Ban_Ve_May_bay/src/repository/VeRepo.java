@@ -4,7 +4,7 @@
  */
 package repository;
 
-import Model.Ve;
+import entity.Ve;
 import config.DBConnect;
 import java.sql.Connection;
 import java.sql.ResultSet;
