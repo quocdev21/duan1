@@ -2,34 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package entity;
 
 /**
  *
  * @author Admin
  */
 public class Ve {
-        private String IDVe;
-        private String IDChuyenBay;
-        private String MaGHe;
-        private String DiaDiemDi;
-        private String DiaDiemDen;
-        private String IDHang;
-        private String NgayMua;
-        private String GiaTien;
+
+    private String IDVe;
+    private String IDChuyenBay;
+    private String MaGHe;
+    private String IDHang;
+    private String NgayMua;
+    private String GiaTien;
+    private String IDKhachHang;
 
     public Ve() {
     }
 
-    public Ve(String IDVe, String IDChuyenBay, String MaGHe, String DiaDiemDi, String DiaDiemDen, String IDHang, String NgayMua, String GiaTien) {
+    public Ve(String IDVe, String IDChuyenBay, String MaGHe, String IDHang, String NgayMua, String GiaTien, String IDKhachHang) {
         this.IDVe = IDVe;
         this.IDChuyenBay = IDChuyenBay;
         this.MaGHe = MaGHe;
-        this.DiaDiemDi = DiaDiemDi;
-        this.DiaDiemDen = DiaDiemDen;
         this.IDHang = IDHang;
         this.NgayMua = NgayMua;
         this.GiaTien = GiaTien;
+        this.IDKhachHang = IDKhachHang;
     }
 
     public String getIDVe() {
@@ -56,22 +55,6 @@ public class Ve {
         this.MaGHe = MaGHe;
     }
 
-    public String getDiaDiemDi() {
-        return DiaDiemDi;
-    }
-
-    public void setDiaDiemDi(String DiaDiemDi) {
-        this.DiaDiemDi = DiaDiemDi;
-    }
-
-    public String getDiaDiemDen() {
-        return DiaDiemDen;
-    }
-
-    public void setDiaDiemDen(String DiaDiemDen) {
-        this.DiaDiemDen = DiaDiemDen;
-    }
-
     public String getIDHang() {
         return IDHang;
     }
@@ -96,5 +79,14 @@ public class Ve {
         this.GiaTien = GiaTien;
     }
 
+    public String getIDKhachHang() {
+        return IDKhachHang;
+    }
+
+    public void setIDKhachHang(String IDKhachHang) {
+        this.IDKhachHang = IDKhachHang;
+    }
+
     
+
 }

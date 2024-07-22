@@ -12,20 +12,22 @@ public class KhachHang {
     private String IDKhachHang;
     private String TenKhachHang;
     private String SDT; 
-    private String SoHoChieu;
+    private String SoCCCD;
     private String Email;
     private String DiaChi;
+    private String GioiTinh;
 
     public KhachHang() {
     }
 
-    public KhachHang(String IDKhachHang, String TenKhachHang, String SDT, String SoHoChieu, String Email, String DiaChi) {
+    public KhachHang(String IDKhachHang, String TenKhachHang, String SDT, String SoCCCD, String Email, String DiaChi, String GioiTinh) {
         this.IDKhachHang = IDKhachHang;
         this.TenKhachHang = TenKhachHang;
         this.SDT = SDT;
-        this.SoHoChieu = SoHoChieu;
+        this.SoCCCD = SoCCCD;
         this.Email = Email;
         this.DiaChi = DiaChi;
+        this.GioiTinh = GioiTinh;
     }
 
     public String getIDKhachHang() {
@@ -52,12 +54,12 @@ public class KhachHang {
         this.SDT = SDT;
     }
 
-    public String getSoHoChieu() {
-        return SoHoChieu;
+    public String getSoCCCD() {
+        return SoCCCD;
     }
 
-    public void setSoHoChieu(String SoHoChieu) {
-        this.SoHoChieu = SoHoChieu;
+    public void setSoCCCD(String SoCCCD) {
+        this.SoCCCD = SoCCCD;
     }
 
     public String getEmail() {
@@ -75,5 +77,15 @@ public class KhachHang {
     public void setDiaChi(String DiaChi) {
         this.DiaChi = DiaChi;
     }
+
+    public String getGioiTinh() {
+        return GioiTinh;
+    }
+
+    public void setGioiTinh(String GioiTinh) {
+        this.GioiTinh = GioiTinh;
+    }
+
+    
 }
 

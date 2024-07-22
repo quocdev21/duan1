@@ -4,61 +4,69 @@
  */
 package entity;
 
-import com.toedter.calendar.demo.DateChooserPanel;
 
 /**
  *
  * @author pc
  */
 public class HoaDon {
-    private String MaHoaDon;
-    private String IDKhachHang;
-    private String IDNhanVien;
-    private DateChooserPanel ThoiGianTao;
+
+    private String ID_HoaDon;
+    private String ID_NhanVien;
+    private String ID_HoaDonCT;
+    private String ID_ThanhToan;
+    private String ThoiGianTao;
+
 
     public HoaDon() {
     }
 
-    public HoaDon(String MaHoaDon, String IDKhachHang, String IDNhanVien, DateChooserPanel ThoiGianTao) {
-        this.MaHoaDon = MaHoaDon;
-        this.IDKhachHang = IDKhachHang;
-        this.IDNhanVien = IDNhanVien;
+    public HoaDon(String ID_HoaDon, String ID_NhanVien, String ID_HoaDonCT, String ID_ThanhToan, String ThoiGianTao) {
+        this.ID_HoaDon = ID_HoaDon;
+        this.ID_NhanVien = ID_NhanVien;
+        this.ID_HoaDonCT = ID_HoaDonCT;
+        this.ID_ThanhToan = ID_ThanhToan;
         this.ThoiGianTao = ThoiGianTao;
     }
 
-    public String getMaHoaDon() {
-        return MaHoaDon;
+    public String getID_HoaDon() {
+        return ID_HoaDon;
     }
 
-    public void setMaHoaDon(String MaHoaDon) {
-        this.MaHoaDon = MaHoaDon;
+    public void setID_HoaDon(String ID_HoaDon) {
+        this.ID_HoaDon = ID_HoaDon;
     }
 
-    public String getIDKhachHang() {
-        return IDKhachHang;
+    public String getID_NhanVien() {
+        return ID_NhanVien;
     }
 
-    public void setIDKhachHang(String IDKhachHang) {
-        this.IDKhachHang = IDKhachHang;
+    public void setID_NhanVien(String ID_NhanVien) {
+        this.ID_NhanVien = ID_NhanVien;
     }
 
-    public String getIDNhanVien() {
-        return IDNhanVien;
+    public String getID_HoaDonCT() {
+        return ID_HoaDonCT;
     }
 
-    public void setIDNhanVien(String IDNhanVien) {
-        this.IDNhanVien = IDNhanVien;
+    public void setID_HoaDonCT(String ID_HoaDonCT) {
+        this.ID_HoaDonCT = ID_HoaDonCT;
     }
 
-    public DateChooserPanel getThoiGianTao() {
+    public String getID_ThanhToan() {
+        return ID_ThanhToan;
+    }
+
+    public void setID_ThanhToan(String ID_ThanhToan) {
+        this.ID_ThanhToan = ID_ThanhToan;
+    }
+
+    public String getThoiGianTao() {
         return ThoiGianTao;
     }
 
-    public void setThoiGianTao(DateChooserPanel ThoiGianTao) {
+    public void setThoiGianTao(String ThoiGianTao) {
         this.ThoiGianTao = ThoiGianTao;
     }
 
-    
-    
-    
 }

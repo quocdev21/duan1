@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package repositories;
+package repository;
 
-import Model.Ve;
+import entity.Ve;
 import config.DBConnect;
 import java.sql.Connection;
 import java.sql.ResultSet;

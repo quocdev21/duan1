@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBConnect {
     public static final String HOSTNAME = "quanlyvemaybay.database.windows.net";
     public static final String PORT = "1433";
-    public static final String DBNAME = "Quan_Ly_Ban_Ve_MB";
+    public static final String DBNAME = "QLBanVe";
     public static final String USERNAME = "nhom4";
     public static final String PASSWORD = "Password.1";
 
