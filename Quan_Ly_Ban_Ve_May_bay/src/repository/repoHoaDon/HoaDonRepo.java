@@ -19,27 +19,19 @@ import java.sql.PreparedStatement;
 public class HoaDonRepo {
 
     public ArrayList<HoaDon> getAll() {
-        String sql = """
-                     SELECT
-                     [H.SoHoChieu],
-                     [KH.TenKhachHang],
-                     [KH.SDT],
-                     [HD.IDHoaDon],
-                     [HD.ThoiGianTao]
-                     FROM HOADON HD JOIN CHITIETKHACHHANG KH
-                     ON HD.IDKhachHang=KH.IDKhachHang
-                     """;
         ArrayList<HoaDon> lists = new ArrayList<>();
+        String sql = """
+                     SELECT [ID_Hoa_Don],
+                            [Thoi_Gian_Tao]
+                       FROM [dbo].[HoaDon]
+                     """;
         try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
-                KhachHang kh = new KhachHang();
-                kh.setSoHoChieu(rs.getString(1));
-                kh.setTenKhachHang(rs.getString(2));
-                kh.setSDT(rs.getString(3));
-                hd.setMaHoaDon(rs.getString(4));
-//                hd.setThoiGianTao(rs.getDate(5));
+                hd.setID_HoaDon(rs.getString(1));
+                hd.setThoiGianTao(rs.getString(2));
+                hd.setID_HoaDonCT(rs.getString(3));
                 lists.add(hd);
             }
         } catch (Exception e) {
