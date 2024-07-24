@@ -3,18 +3,43 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import entity.Statictical;
+import repository.repo_Statictical;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.DefaultComboBoxModel;
+
 
 /**
  *
  * @author Admin
  */
 public class View_Statictical extends javax.swing.JFrame {
+     private DefaultTableModel dtm = new DefaultTableModel();
+
+    private repo_Statictical repo = new repo_Statictical();
+
+    private List<Statictical> list = new ArrayList<>();
 
     /**
      * Creates new form View_Statictical
      */
     public View_Statictical() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        list= repo.getAll();
+        dtm = (DefaultTableModel) tblChiTietDoanhThu.getModel();
+        fillTable(list);
+    }
+    
+    public void fillTable(List<Statictical> index){
+        dtm.setRowCount(0);
+        for (Statictical tk : list) {
+            dtm.addRow(new Object[]{
+                tk.getThang(),tk.getSoLuong(),tk.getDoanhThu()
+            });
+        }
     }
 
     /**
@@ -46,7 +71,7 @@ public class View_Statictical extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblChiTietDoanhThu = new javax.swing.JTable();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxNam_ChiTiet = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -194,7 +219,12 @@ public class View_Statictical extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblChiTietDoanhThu);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024" }));
+        cbxNam_ChiTiet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", "2024" }));
+        cbxNam_ChiTiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxNam_ChiTietActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Năm");
@@ -211,7 +241,7 @@ public class View_Statictical extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxNam_ChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
@@ -225,7 +255,7 @@ public class View_Statictical extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbxNam_ChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -276,6 +306,13 @@ public class View_Statictical extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+    private void cbxNam_ChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxNam_ChiTietActionPerformed
+        // TODO add your handling code here:
+//        Statictical ThongKe =(Statictical) cbxNam_ChiTiet.getSelectedItem();
+//        ArrayList<Statictical> list = Statictical.
+        
+    }//GEN-LAST:event_cbxNam_ChiTietActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,8 +350,8 @@ public class View_Statictical extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbxNam_ChiTiet;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
