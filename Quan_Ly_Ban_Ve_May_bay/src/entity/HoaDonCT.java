@@ -13,12 +13,12 @@ public class HoaDonCT {
     private String IDHoaDonCT;
     private String IDVe;
     private String SoLuongVe;
-    private float ThanhTien;
+    private int ThanhTien;
 
     public HoaDonCT() {
     }
 
-    public HoaDonCT(String IDHoaDonCT, String IDVe, String SoLuongVe, float ThanhTien) {
+    public HoaDonCT(String IDHoaDonCT, String IDVe, String SoLuongVe, int ThanhTien) {
         this.IDHoaDonCT = IDHoaDonCT;
         this.IDVe = IDVe;
         this.SoLuongVe = SoLuongVe;
@@ -49,11 +49,11 @@ public class HoaDonCT {
         this.SoLuongVe = SoLuongVe;
     }
 
-    public float getThanhTien() {
+    public int getThanhTien() {
         return ThanhTien;
     }
 
-    public void setThanhTien(float ThanhTien) {
+    public void setThanhTien(int ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
 

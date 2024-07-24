@@ -4,11 +4,14 @@
  */
 package view;
 
+
 import entity.HoaDon;
 import entity.KhachHang;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import repository.HoaDonRepo;
+import repository.repoHoaDon.khHDrepo;
+
 
 /**
  *
@@ -16,58 +19,46 @@ import repository.HoaDonRepo;
  */
 public class View_Hoa_Don extends javax.swing.JFrame {
 
+    private HoaDonRepo HDrp = new HoaDonRepo();
+    private khHDrepo khHDrp = new khHDrepo();
     private DefaultTableModel dtm = new DefaultTableModel();
-    private HoaDonRepo repo = new HoaDonRepo();
-    private ArrayList<HoaDon> listhd = new ArrayList<>();
-    private ArrayList<KhachHang> listkh = new ArrayList<>();
-
+    private ArrayList<HoaDon> listHD = new ArrayList<>();
+    private ArrayList<KhachHang> listKH = new ArrayList<>();
     /**
      * Creates new form View_Hoa_Don
      */
+
     public View_Hoa_Don() {
         initComponents();
-        listhd = repo.getHD();
-        listkh = repo.getKH();
+        listHD = HDrp.getAll();
+        listKH = khHDrp.getAll();
         dtm = (DefaultTableModel) tbView.getModel();
-        showData(listhd, listkh);
-        detailhd(listhd.size() -1);
-
-  }
-
-    private void showData(ArrayList<HoaDon> listhd, ArrayList<KhachHang> listkh) {
+        showData(listHD, listKH);
+        detail(listHD.size()-1,listKH.size()-1);
+    }
+    
+    private void showData(ArrayList<HoaDon> listHD, ArrayList<KhachHang> listKH){
         dtm.setRowCount(0);
-        for (HoaDon hd : listhd) {
+        for(HoaDon hd : listHD){
             dtm.addRow(new Object[]{
-                hd.getID_HoaDon()
+                hd.getID_HoaDon(),hd.getThoiGianTao()
             });
         }
-        
-        for (KhachHang kh : listkh) {
+        for(KhachHang kh : listKH){
             dtm.addRow(new Object[]{
                 kh.getSoCCCD(), kh.getTenKhachHang(), kh.getGioiTinh(), kh.getSDT()
             });
         }
-        
-        for (HoaDon hd : listhd) {
-            dtm.addRow(new Object[]{
-                 hd.getThoiGianTao()
-            });
-        }
     }
-
-    private void detailhd(int index) {
-        HoaDon hd = listhd.get(index);
-        txMa.setText(hd.getID_HoaDon());
-
-    }
-
-    private void detailkh(int index) {
-        KhachHang kh = listkh.get(index);
-        txSo.setText(kh.getSoCCCD());
-        txHT.setText(kh.getTenKhachHang());
-        txGT.setText(kh.getGioiTinh());
-        txSDT.setText(kh.getSDT());
-    }
+    
+   private void detail(int index, int par1){
+       HoaDon hd = listHD.get(index);
+       KhachHang kh = listKH.get(par1);
+       txMa.setText(hd.getID_HoaDon());
+       txHT.setText(kh.getTenKhachHang());
+       txGT.setText(kh.getGioiTinh());
+       txSDT.setText(kh.getSDT());
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -162,11 +153,6 @@ public class View_Hoa_Don extends javax.swing.JFrame {
                 "Mã Hóa Đơn", "Số CCCD", "Họ Và Tên", "Giới Tính", "Số Điện Thoại", "Thời Gian Tạo"
             }
         ));
-        tbView.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbViewMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tbView);
 
         btnLM.setBackground(new java.awt.Color(255, 255, 255));
@@ -309,13 +295,6 @@ public class View_Hoa_Don extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tbViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbViewMouseClicked
-        int index = tbView.getSelectedRow();
-        int index1 = tbView.getSelectedRow();
-        detailhd(index);        // TODO add your handling code here:
-        detailkh(index1);
-    }//GEN-LAST:event_tbViewMouseClicked
 
     /**
      * @param args the command line arguments
