@@ -4,17 +4,40 @@
  */
 package view;
 
+import entity.ChuyenBay;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import repository.repo_ChuyenBay;
+import repository.repo_MayBay;
+
 /**
  *
  * @author Simp
  */
 public class View_Add_Flight extends javax.swing.JFrame {
 
+    private repo_ChuyenBay chuyenBayRepo;
+    
+    private repo_MayBay mayBayRepo;
+    
+    private DefaultTableModel dtm;
     /**
      * Creates new form View_Add_Flight
      */
     public View_Add_Flight() {
         initComponents();
+        dtm = (DefaultTableModel) tbDanhSachChuyenBay.getModel();
+        chuyenBayRepo = new repo_ChuyenBay();
+        mayBayRepo = new repo_MayBay();
+    }
+    
+    private void showTable(ArrayList<ChuyenBay> lists){
+        dtm.setRowCount(0);
+        int index = 0;
+        for (ChuyenBay cb : lists) {
+            index++. cb.getIdChuyenBay(), cb.get
+            
+        }
     }
 
     /**
@@ -40,16 +63,14 @@ public class View_Add_Flight extends javax.swing.JFrame {
         txtNgayKhoiHanh = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         txtThoiGianKhoiHanh = new javax.swing.JTextField();
         txtThoiGianDen = new javax.swing.JTextField();
-        txtGia = new javax.swing.JTextField();
         btThem = new javax.swing.JButton();
         btChinhSua = new javax.swing.JButton();
         btTimKiem = new javax.swing.JButton();
         btXoa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbDanhSachChuyenBay = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,9 +99,6 @@ public class View_Add_Flight extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Thời gian khởi hành :");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Giá :");
 
         btThem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btThem.setText("Thêm");
@@ -115,14 +133,12 @@ public class View_Add_Flight extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNgayKhoiHanh, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(txtThoiGianKhoiHanh)
-                    .addComponent(txtThoiGianDen)
-                    .addComponent(txtGia))
+                    .addComponent(txtThoiGianDen))
                 .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,24 +183,22 @@ public class View_Add_Flight extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtDiemDen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiemDen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbDanhSachChuyenBay.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã chuyến bay", "Hãng hàng không", "Nơi khởi hành", "Điểm đến", "Ngày khởi hành", "Thời gian đến", "Thời gian khởi hành", "Giá"
+                "Mã chuyến bay", "Hãng hàng không", "Nơi khởi hành", "Điểm đến", "Ngày khởi hành", "Thời gian đến", "Thời gian khởi hành"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbDanhSachChuyenBay);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,10 +210,9 @@ public class View_Add_Flight extends javax.swing.JFrame {
                 .addGap(321, 321, 321))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,12 +277,10 @@ public class View_Add_Flight extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbDanhSachChuyenBay;
     private javax.swing.JTextField txtDiemDen;
-    private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtHangHangKhong;
     private javax.swing.JTextField txtMaChuyenBay;
     private com.toedter.calendar.JDateChooser txtNgayKhoiHanh;

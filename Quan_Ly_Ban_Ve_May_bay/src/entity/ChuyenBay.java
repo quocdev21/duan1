@@ -3,32 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package entity;
+
 import java.util.Date;
+
 /**
  *
  * @author Simp
  */
 public class ChuyenBay {
+
     private String idChuyenBay;
     private Date ngayDi;
-    private Integer thoiGianDi;
-    private Integer thoiGianDen;
+    private Date thoiGianDi;
+    private Date thoiGianDen;
     private Integer thoiGianTre;
     private String ghiChu;
-    
+
     private MayBay idMaybay;
-    
 
     public ChuyenBay() {
     }
 
-    public ChuyenBay(String idChuyenBay, Date ngayDi, int thoiGianDi, int thoiGianDen, int thoiGianTre, String ghiChu) {
+    public ChuyenBay(String idChuyenBay, Date ngayDi, Date thoiGianDi, Date thoiGianDen, Integer thoiGianTre, String ghiChu, MayBay idMaybay) {
         this.idChuyenBay = idChuyenBay;
         this.ngayDi = ngayDi;
         this.thoiGianDi = thoiGianDi;
         this.thoiGianDen = thoiGianDen;
         this.thoiGianTre = thoiGianTre;
         this.ghiChu = ghiChu;
+        this.idMaybay = idMaybay;
     }
 
     public String getIdChuyenBay() {
@@ -45,22 +48,6 @@ public class ChuyenBay {
 
     public void setNgayDi(Date ngayDi) {
         this.ngayDi = ngayDi;
-    }
-
-    public int getThoiGianDi() {
-        return thoiGianDi;
-    }
-
-    public void setThoiGianDi(int thoiGianDi) {
-        this.thoiGianDi = thoiGianDi;
-    }
-
-    public int getThoiGianDen() {
-        return thoiGianDen;
-    }
-
-    public void setThoiGianDen(int thoiGianDen) {
-        this.thoiGianDen = thoiGianDen;
     }
 
     public int getThoiGianTre() {
