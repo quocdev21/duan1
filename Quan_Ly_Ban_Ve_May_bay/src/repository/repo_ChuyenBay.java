@@ -33,8 +33,6 @@ public class repo_ChuyenBay {
                 mb.setHangMaybay(rs.getString(2));
                 
                 Ve ve = new Ve();
-                ve.setDiaDiemDi(rs.getString(3));
-                ve.setDiaDiemDen(rs.getString(4));
                 ve.setNgayMua(rs.getDate(5));
                 ve.setGiaTien(rs.getFloat(8));
                 
@@ -52,5 +50,9 @@ public class repo_ChuyenBay {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new repo_ChuyenBay().getAll());
     }
 }
