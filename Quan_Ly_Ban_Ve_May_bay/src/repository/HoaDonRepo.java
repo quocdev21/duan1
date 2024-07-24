@@ -17,57 +17,28 @@ import java.sql.PreparedStatement;
  * @author pc
  */
 public class HoaDonRepo {
-
-    public ArrayList<HoaDon> getHD() {
-        ArrayList<HoaDon> listhd = new ArrayList<>();
+    public ArrayList<HoaDonRepo> getAllHD(String maHD){
+        ArrayList<HoaDonRepo> listhd = new ArrayList<>();
         String sql = """
                      SELECT 
-                            [ID_Hoa_Don]
-                           ,[Thoi_Gian_Tao]
-                     FROM [dbo].[HoaDon]
+                         hd.ID_Hoa_Don,
+                         kh.CCCD AS So_CCCD_Khach_Hang,
+                         kh.TenKhachHang AS Ten_Khach_Hang,
+                         kh.Gioi_Tinh AS Gioi_Tinh,
+                         kh.SDT AS SDT,
+                         hd.Thoi_Gian_Tao AS Ngay_Tao,
+                         nv.ID_TaiKhoan AS ID_NhanVien
+                     FROM 
+                         HoaDon hd
+                     JOIN 
+                         Khach_hang kh ON hd.ID_Khach_Hang = kh.ID_Khach_Hang
+                     JOIN 
+                         NhanVien nv ON hd.ID_Nhan_Vien = nv.ID_TaiKhoan;
                      """;
-        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                HoaDon hd = new HoaDon();
-                hd.setID_HoaDon(rs.getString(1));
-                hd.setThoiGianTao(rs.getString(2));
-                listhd.add(hd);
-            }
+        try (Connection con = DBConnect.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maHD);
         } catch (Exception e) {
-            e.printStackTrace();
         }
-        return listhd;
-    }
-
-    public ArrayList<KhachHang> getKH() {
-        ArrayList<KhachHang> listkh = new ArrayList<>();
-        String sql = """
-                     SELECT
-                           [TenKhachHang]
-                           ,[Gioi_Tinh]
-                           ,[SDT]
-                           ,[CCCD]
-                       FROM [dbo].[KhachHang]
-                     """;
-        try (Connection con = DBConnect.getConnection(); PreparedStatement ps = con.prepareStatement(sql);) {
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                KhachHang kh = new KhachHang();
-                kh.setSoCCCD(rs.getString(1));
-                kh.setTenKhachHang(rs.getString(2));
-                kh.setGioiTinh(rs.getString(3));
-                kh.setSDT(rs.getString(4));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listkh;
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(new HoaDonRepo().getHD());
-
     }
 }
