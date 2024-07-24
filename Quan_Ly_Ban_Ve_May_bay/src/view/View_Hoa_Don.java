@@ -5,9 +5,9 @@
 package view;
 
 import entity.HoaDon;
-import entity.KhachHang;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import response.HoaDonResponse;
 import repository.HoaDonRepo;
 
 /**
@@ -16,14 +16,28 @@ import repository.HoaDonRepo;
  */
 public class View_Hoa_Don extends javax.swing.JFrame {
 
+    int index = -1;
+    private DefaultTableModel dtm = new DefaultTableModel();
+    HoaDonRepo rp = new HoaDonRepo();
     /**
      * Creates new form View_Hoa_Don
      */
     public View_Hoa_Don() {
         initComponents();
-
+        goiHam_Fill();
     }
 
+    private void goiHam_Fill(){
+        dtm = (DefaultTableModel) tbView.getModel();
+        fillToTable_HD(rp.getAllHD());
+    }
+    
+    private void fillToTable_HD(ArrayList<HoaDonResponse> listhd){
+        dtm.setRowCount(0);
+        listhd.forEach(s -> dtm.addRow(new Object[]{
+            s.getID_HoaDon(), s.getSoCCCD(), s.getTenKhachHang(), s.isGioiTinh() == true?"Nam":"Nu", s.getSDT(), s.getThoiGianTao(), s.getID_NhanVien()
+        }));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

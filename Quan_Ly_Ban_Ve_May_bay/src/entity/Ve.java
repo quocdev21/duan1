@@ -16,19 +16,17 @@ public class Ve {
     private String IDHang;
     private String NgayMua;
     private String GiaTien;
-    private String IDKhachHang;
 
     public Ve() {
     }
 
-    public Ve(String IDVe, String IDChuyenBay, String MaGHe, String IDHang, String NgayMua, String GiaTien, String IDKhachHang) {
+    public Ve(String IDVe, String IDChuyenBay, String MaGHe, String IDHang, String NgayMua, String GiaTien) {
         this.IDVe = IDVe;
         this.IDChuyenBay = IDChuyenBay;
         this.MaGHe = MaGHe;
         this.IDHang = IDHang;
         this.NgayMua = NgayMua;
         this.GiaTien = GiaTien;
-        this.IDKhachHang = IDKhachHang;
     }
 
     public String getIDVe() {
@@ -78,15 +76,5 @@ public class Ve {
     public void setGiaTien(String GiaTien) {
         this.GiaTien = GiaTien;
     }
-
-    public String getIDKhachHang() {
-        return IDKhachHang;
-    }
-
-    public void setIDKhachHang(String IDKhachHang) {
-        this.IDKhachHang = IDKhachHang;
-    }
-
-    
 
 }
