@@ -16,57 +16,12 @@ import repository.HoaDonRepo;
  */
 public class View_Hoa_Don extends javax.swing.JFrame {
 
-    private DefaultTableModel dtm = new DefaultTableModel();
-    private HoaDonRepo repo = new HoaDonRepo();
-    private ArrayList<HoaDon> listhd = new ArrayList<>();
-    private ArrayList<KhachHang> listkh = new ArrayList<>();
-
     /**
      * Creates new form View_Hoa_Don
      */
     public View_Hoa_Don() {
         initComponents();
-        listhd = repo.getHD();
-        listkh = repo.getKH();
-        dtm = (DefaultTableModel) tbView.getModel();
-        showData(listhd, listkh);
-        detailhd(listhd.size() -1);
 
-  }
-
-    private void showData(ArrayList<HoaDon> listhd, ArrayList<KhachHang> listkh) {
-        dtm.setRowCount(0);
-        for (HoaDon hd : listhd) {
-            dtm.addRow(new Object[]{
-                hd.getID_HoaDon()
-            });
-        }
-        
-        for (KhachHang kh : listkh) {
-            dtm.addRow(new Object[]{
-                kh.getSoCCCD(), kh.getTenKhachHang(), kh.getGioiTinh(), kh.getSDT()
-            });
-        }
-        
-        for (HoaDon hd : listhd) {
-            dtm.addRow(new Object[]{
-                 hd.getThoiGianTao()
-            });
-        }
-    }
-
-    private void detailhd(int index) {
-        HoaDon hd = listhd.get(index);
-        txMa.setText(hd.getID_HoaDon());
-
-    }
-
-    private void detailkh(int index) {
-        KhachHang kh = listkh.get(index);
-        txSo.setText(kh.getSoCCCD());
-        txHT.setText(kh.getTenKhachHang());
-        txGT.setText(kh.getGioiTinh());
-        txSDT.setText(kh.getSDT());
     }
 
     /**
@@ -78,6 +33,7 @@ public class View_Hoa_Don extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -87,7 +43,6 @@ public class View_Hoa_Don extends javax.swing.JFrame {
         txMa = new javax.swing.JTextField();
         txSo = new javax.swing.JTextField();
         txHT = new javax.swing.JTextField();
-        txGT = new javax.swing.JTextField();
         dcTGT = new com.toedter.calendar.JDateChooser();
         btnCTHD = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -101,6 +56,10 @@ public class View_Hoa_Don extends javax.swing.JFrame {
         btnSHC = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txSDT = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        txHT1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,9 +96,6 @@ public class View_Hoa_Don extends javax.swing.JFrame {
         txHT.setBackground(new java.awt.Color(255, 255, 255));
         txHT.setForeground(new java.awt.Color(0, 0, 0));
 
-        txGT.setBackground(new java.awt.Color(255, 255, 255));
-        txGT.setForeground(new java.awt.Color(0, 0, 0));
-
         dcTGT.setBackground(new java.awt.Color(255, 255, 255));
         dcTGT.setForeground(new java.awt.Color(0, 0, 0));
         dcTGT.setDateFormatString("yyyy-MM-dd");
@@ -153,13 +109,13 @@ public class View_Hoa_Don extends javax.swing.JFrame {
         tbView.setForeground(new java.awt.Color(0, 0, 0));
         tbView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã Hóa Đơn", "Số CCCD", "Họ Và Tên", "Giới Tính", "Số Điện Thoại", "Thời Gian Tạo"
+                "Mã Hóa Đơn", "Số CCCD", "Họ Và Tên", "Giới Tính", "Số Điện Thoại", "Thời Gian Tạo", "Mã Nhân Viên"
             }
         ));
         tbView.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -207,15 +163,25 @@ public class View_Hoa_Don extends javax.swing.JFrame {
         txSDT.setBackground(new java.awt.Color(255, 255, 255));
         txSDT.setForeground(new java.awt.Color(0, 0, 0));
 
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Nam");
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Nữ");
+
+        txHT1.setBackground(new java.awt.Color(255, 255, 255));
+        txHT1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Mã Nhân Viên");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(btnCTHD))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,20 +192,30 @@ public class View_Hoa_Don extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txMa, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txSo)
-                                    .addComponent(txHT)
-                                    .addComponent(txGT)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txMa, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                        .addComponent(txSo)
+                                        .addComponent(txHT))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jRadioButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txSDT, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                                     .addComponent(dcTGT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(56, 56, 56)
+                                    .addComponent(txHT1))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCTHD)
+                        .addGap(105, 105, 105)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
@@ -256,7 +232,7 @@ public class View_Hoa_Don extends javax.swing.JFrame {
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSHC)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 43, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(485, 485, 485)))
@@ -292,7 +268,8 @@ public class View_Hoa_Don extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txGT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jRadioButton1)
+                            .addComponent(jRadioButton2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -302,6 +279,10 @@ public class View_Hoa_Don extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(dcTGT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txHT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
                         .addComponent(btnCTHD))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -311,10 +292,7 @@ public class View_Hoa_Don extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbViewMouseClicked
-        int index = tbView.getSelectedRow();
-        int index1 = tbView.getSelectedRow();
-        detailhd(index);        // TODO add your handling code here:
-        detailkh(index1);
+
     }//GEN-LAST:event_tbViewMouseClicked
 
     /**
@@ -357,9 +335,11 @@ public class View_Hoa_Don extends javax.swing.JFrame {
     private javax.swing.JButton btnLM;
     private javax.swing.JButton btnSHC;
     private javax.swing.JButton btnTGT;
+    private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser dcTGT;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -368,11 +348,13 @@ public class View_Hoa_Don extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTable tbView;
-    private javax.swing.JTextField txGT;
     private javax.swing.JTextField txHT;
+    private javax.swing.JTextField txHT1;
     private javax.swing.JTextField txMa;
     private javax.swing.JTextField txSDT;
     private javax.swing.JTextField txSo;

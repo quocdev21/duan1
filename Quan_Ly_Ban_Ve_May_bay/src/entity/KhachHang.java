@@ -15,12 +15,12 @@ public class KhachHang {
     private String SoCCCD;
     private String Email;
     private String DiaChi;
-    private String GioiTinh;
+    private boolean GioiTinh;
 
     public KhachHang() {
     }
 
-    public KhachHang(String IDKhachHang, String TenKhachHang, String SDT, String SoCCCD, String Email, String DiaChi, String GioiTinh) {
+    public KhachHang(String IDKhachHang, String TenKhachHang, String SDT, String SoCCCD, String Email, String DiaChi, boolean GioiTinh) {
         this.IDKhachHang = IDKhachHang;
         this.TenKhachHang = TenKhachHang;
         this.SDT = SDT;
@@ -78,12 +78,16 @@ public class KhachHang {
         this.DiaChi = DiaChi;
     }
 
-    public String getGioiTinh() {
+    public boolean getGioiTinh() {
         return GioiTinh;
     }
 
-    public void setGioiTinh(String GioiTinh) {
+    public void setGioiTinh(boolean GioiTinh) {
         this.GioiTinh = GioiTinh;
+    }
+
+    public Object getID_KhachHang() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     

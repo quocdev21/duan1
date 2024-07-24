@@ -16,18 +16,22 @@ public class HoaDon {
     private String ID_HoaDonCT;
     private String ID_ThanhToan;
     private String ThoiGianTao;
+    private String ID_KhachHang;
 
 
     public HoaDon() {
     }
 
-    public HoaDon(String ID_HoaDon, String ID_NhanVien, String ID_HoaDonCT, String ID_ThanhToan, String ThoiGianTao) {
+    public HoaDon(String ID_HoaDon, String ID_NhanVien, String ID_HoaDonCT, String ID_ThanhToan, String ThoiGianTao, String ID_KhachHang) {
         this.ID_HoaDon = ID_HoaDon;
         this.ID_NhanVien = ID_NhanVien;
         this.ID_HoaDonCT = ID_HoaDonCT;
         this.ID_ThanhToan = ID_ThanhToan;
         this.ThoiGianTao = ThoiGianTao;
+        this.ID_KhachHang = ID_KhachHang;
     }
+
+    
 
     public String getID_HoaDon() {
         return ID_HoaDon;
@@ -68,5 +72,15 @@ public class HoaDon {
     public void setThoiGianTao(String ThoiGianTao) {
         this.ThoiGianTao = ThoiGianTao;
     }
+
+    public String getID_KhachHang() {
+        return ID_KhachHang;
+    }
+
+    public void setID_KhachHang(String ID_KhachHang) {
+        this.ID_KhachHang = ID_KhachHang;
+    }
+
+    
 
 }
