@@ -7,7 +7,7 @@ package DTO;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class gsg extends javax.swing.JFrame {
     private boolean check(){

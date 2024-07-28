@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class SanBayRepo extends getConnection{
     public void loadTable(JTable tbl) {

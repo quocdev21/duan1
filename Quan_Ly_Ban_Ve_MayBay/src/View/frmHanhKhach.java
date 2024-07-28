@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class frmHanhKhach extends javax.swing.JFrame {
 

@@ -26,7 +26,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class frmChuyenBay extends javax.swing.JFrame {
 

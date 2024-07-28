@@ -27,10 +27,8 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="txtDiMe" pref="109" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtQAZ" max="32767" attributes="0"/>
-                      <Component id="txtText" pref="109" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="txtQAZ" max="32767" attributes="0"/>
+                  <Component id="txtText" pref="109" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCheck" min="-2" max="-2" attributes="0"/>

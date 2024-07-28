@@ -36,7 +36,7 @@ import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class DoanhThuTheoThangRepo extends getConnection {
 

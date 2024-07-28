@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class MayBayRepo extends getConnection {
 

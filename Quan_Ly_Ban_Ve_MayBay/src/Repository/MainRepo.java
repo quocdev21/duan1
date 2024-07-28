@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author TuanDuc
+ * @author
  */
 public class MainRepo extends getConnection{
     public String getHoTen(String ma){

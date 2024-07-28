@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class frmDoanhThuTheoThang extends javax.swing.JFrame {
 
@@ -77,7 +77,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
                         pnlThang.setVisible(false);
                         showHide_Quy++;
                         loadTable_DoanhThu();
-                        loadChart();
                         loadSLVe();
                     }
 
@@ -128,7 +127,7 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         int cao = 3;
         ArrayList<JLabel> listLBL = new ArrayList<>();
         try {
-            for (int i = 2009; i < 2020; i++) {
+            for (int i = 2014; i < 2025; i++) {
                 JLabel lbl = new JLabel(String.valueOf(i));
                 lbl.setSize(pnlNam.getWidth(), 20);
                 lbl.setName("lblNam" + i);
@@ -146,7 +145,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
                         pnlNam.setVisible(false);
                         showHide_Nam++;
                         loadTable_DoanhThu();
-                        loadChart();
                         loadSLVe();
                     }
 
@@ -211,12 +209,7 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         }
     }
 
-    void loadChart() {
-        pnlBieuDo.removeAll();
-        int quy = Integer.parseInt(String.valueOf(txtQuy.getText().trim()));
-        int nam = Integer.parseInt(String.valueOf(txtNam.getText().trim()));
-        new DoanhThuTheoThangRepo().loadChart(pnlBieuDo, quy, nam);
-    }
+    
 
     void loadSLVe() {
         int quy = 0;
@@ -255,11 +248,10 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         cbx_Quy();
         cbx_Nam();
-        txtQuy.setText("2");
-        txtNam.setText("2017");
+        txtQuy.setText("1");
+        txtNam.setText("2024");
         loadSLVe();
         loadTable_DoanhThu();
-        loadChart();
         splTable.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
     }
 
@@ -286,7 +278,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         lblTongTien = new javax.swing.JLabel();
         splTable = new javax.swing.JScrollPane();
         tblDoanhThuThang = new javax.swing.JTable();
-        pnlBieuDo = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -427,20 +418,7 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         });
         splTable.setViewportView(tblDoanhThuThang);
 
-        jPanel5.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 640, 290));
-
-        javax.swing.GroupLayout pnlBieuDoLayout = new javax.swing.GroupLayout(pnlBieuDo);
-        pnlBieuDo.setLayout(pnlBieuDoLayout);
-        pnlBieuDoLayout.setHorizontalGroup(
-            pnlBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
-        );
-        pnlBieuDoLayout.setVerticalGroup(
-            pnlBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
-        );
-
-        jPanel5.add(pnlBieuDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 280, 290));
+        jPanel5.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 930, 290));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(55, 38, 91));
@@ -570,10 +548,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQuyKeyReleased
 
-    private void tblDoanhThuThangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoanhThuThangMouseClicked
-
-    }//GEN-LAST:event_tblDoanhThuThangMouseClicked
-
     private void btnThangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThangMouseEntered
         btnThang.setCursor(new Cursor(HAND_CURSOR));
     }//GEN-LAST:event_btnThangMouseEntered
@@ -597,6 +571,10 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
     private void txtPhoThong_MotChieuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoThong_MotChieuKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhoThong_MotChieuKeyReleased
+
+    private void tblDoanhThuThangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoanhThuThangMouseClicked
+
+    }//GEN-LAST:event_tblDoanhThuThangMouseClicked
 
     /**
      * @param args the command line arguments
@@ -654,7 +632,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator21;
     private javax.swing.JLabel lblTongSoGhe;
     private javax.swing.JLabel lblTongTien;
-    private javax.swing.JPanel pnlBieuDo;
     private javax.swing.JPanel pnlNam;
     private javax.swing.JPanel pnlThang;
     private javax.swing.JScrollPane splTable;

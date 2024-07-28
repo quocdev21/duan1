@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class HangVeRepo extends getConnection {
 

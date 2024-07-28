@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class HoaDonRepo extends getConnection{
     public ArrayList<HanhKhach> layDS_HK(){

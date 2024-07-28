@@ -33,7 +33,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class DoanhThuTheoNamRepo extends getConnection {
 

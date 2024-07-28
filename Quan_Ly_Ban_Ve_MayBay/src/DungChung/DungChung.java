@@ -27,7 +27,7 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class DungChung extends getConnection {
 

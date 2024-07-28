@@ -10,7 +10,7 @@ import Model.HoaDonChiTiet;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class HoaDonChiTietDTO implements Serializable{
     private HoaDonChiTiet hoaDonChiTiet;

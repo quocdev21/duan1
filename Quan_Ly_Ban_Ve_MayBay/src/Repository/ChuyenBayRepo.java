@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class ChuyenBayRepo extends getConnection{
     public ArrayList<TuyenBay> layDS_TB(){

@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class TuyenBayRepo extends getConnection {
     public ArrayList<SanBay> layDS() {

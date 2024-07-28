@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author TuanDuc
+ * @author 
  */
 public class DangNhapRepo extends getConnection{
     public String checkLogin(NhanVien nv){
