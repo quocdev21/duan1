@@ -6,46 +6,47 @@ package entity;
 
 /**
  *
- * @author Simp
+ * @author pc
  */
 public class SanBay {
-    private String idSanBay;
-    private String tenSanBay;
-    private String tenThanhPho;
+    private String maSanBay;
+    private String tenSanbay;
     private String quocGia;
+    private String diaDiem;
 
     public SanBay() {
     }
 
-    public SanBay(String idSanBay, String tenSanBay, String tenThanhPho, String quocGia) {
-        this.idSanBay = idSanBay;
-        this.tenSanBay = tenSanBay;
-        this.tenThanhPho = tenThanhPho;
+    public SanBay(String maSanBay) {
+        this.maSanBay = maSanBay;
+    }
+
+    public SanBay(String maSanBay, String tenSanbay) {
+        this.maSanBay = maSanBay;
+        this.tenSanbay = tenSanbay;
+    }
+
+    public SanBay(String maSanBay, String tenSanbay, String quocGia, String diaDiem) {
+        this.maSanBay = maSanBay;
+        this.tenSanbay = tenSanbay;
         this.quocGia = quocGia;
+        this.diaDiem = diaDiem;
     }
 
-    public String getIdSanBay() {
-        return idSanBay;
+    public String getMaSanBay() {
+        return maSanBay;
     }
 
-    public void setIdSanBay(String idSanBay) {
-        this.idSanBay = idSanBay;
+    public void setMaSanBay(String maSanBay) {
+        this.maSanBay = maSanBay;
     }
 
-    public String getTenSanBay() {
-        return tenSanBay;
+    public String getTenSanbay() {
+        return tenSanbay;
     }
 
-    public void setTenSanBay(String tenSanBay) {
-        this.tenSanBay = tenSanBay;
-    }
-
-    public String getTenThanhPho() {
-        return tenThanhPho;
-    }
-
-    public void setTenThanhPho(String tenThanhPho) {
-        this.tenThanhPho = tenThanhPho;
+    public void setTenSanbay(String tenSanbay) {
+        this.tenSanbay = tenSanbay;
     }
 
     public String getQuocGia() {
@@ -56,10 +57,11 @@ public class SanBay {
         this.quocGia = quocGia;
     }
 
-    @Override
-    public String toString() {
-        return "SanBay{" + "idSanBay=" + idSanBay + ", tenSanBay=" + tenSanBay + ", tenThanhPho=" + tenThanhPho + ", quocGia=" + quocGia + '}';
+    public String getDiaDiem() {
+        return diaDiem;
     }
-    
-    
+
+    public void setDiaDiem(String diaDiem) {
+        this.diaDiem = diaDiem;
+    }
 }

@@ -6,60 +6,37 @@ package entity;
 
 /**
  *
- * @author Simp
+ * @author pc
  */
 public class MayBay {
-    private String idMaybay;
-    private String soHieuMayBay;
-    private String hangMaybay;
-    private int soLuongGhe;
+    private String maMaybay;
+    private String maHang;
 
     public MayBay() {
     }
 
-    public MayBay(String idMaybay, String soHieuMayBay, String hangMaybay, int soLuongGhe) {
-        this.idMaybay = idMaybay;
-        this.soHieuMayBay = soHieuMayBay;
-        this.hangMaybay = hangMaybay;
-        this.soLuongGhe = soLuongGhe;
+    public MayBay(String maMaybay) {
+        this.maMaybay = maMaybay;
     }
 
-    public String getIdMaybay() {
-        return idMaybay;
+    public MayBay(String maMaybay, String maHang) {
+        this.maMaybay = maMaybay;
+        this.maHang = maHang;
     }
 
-    public void setIdMaybay(String idMaybay) {
-        this.idMaybay = idMaybay;
+    public String getMaMaybay() {
+        return maMaybay;
     }
 
-    public String getSoHieuMayBay() {
-        return soHieuMayBay;
+    public void setMaMaybay(String maMaybay) {
+        this.maMaybay = maMaybay;
     }
 
-    public void setSoHieuMayBay(String soHieuMayBay) {
-        this.soHieuMayBay = soHieuMayBay;
+    public String getMaHang() {
+        return maHang;
     }
 
-    public String getHangMaybay() {
-        return hangMaybay;
+    public void setMaHang(String maHang) {
+        this.maHang = maHang;
     }
-
-    public void setHangMaybay(String hangMaybay) {
-        this.hangMaybay = hangMaybay;
-    }
-
-    public int getSoLuongGhe() {
-        return soLuongGhe;
-    }
-
-    public void setSoLuongGhe(int soLuongGhe) {
-        this.soLuongGhe = soLuongGhe;
-    }
-
-    @Override
-    public String toString() {
-        return "MayBay{" + "idMaybay=" + idMaybay + ", soHieuMayBay=" + soHieuMayBay + ", hangMaybay=" + hangMaybay + ", soLuongGhe=" + soLuongGhe + '}';
-    }
-    
-    
 }

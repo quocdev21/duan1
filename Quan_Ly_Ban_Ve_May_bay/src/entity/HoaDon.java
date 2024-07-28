@@ -4,83 +4,59 @@
  */
 package entity;
 
-
 /**
  *
  * @author pc
  */
 public class HoaDon {
-
-    private String ID_HoaDon;
-    private String ID_NhanVien;
-    private String ID_HoaDonCT;
-    private String ID_ThanhToan;
-    private String ThoiGianTao;
-    private String ID_KhachHang;
-
+    private String maHoaDon;
+    private String ngayLap;
+    private String cmnd;
+    private String maNhanVien;
 
     public HoaDon() {
     }
 
-    public HoaDon(String ID_HoaDon, String ID_NhanVien, String ID_HoaDonCT, String ID_ThanhToan, String ThoiGianTao, String ID_KhachHang) {
-        this.ID_HoaDon = ID_HoaDon;
-        this.ID_NhanVien = ID_NhanVien;
-        this.ID_HoaDonCT = ID_HoaDonCT;
-        this.ID_ThanhToan = ID_ThanhToan;
-        this.ThoiGianTao = ThoiGianTao;
-        this.ID_KhachHang = ID_KhachHang;
+    public HoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
     }
 
-    
-
-    public String getID_HoaDon() {
-        return ID_HoaDon;
+    public HoaDon(String maHoaDon, String ngayLap, String cmnd, String maNhanVien) {
+        this.maHoaDon = maHoaDon;
+        this.ngayLap = ngayLap;
+        this.cmnd = cmnd;
+        this.maNhanVien = maNhanVien;
     }
 
-    public void setID_HoaDon(String ID_HoaDon) {
-        this.ID_HoaDon = ID_HoaDon;
+    public String getMaHoaDon() {
+        return maHoaDon;
     }
 
-    public String getID_NhanVien() {
-        return ID_NhanVien;
+    public void setMaHoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
     }
 
-    public void setID_NhanVien(String ID_NhanVien) {
-        this.ID_NhanVien = ID_NhanVien;
+    public String getNgayLap() {
+        return ngayLap;
     }
 
-    public String getID_HoaDonCT() {
-        return ID_HoaDonCT;
+    public void setNgayLap(String ngayLap) {
+        this.ngayLap = ngayLap;
     }
 
-    public void setID_HoaDonCT(String ID_HoaDonCT) {
-        this.ID_HoaDonCT = ID_HoaDonCT;
+    public String getCmnd() {
+        return cmnd;
     }
 
-    public String getID_ThanhToan() {
-        return ID_ThanhToan;
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
-    public void setID_ThanhToan(String ID_ThanhToan) {
-        this.ID_ThanhToan = ID_ThanhToan;
+    public String getMaNhanVien() {
+        return maNhanVien;
     }
 
-    public String getThoiGianTao() {
-        return ThoiGianTao;
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
-
-    public void setThoiGianTao(String ThoiGianTao) {
-        this.ThoiGianTao = ThoiGianTao;
-    }
-
-    public String getID_KhachHang() {
-        return ID_KhachHang;
-    }
-
-    public void setID_KhachHang(String ID_KhachHang) {
-        this.ID_KhachHang = ID_KhachHang;
-    }
-
-    
-
 }

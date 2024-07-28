@@ -246,7 +246,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtUsername.setBorder(null);
-        txtUsername.setOpaque(false);
         jPanel2.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 330, 30));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 330, 10));
 
@@ -258,7 +257,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPassword.setBorder(null);
-        txtPassword.setOpaque(false);
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 300, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

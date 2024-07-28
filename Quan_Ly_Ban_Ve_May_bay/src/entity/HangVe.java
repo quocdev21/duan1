@@ -6,38 +6,37 @@ package entity;
 
 /**
  *
- * @author Simp
+ * @author pc
  */
 public class HangVe {
-    private String idHangVe;
-    private String tenHang;
+    private String maHangVe;
+    private String tenHangVe;
 
     public HangVe() {
     }
 
-    public HangVe(String idHangVe, String tenHang) {
-        this.idHangVe = idHangVe;
-        this.tenHang = tenHang;
+    public HangVe(String maHangVe) {
+        this.maHangVe = maHangVe;
     }
 
-    public String getIdHangVe() {
-        return idHangVe;
+    public HangVe(String maHangVe, String tenHangVe) {
+        this.maHangVe = maHangVe;
+        this.tenHangVe = tenHangVe;
     }
 
-    public void setIdHangVe(String idHangVe) {
-        this.idHangVe = idHangVe;
+    public String getMaHangVe() {
+        return maHangVe;
     }
 
-    public String getTenHang() {
-        return tenHang;
+    public void setMaHangVe(String maHangVe) {
+        this.maHangVe = maHangVe;
     }
 
-    public void setTenHang(String tenHang) {
-        this.tenHang = tenHang;
+    public String getTenHangVe() {
+        return tenHangVe;
     }
 
-    @Override
-    public String toString() {
-        return "HangVe{" + "idHangVe=" + idHangVe + ", tenHang=" + tenHang + '}';
+    public void setTenHangVe(String tenHangVe) {
+        this.tenHangVe = tenHangVe;
     }
 }

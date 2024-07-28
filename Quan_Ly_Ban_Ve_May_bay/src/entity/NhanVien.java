@@ -6,115 +6,112 @@ package entity;
 
 /**
  *
- * @author HuyHoang
+ * @author pc
  */
 public class NhanVien {
-    private String ID_NhanVien;
-    private String TenDangNhap;
-    private String TenNhanVien;
-    private String CCCD;
-    private String SDT;
-    private String DiaChi;
-    private String Email;
-    private String MatKhau;
-    private String TrangThai;
-    private String ChucVu;
+    private String maNhanVien;
+    private String matKhau;
+    private String vaiTro;
+    private String hoten;
+    private boolean gioiTinh;
+    private String soDT;
+    private String email;
+    private String diaChi;
+    private String hinh;
 
     public NhanVien() {
     }
 
-    public NhanVien(String ID_NhanVien, String TenDangNhap, String TenNhanVien, String CCCD, String SDT, String DiaChi, String Email, String MatKhau, String TrangThai, String ChucVu) {
-        this.ID_NhanVien = ID_NhanVien;
-        this.TenDangNhap = TenDangNhap;
-        this.TenNhanVien = TenNhanVien;
-        this.CCCD = CCCD;
-        this.SDT = SDT;
-        this.DiaChi = DiaChi;
-        this.Email = Email;
-        this.MatKhau = MatKhau;
-        this.TrangThai = TrangThai;
-        this.ChucVu = ChucVu;
+    public NhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
 
-    public String getID_NhanVien() {
-        return ID_NhanVien;
+    public NhanVien(String maNhanVien, String matKhau) {
+        this.maNhanVien = maNhanVien;
+        this.matKhau = matKhau;
     }
 
-    public void setID_NhanVien(String ID_NhanVien) {
-        this.ID_NhanVien = ID_NhanVien;
+    public NhanVien(String maNhanVien, String matKhau, String vaiTro, String hoten, boolean gioiTinh, String soDT, String email, String diaChi, String hinh) {
+        this.maNhanVien = maNhanVien;
+        this.matKhau = matKhau;
+        this.vaiTro = vaiTro;
+        this.hoten = hoten;
+        this.gioiTinh = gioiTinh;
+        this.soDT = soDT;
+        this.email = email;
+        this.diaChi = diaChi;
+        this.hinh = hinh;
     }
 
-    public String getTenDangNhap() {
-        return TenDangNhap;
+    public String getMaNhanVien() {
+        return maNhanVien;
     }
 
-    public void setTenDangNhap(String TenDangNhap) {
-        this.TenDangNhap = TenDangNhap;
-    }
-
-    public String getTenNhanVien() {
-        return TenNhanVien;
-    }
-
-    public void setTenNhanVien(String TenNhanVien) {
-        this.TenNhanVien = TenNhanVien;
-    }
-
-    public String getCCCD() {
-        return CCCD;
-    }
-
-    public void setCCCD(String CCCD) {
-        this.CCCD = CCCD;
-    }
-
-    public String getSDT() {
-        return SDT;
-    }
-
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
-    }
-
-    public String getDiaChi() {
-        return DiaChi;
-    }
-
-    public void setDiaChi(String DiaChi) {
-        this.DiaChi = DiaChi;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
 
     public String getMatKhau() {
-        return MatKhau;
+        return matKhau;
     }
 
-    public void setMatKhau(String MatKhau) {
-        this.MatKhau = MatKhau;
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
-    public String getTrangThai() {
-        return TrangThai;
+    public String getVaiTro() {
+        return vaiTro;
     }
 
-    public void setTrangThai(String TrangThai) {
-        this.TrangThai = TrangThai;
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
     }
 
-    public String getChucVu() {
-        return ChucVu;
+    public String getHoten() {
+        return hoten;
     }
 
-    public void setChucVu(String ChucVu) {
-        this.ChucVu = ChucVu;
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
     }
-    
-    
+
+    public boolean isGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getSoDT() {
+        return soDT;
+    }
+
+    public void setSoDT(String soDT) {
+        this.soDT = soDT;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
 }
