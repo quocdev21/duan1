@@ -413,15 +413,6 @@ public class frmChuyenBay extends javax.swing.JFrame {
         lblSTT.setText(String.valueOf(tblChuyenBay.getValueAt(dong, 0)));
     }
 
-    private void exportExcel() {
-        new ExportExcel().exportExcel("DANH SÁCH BẢNG CHUYẾN BAY", "Chuyến bay", tblChuyenBay, new int[]{1500, 5000, 5000, 6000, 5500, 5000, 5000, 5000, 5000});
-        JOptionPane.showMessageDialog(this, "Xuất file excel thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    private void exportPDF() {
-        new ExportPDF().exportPDF("DANH SÁCH BẢNG CHUYẾN BAY", tblChuyenBay);
-        JOptionPane.showMessageDialog(this, "Xuất file pdf thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-    }
 
     private void chucNang(String str) {
         try {
@@ -549,8 +540,6 @@ public class frmChuyenBay extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
-        btnExcel = new javax.swing.JButton();
-        btnPDF = new javax.swing.JButton();
         btnPre = new javax.swing.JButton();
         btnFirst = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
@@ -595,718 +584,573 @@ public class frmChuyenBay extends javax.swing.JFrame {
 
         jPanel2.add(pnlMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, -1));
 
-        dcplNgayDi.setCurrentView(new datechooser.view.appearance.AppearancesList("Grey",
-            new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    true,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 255),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(128, 128, 128),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(255, 0, 0),
-                    false,
-                    false,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                (datechooser.view.BackRenderer)null,
-                false,
-                true)));
-    dcplNgayDi.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
-        public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
-            dcplNgayDiOnSelectionChange(evt);
-        }
-    });
-    dcplNgayDi.addCommitListener(new datechooser.events.CommitListener() {
-        public void onCommit(datechooser.events.CommitEvent evt) {
-            dcplNgayDiOnCommit(evt);
-        }
-    });
-    jPanel2.add(dcplNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
+        dcplNgayDi.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+                dcplNgayDiOnSelectionChange(evt);
+            }
+        });
+        dcplNgayDi.addCommitListener(new datechooser.events.CommitListener() {
+            public void onCommit(datechooser.events.CommitEvent evt) {
+                dcplNgayDiOnCommit(evt);
+            }
+        });
+        jPanel2.add(dcplNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
-    dcplNgayDen.setCurrentView(new datechooser.view.appearance.AppearancesList("Grey",
-        new datechooser.view.appearance.ViewAppearance("custom",
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                true,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 255),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(128, 128, 128),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(0, 0, 255),
-                false,
-                true,
-                new datechooser.view.appearance.swing.LabelPainter()),
-            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                new java.awt.Color(0, 0, 0),
-                new java.awt.Color(255, 0, 0),
-                false,
-                false,
-                new datechooser.view.appearance.swing.ButtonPainter()),
-            (datechooser.view.BackRenderer)null,
-            false,
-            true)));
-dcplNgayDen.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
-    public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
-        dcplNgayDenOnSelectionChange(evt);
-    }
-    });
-    jPanel2.add(dcplNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, -1, -1));
+        dcplNgayDen.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+                dcplNgayDenOnSelectionChange(evt);
+            }
+        });
+        jPanel2.add(dcplNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, -1, -1));
 
-    jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-    jLabel3.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel3.setText("QUẢN LÝ CHUYẾN BAY");
-    jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 11, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel3.setText("QUẢN LÝ CHUYẾN BAY");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 11, -1, -1));
 
-    jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel4.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel4.setText("Tìm kiếm");
-    jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel4.setText("Tìm kiếm");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, -1, -1));
 
-    txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-    txtTimKiem.setOpaque(false);
-    txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            txtTimKiemKeyReleased(evt);
-        }
-    });
-    jPanel2.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 196, -1));
+        txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
+        jPanel2.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 196, -1));
 
-    lblLoiMaCB.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiMaCB.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiMaCB.setText("Mã chuyến bay không chinh xác");
-    jPanel2.add(lblLoiMaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 200, -1));
+        lblLoiMaCB.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiMaCB.setText("Mã chuyến bay không chinh xác");
+        jPanel2.add(lblLoiMaCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 200, -1));
 
-    jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel5.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel5.setText("Mã chuyến bay");
-    jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel5.setText("Mã chuyến bay");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
-    jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel6.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel6.setText("Giờ khởi hành");
-    jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel6.setText("Giờ khởi hành");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
-    lblLoiNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiNgayDi.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiNgayDi.setText("Chưa chọn ngày đi");
-    jPanel2.add(lblLoiNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 150, -1));
+        lblLoiNgayDi.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiNgayDi.setText("Chưa chọn ngày đi");
+        jPanel2.add(lblLoiNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 150, -1));
 
-    jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel7.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel7.setText("Ngày đi");
-    jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel7.setText("Ngày đi");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, -1, -1));
 
-    txtGheThuongGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtGheThuongGia.setText("0");
-    txtGheThuongGia.setBorder(null);
-    txtGheThuongGia.setOpaque(false);
-    txtGheThuongGia.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            txtGheThuongGiaKeyReleased(evt);
-        }
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtGheThuongGiaKeyTyped(evt);
-        }
-    });
-    jPanel2.add(txtGheThuongGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 220, 20));
+        txtGheThuongGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtGheThuongGia.setText("0");
+        txtGheThuongGia.setBorder(null);
+        txtGheThuongGia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGheThuongGiaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGheThuongGiaKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtGheThuongGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 220, 20));
 
-    jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel8.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel8.setText("Ngày đến");
-    jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel8.setText("Ngày đến");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, -1, -1));
 
-    lblLoiNgayDen.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiNgayDen.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiNgayDen.setText("Chưa chọn ngày đến");
-    jPanel2.add(lblLoiNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, 150, -1));
+        lblLoiNgayDen.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiNgayDen.setText("Chưa chọn ngày đến");
+        jPanel2.add(lblLoiNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, 150, -1));
 
-    jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel9.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel9.setText("Ghế phổ thông");
-    jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel9.setText("Ghế phổ thông");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, -1, -1));
 
-    txtGhePhoThong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtGhePhoThong.setText("0");
-    txtGhePhoThong.setBorder(null);
-    txtGhePhoThong.setOpaque(false);
-    txtGhePhoThong.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            txtGhePhoThongKeyReleased(evt);
-        }
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtGhePhoThongKeyTyped(evt);
-        }
-    });
-    jPanel2.add(txtGhePhoThong, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 220, 20));
+        txtGhePhoThong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtGhePhoThong.setText("0");
+        txtGhePhoThong.setBorder(null);
+        txtGhePhoThong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGhePhoThongKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGhePhoThongKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtGhePhoThong, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 220, 20));
 
-    lblLoiGhePhoThong.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiGhePhoThong.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiGhePhoThong.setText("Ghế phổ thông không chính xác");
-    jPanel2.add(lblLoiGhePhoThong, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 190, -1));
-    jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 220, 10));
+        lblLoiGhePhoThong.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiGhePhoThong.setText("Ghế phổ thông không chính xác");
+        jPanel2.add(lblLoiGhePhoThong, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 190, -1));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 220, 10));
 
-    jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel10.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel10.setText("Ghế thương gia");
-    jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
-    jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 220, 10));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel10.setText("Ghế thương gia");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 220, 10));
 
-    lblLoiGheThuongGia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiGheThuongGia.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiGheThuongGia.setText("Ghế thương gia không chính xác");
-    jPanel2.add(lblLoiGheThuongGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 180, -1));
+        lblLoiGheThuongGia.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiGheThuongGia.setText("Ghế thương gia không chính xác");
+        jPanel2.add(lblLoiGheThuongGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 180, -1));
 
-    jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel11.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel11.setText("Mã tuyến bay");
-    jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel11.setText("Mã tuyến bay");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
-    txtMaTuyenBay.setEditable(false);
-    txtMaTuyenBay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-    txtMaTuyenBay.setBorder(null);
-    txtMaTuyenBay.setOpaque(false);
-    jPanel2.add(txtMaTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 190, 20));
-    jPanel2.add(sptTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 220, 10));
+        txtMaTuyenBay.setEditable(false);
+        txtMaTuyenBay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtMaTuyenBay.setBorder(null);
+        jPanel2.add(txtMaTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 190, 20));
+        jPanel2.add(sptTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 220, 10));
 
-    lblLoiTuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiTuyenBay.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiTuyenBay.setText("Chưa chọn mã tuyến bay");
-    jPanel2.add(lblLoiTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 150, -1));
+        lblLoiTuyenBay.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiTuyenBay.setText("Chưa chọn mã tuyến bay");
+        jPanel2.add(lblLoiTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 150, -1));
 
-    txtMaMayBay.setEditable(false);
-    txtMaMayBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtMaMayBay.setBorder(null);
-    txtMaMayBay.setOpaque(false);
-    jPanel2.add(txtMaMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 190, 20));
-    jPanel2.add(sptMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 220, 10));
+        txtMaMayBay.setEditable(false);
+        txtMaMayBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMaMayBay.setBorder(null);
+        jPanel2.add(txtMaMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 190, 20));
+        jPanel2.add(sptMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 220, 10));
 
-    lblSTT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-    lblSTT.setForeground(new java.awt.Color(55, 38, 91));
-    lblSTT.setText("0");
-    jPanel2.add(lblSTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 640, -1, -1));
+        lblSTT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSTT.setForeground(new java.awt.Color(55, 38, 91));
+        lblSTT.setText("0");
+        jPanel2.add(lblSTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 640, -1, -1));
 
-    tblChuyenBay.setAutoCreateRowSorter(true);
-    tblChuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    tblChuyenBay.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
+        tblChuyenBay.setAutoCreateRowSorter(true);
+        tblChuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblChuyenBay.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        },
-        new String [] {
-            "STT", "Mã chuyến bay", "Ngày đi", "Ngày đến", "Giờ khởi hành", "Ghế thương gia", "Ghế phổ thông", "Mã tuyến bay", "Mã máy bay"
-        }
-    ) {
-        Class[] types = new Class [] {
-            java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-        };
+            },
+            new String [] {
+                "STT", "Mã chuyến bay", "Ngày đi", "Ngày đến", "Giờ khởi hành", "Ghế thương gia", "Ghế phổ thông", "Mã tuyến bay", "Mã máy bay"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
 
-        public Class getColumnClass(int columnIndex) {
-            return types [columnIndex];
-        }
-    });
-    tblChuyenBay.setAutoscrolls(false);
-    tblChuyenBay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    tblChuyenBay.setFocusable(false);
-    tblChuyenBay.setGridColor(new java.awt.Color(255, 255, 255));
-    tblChuyenBay.setOpaque(false);
-    tblChuyenBay.setRequestFocusEnabled(false);
-    tblChuyenBay.setRowHeight(30);
-    tblChuyenBay.setRowMargin(0);
-    tblChuyenBay.setSelectionBackground(new java.awt.Color(55, 38, 91));
-    tblChuyenBay.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-    tblChuyenBay.setShowHorizontalLines(false);
-    tblChuyenBay.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            tblChuyenBayMouseClicked(evt);
-        }
-    });
-    splTable.setViewportView(tblChuyenBay);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblChuyenBay.setAutoscrolls(false);
+        tblChuyenBay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblChuyenBay.setFocusable(false);
+        tblChuyenBay.setGridColor(new java.awt.Color(255, 255, 255));
+        tblChuyenBay.setOpaque(false);
+        tblChuyenBay.setRequestFocusEnabled(false);
+        tblChuyenBay.setRowHeight(30);
+        tblChuyenBay.setSelectionBackground(new java.awt.Color(55, 38, 91));
+        tblChuyenBay.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblChuyenBay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblChuyenBayMouseClicked(evt);
+            }
+        });
+        splTable.setViewportView(tblChuyenBay);
 
-    jPanel2.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 950, 230));
+        jPanel2.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 950, 230));
 
-    jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel13.setForeground(new java.awt.Color(55, 38, 91));
-    jLabel13.setText("Mã máy bay");
-    jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel13.setText("Mã máy bay");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
 
-    lblLoiMayBay.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-    lblLoiMayBay.setForeground(new java.awt.Color(255, 0, 0));
-    lblLoiMayBay.setText("Chưa chọn mã máy bay");
-    jPanel2.add(lblLoiMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 150, -1));
+        lblLoiMayBay.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiMayBay.setText("Chưa chọn mã máy bay");
+        jPanel2.add(lblLoiMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 150, -1));
 
-    btnMayBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
-    btnMayBay.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            btnMayBayMouseClicked(evt);
-        }
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnMayBayMouseEntered(evt);
-        }
-    });
-    jPanel2.add(btnMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+        btnMayBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
+        btnMayBay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMayBayMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMayBayMouseEntered(evt);
+            }
+        });
+        jPanel2.add(btnMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
 
-    txtMaChuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtMaChuyenBay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-    txtMaChuyenBay.setOpaque(false);
-    txtMaChuyenBay.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyReleased(java.awt.event.KeyEvent evt) {
-            txtMaChuyenBayKeyReleased(evt);
-        }
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtMaChuyenBayKeyTyped(evt);
-        }
-    });
-    jPanel2.add(txtMaChuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 220, -1));
+        txtMaChuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMaChuyenBay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtMaChuyenBay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMaChuyenBayKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaChuyenBayKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtMaChuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 220, -1));
 
-    txtNgayDi.setEditable(false);
-    txtNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtNgayDi.setBorder(null);
-    txtNgayDi.setOpaque(false);
-    jPanel2.add(txtNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 190, 20));
-    jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 220, 10));
-    jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, 220, 10));
+        txtNgayDi.setEditable(false);
+        txtNgayDi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNgayDi.setBorder(null);
+        jPanel2.add(txtNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 190, 20));
+        jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 220, 10));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, 220, 10));
 
-    txtNgayDen.setEditable(false);
-    txtNgayDen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtNgayDen.setBorder(null);
-    txtNgayDen.setOpaque(false);
-    jPanel2.add(txtNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 190, 20));
+        txtNgayDen.setEditable(false);
+        txtNgayDen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNgayDen.setBorder(null);
+        jPanel2.add(txtNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, 190, 20));
 
-    txtMinute.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtMinute.setForeground(new java.awt.Color(255, 255, 255));
-    txtMinute.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    txtMinute.setText("30");
-    txtMinute.setBorder(null);
-    txtMinute.setMargin(new java.awt.Insets(0, 0, 0, 0));
-    txtMinute.setOpaque(false);
-    txtMinute.setPreferredSize(new java.awt.Dimension(40, 40));
-    txtMinute.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            txtMinuteActionPerformed(evt);
-        }
-    });
-    jPanel2.add(txtMinute, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
+        txtMinute.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMinute.setForeground(new java.awt.Color(255, 255, 255));
+        txtMinute.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMinute.setText("30");
+        txtMinute.setBorder(null);
+        txtMinute.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        txtMinute.setPreferredSize(new java.awt.Dimension(40, 40));
+        txtMinute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMinuteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtMinute, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
 
-    btnMinuteUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTime.png"))); // NOI18N
-    btnMinuteUp.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            btnMinuteUpMouseClicked(evt);
-        }
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnMinuteUpMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnMinuteUpMouseExited(evt);
-        }
-    });
-    jPanel2.add(btnMinuteUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        btnMinuteUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTime.png"))); // NOI18N
+        btnMinuteUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinuteUpMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMinuteUpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMinuteUpMouseExited(evt);
+            }
+        });
+        jPanel2.add(btnMinuteUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
 
-    jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/timeHour1.png"))); // NOI18N
-    jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/timeHour1.png"))); // NOI18N
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, -1));
 
-    txtHour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-    txtHour.setForeground(new java.awt.Color(255, 255, 255));
-    txtHour.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    txtHour.setText("00");
-    txtHour.setBorder(null);
-    txtHour.setMargin(new java.awt.Insets(0, 0, 0, 0));
-    txtHour.setOpaque(false);
-    txtHour.setPreferredSize(new java.awt.Dimension(40, 40));
-    txtHour.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            txtHourActionPerformed(evt);
-        }
-    });
-    jPanel2.add(txtHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        txtHour.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtHour.setForeground(new java.awt.Color(255, 255, 255));
+        txtHour.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHour.setText("00");
+        txtHour.setBorder(null);
+        txtHour.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        txtHour.setPreferredSize(new java.awt.Dimension(40, 40));
+        txtHour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHourActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtHour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
-    jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/timeHour1.png"))); // NOI18N
-    jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/timeHour1.png"))); // NOI18N
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
-    btnHourUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTime.png"))); // NOI18N
-    btnHourUp.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            btnHourUpMouseClicked(evt);
-        }
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnHourUpMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnHourUpMouseExited(evt);
-        }
-    });
-    jPanel2.add(btnHourUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
+        btnHourUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTime.png"))); // NOI18N
+        btnHourUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHourUpMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHourUpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHourUpMouseExited(evt);
+            }
+        });
+        jPanel2.add(btnHourUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
-    btnMinuteDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTimeDown.png"))); // NOI18N
-    btnMinuteDown.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            btnMinuteDownMouseClicked(evt);
-        }
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnMinuteDownMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnMinuteDownMouseExited(evt);
-        }
-    });
-    jPanel2.add(btnMinuteDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+        btnMinuteDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTimeDown.png"))); // NOI18N
+        btnMinuteDown.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinuteDownMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMinuteDownMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMinuteDownMouseExited(evt);
+            }
+        });
+        jPanel2.add(btnMinuteDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
-    btnHourDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTimeDown.png"))); // NOI18N
-    btnHourDown.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            btnHourDownMouseClicked(evt);
-        }
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnHourDownMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnHourDownMouseExited(evt);
-        }
-    });
-    jPanel2.add(btnHourDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
+        btnHourDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/choiceTimeDown.png"))); // NOI18N
+        btnHourDown.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHourDownMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnHourDownMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnHourDownMouseExited(evt);
+            }
+        });
+        jPanel2.add(btnHourDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
 
-    btnMoi.setBackground(new java.awt.Color(255, 255, 255));
-    btnMoi.setForeground(new java.awt.Color(255, 255, 255));
-    btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonMoi.png"))); // NOI18N
-    btnMoi.setBorder(null);
-    btnMoi.setBorderPainted(false);
-    btnMoi.setContentAreaFilled(false);
-    btnMoi.setDefaultCapable(false);
-    btnMoi.setFocusPainted(false);
-    btnMoi.setFocusable(false);
-    btnMoi.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnMoiMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnMoiMouseExited(evt);
-        }
-    });
-    btnMoi.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnMoiActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, -1));
+        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
+        btnMoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonMoi.png"))); // NOI18N
+        btnMoi.setBorder(null);
+        btnMoi.setBorderPainted(false);
+        btnMoi.setContentAreaFilled(false);
+        btnMoi.setDefaultCapable(false);
+        btnMoi.setFocusPainted(false);
+        btnMoi.setFocusable(false);
+        btnMoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMoiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMoiMouseExited(evt);
+            }
+        });
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, -1));
 
-    btnXoa.setBackground(new java.awt.Color(255, 255, 255));
-    btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-    btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonXoa.png"))); // NOI18N
-    btnXoa.setBorder(null);
-    btnXoa.setBorderPainted(false);
-    btnXoa.setContentAreaFilled(false);
-    btnXoa.setDefaultCapable(false);
-    btnXoa.setFocusPainted(false);
-    btnXoa.setFocusable(false);
-    btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnXoaMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnXoaMouseExited(evt);
-        }
-    });
-    btnXoa.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnXoaActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, -1));
+        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonXoa.png"))); // NOI18N
+        btnXoa.setBorder(null);
+        btnXoa.setBorderPainted(false);
+        btnXoa.setContentAreaFilled(false);
+        btnXoa.setDefaultCapable(false);
+        btnXoa.setFocusPainted(false);
+        btnXoa.setFocusable(false);
+        btnXoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnXoaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnXoaMouseExited(evt);
+            }
+        });
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, -1, -1));
 
-    btnCapNhat.setBackground(new java.awt.Color(255, 255, 255));
-    btnCapNhat.setForeground(new java.awt.Color(255, 255, 255));
-    btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonCapNhat.png"))); // NOI18N
-    btnCapNhat.setBorder(null);
-    btnCapNhat.setBorderPainted(false);
-    btnCapNhat.setContentAreaFilled(false);
-    btnCapNhat.setDefaultCapable(false);
-    btnCapNhat.setFocusPainted(false);
-    btnCapNhat.setFocusable(false);
-    btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnCapNhatMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnCapNhatMouseExited(evt);
-        }
-    });
-    btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnCapNhatActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
+        btnCapNhat.setBackground(new java.awt.Color(255, 255, 255));
+        btnCapNhat.setForeground(new java.awt.Color(255, 255, 255));
+        btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonCapNhat.png"))); // NOI18N
+        btnCapNhat.setBorder(null);
+        btnCapNhat.setBorderPainted(false);
+        btnCapNhat.setContentAreaFilled(false);
+        btnCapNhat.setDefaultCapable(false);
+        btnCapNhat.setFocusPainted(false);
+        btnCapNhat.setFocusable(false);
+        btnCapNhat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCapNhatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCapNhatMouseExited(evt);
+            }
+        });
+        btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, -1, -1));
 
-    btnThem.setBackground(new java.awt.Color(255, 255, 255));
-    btnThem.setForeground(new java.awt.Color(255, 255, 255));
-    btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonThem.png"))); // NOI18N
-    btnThem.setBorder(null);
-    btnThem.setBorderPainted(false);
-    btnThem.setContentAreaFilled(false);
-    btnThem.setDefaultCapable(false);
-    btnThem.setFocusPainted(false);
-    btnThem.setFocusable(false);
-    btnThem.setIconTextGap(0);
-    btnThem.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnThemMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnThemMouseExited(evt);
-        }
-    });
-    btnThem.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnThemActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
+        btnThem.setBackground(new java.awt.Color(255, 255, 255));
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonThem.png"))); // NOI18N
+        btnThem.setBorder(null);
+        btnThem.setBorderPainted(false);
+        btnThem.setContentAreaFilled(false);
+        btnThem.setDefaultCapable(false);
+        btnThem.setFocusPainted(false);
+        btnThem.setFocusable(false);
+        btnThem.setIconTextGap(0);
+        btnThem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnThemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThemMouseExited(evt);
+            }
+        });
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
 
-    btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonExcel.png"))); // NOI18N
-    btnExcel.setBorder(null);
-    btnExcel.setBorderPainted(false);
-    btnExcel.setContentAreaFilled(false);
-    btnExcel.setFocusPainted(false);
-    btnExcel.setFocusable(false);
-    btnExcel.setIconTextGap(0);
-    btnExcel.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnExcelMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnExcelMouseExited(evt);
-        }
-    });
-    btnExcel.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnExcelActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnExcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, -1, -1));
+        btnPre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgDau.png"))); // NOI18N
+        btnPre.setBorder(null);
+        btnPre.setBorderPainted(false);
+        btnPre.setContentAreaFilled(false);
+        btnPre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPre.setDefaultCapable(false);
+        btnPre.setFocusPainted(false);
+        btnPre.setFocusable(false);
+        btnPre.setIconTextGap(0);
+        btnPre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPreMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPreMouseExited(evt);
+            }
+        });
+        btnPre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, -1, -1));
 
-    btnPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonFPT.png"))); // NOI18N
-    btnPDF.setBorder(null);
-    btnPDF.setBorderPainted(false);
-    btnPDF.setContentAreaFilled(false);
-    btnPDF.setFocusPainted(false);
-    btnPDF.setFocusable(false);
-    btnPDF.setIconTextGap(0);
-    btnPDF.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnPDFMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnPDFMouseExited(evt);
-        }
-    });
-    btnPDF.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnPDFActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 640, -1, -1));
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgPre.png"))); // NOI18N
+        btnFirst.setBorder(null);
+        btnFirst.setBorderPainted(false);
+        btnFirst.setContentAreaFilled(false);
+        btnFirst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFirst.setDefaultCapable(false);
+        btnFirst.setFocusPainted(false);
+        btnFirst.setFocusable(false);
+        btnFirst.setIconTextGap(0);
+        btnFirst.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnFirstMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnFirstMouseExited(evt);
+            }
+        });
+        btnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFirstActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, -1, -1));
 
-    btnPre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgDau.png"))); // NOI18N
-    btnPre.setBorder(null);
-    btnPre.setBorderPainted(false);
-    btnPre.setContentAreaFilled(false);
-    btnPre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnPre.setDefaultCapable(false);
-    btnPre.setFocusPainted(false);
-    btnPre.setFocusable(false);
-    btnPre.setIconTextGap(0);
-    btnPre.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnPreMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnPreMouseExited(evt);
-        }
-    });
-    btnPre.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnPreActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 640, -1, -1));
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgNext.png"))); // NOI18N
+        btnLast.setBorder(null);
+        btnLast.setBorderPainted(false);
+        btnLast.setContentAreaFilled(false);
+        btnLast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLast.setDefaultCapable(false);
+        btnLast.setFocusPainted(false);
+        btnLast.setFocusable(false);
+        btnLast.setIconTextGap(0);
+        btnLast.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLastMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLastMouseExited(evt);
+            }
+        });
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, -1, -1));
 
-    btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgPre.png"))); // NOI18N
-    btnFirst.setBorder(null);
-    btnFirst.setBorderPainted(false);
-    btnFirst.setContentAreaFilled(false);
-    btnFirst.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnFirst.setDefaultCapable(false);
-    btnFirst.setFocusPainted(false);
-    btnFirst.setFocusable(false);
-    btnFirst.setIconTextGap(0);
-    btnFirst.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnFirstMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnFirstMouseExited(evt);
-        }
-    });
-    btnFirst.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnFirstActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, -1, -1));
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgCuoi.png"))); // NOI18N
+        btnNext.setBorder(null);
+        btnNext.setBorderPainted(false);
+        btnNext.setContentAreaFilled(false);
+        btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNext.setDefaultCapable(false);
+        btnNext.setFocusPainted(false);
+        btnNext.setFocusable(false);
+        btnNext.setIconTextGap(0);
+        btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNextMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNextMouseExited(evt);
+            }
+        });
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
 
-    btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgNext.png"))); // NOI18N
-    btnLast.setBorder(null);
-    btnLast.setBorderPainted(false);
-    btnLast.setContentAreaFilled(false);
-    btnLast.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnLast.setDefaultCapable(false);
-    btnLast.setFocusPainted(false);
-    btnLast.setFocusable(false);
-    btnLast.setIconTextGap(0);
-    btnLast.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnLastMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnLastMouseExited(evt);
-        }
-    });
-    btnLast.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnLastActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, -1, -1));
+        btnTuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
+        btnTuyenBay.setBorder(null);
+        btnTuyenBay.setBorderPainted(false);
+        btnTuyenBay.setContentAreaFilled(false);
+        btnTuyenBay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTuyenBay.setDefaultCapable(false);
+        btnTuyenBay.setFocusPainted(false);
+        btnTuyenBay.setFocusable(false);
+        btnTuyenBay.setIconTextGap(0);
+        btnTuyenBay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTuyenBayActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
 
-    btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgCuoi.png"))); // NOI18N
-    btnNext.setBorder(null);
-    btnNext.setBorderPainted(false);
-    btnNext.setContentAreaFilled(false);
-    btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnNext.setDefaultCapable(false);
-    btnNext.setFocusPainted(false);
-    btnNext.setFocusable(false);
-    btnNext.setIconTextGap(0);
-    btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            btnNextMouseEntered(evt);
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            btnNextMouseExited(evt);
-        }
-    });
-    btnNext.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnNextActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
+        btnNgayDi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
+        btnNgayDi.setBorder(null);
+        btnNgayDi.setBorderPainted(false);
+        btnNgayDi.setContentAreaFilled(false);
+        btnNgayDi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNgayDi.setDefaultCapable(false);
+        btnNgayDi.setFocusPainted(false);
+        btnNgayDi.setFocusable(false);
+        btnNgayDi.setIconTextGap(0);
+        btnNgayDi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNgayDiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, -1, -1));
 
-    btnTuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
-    btnTuyenBay.setBorder(null);
-    btnTuyenBay.setBorderPainted(false);
-    btnTuyenBay.setContentAreaFilled(false);
-    btnTuyenBay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnTuyenBay.setDefaultCapable(false);
-    btnTuyenBay.setFocusPainted(false);
-    btnTuyenBay.setFocusable(false);
-    btnTuyenBay.setIconTextGap(0);
-    btnTuyenBay.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnTuyenBayActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        btnNgayDen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
+        btnNgayDen.setBorder(null);
+        btnNgayDen.setBorderPainted(false);
+        btnNgayDen.setContentAreaFilled(false);
+        btnNgayDen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNgayDen.setDefaultCapable(false);
+        btnNgayDen.setFocusPainted(false);
+        btnNgayDen.setFocusable(false);
+        btnNgayDen.setIconTextGap(0);
+        btnNgayDen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNgayDenActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, -1, -1));
 
-    btnNgayDi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
-    btnNgayDi.setBorder(null);
-    btnNgayDi.setBorderPainted(false);
-    btnNgayDi.setContentAreaFilled(false);
-    btnNgayDi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnNgayDi.setDefaultCapable(false);
-    btnNgayDi.setFocusPainted(false);
-    btnNgayDi.setFocusable(false);
-    btnNgayDi.setIconTextGap(0);
-    btnNgayDi.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnNgayDiActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnNgayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1070, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
-    btnNgayDen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/down.png"))); // NOI18N
-    btnNgayDen.setBorder(null);
-    btnNgayDen.setBorderPainted(false);
-    btnNgayDen.setContentAreaFilled(false);
-    btnNgayDen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    btnNgayDen.setDefaultCapable(false);
-    btnNgayDen.setFocusPainted(false);
-    btnNgayDen.setFocusable(false);
-    btnNgayDen.setIconTextGap(0);
-    btnNgayDen.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnNgayDenActionPerformed(evt);
-        }
-    });
-    jPanel2.add(btnNgayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 90, -1, -1));
-
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1070, javax.swing.GroupLayout.PREFERRED_SIZE)
-    );
-    layout.setVerticalGroup(
-        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
-    );
-
-    pack();
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMaChuyenBayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaChuyenBayKeyReleased
@@ -1496,30 +1340,6 @@ dcplNgayDen.addSelectionChangedListener(new datechooser.events.SelectionChangedL
         them();
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void btnExcelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcelMouseEntered
-        new DungChung().hoverButton5(1, btnExcel, "bgButtonExcelHover.png");
-    }//GEN-LAST:event_btnExcelMouseEntered
-
-    private void btnExcelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcelMouseExited
-        new DungChung().hoverButton5(2, btnExcel, "bgButtonExcel.png");
-    }//GEN-LAST:event_btnExcelMouseExited
-
-    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
-        exportExcel();
-    }//GEN-LAST:event_btnExcelActionPerformed
-
-    private void btnPDFMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPDFMouseEntered
-        new DungChung().hoverButton5(1, btnPDF, "bgButtonFPTHover.png");
-    }//GEN-LAST:event_btnPDFMouseEntered
-
-    private void btnPDFMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPDFMouseExited
-        new DungChung().hoverButton5(2, btnPDF, "bgButtonFPT.png");
-    }//GEN-LAST:event_btnPDFMouseExited
-
-    private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
-        exportPDF();
-    }//GEN-LAST:event_btnPDFActionPerformed
-
     private void btnPreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreMouseEntered
         new DungChung().hoverButton5(1, btnPre, "bgDauHover.png");
     }//GEN-LAST:event_btnPreMouseEntered
@@ -1644,7 +1464,6 @@ dcplNgayDen.addSelectionChangedListener(new datechooser.events.SelectionChangedL
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
-    private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnFirst;
     private javax.swing.JLabel btnHourDown;
     private javax.swing.JLabel btnHourUp;
@@ -1656,7 +1475,6 @@ dcplNgayDen.addSelectionChangedListener(new datechooser.events.SelectionChangedL
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNgayDen;
     private javax.swing.JButton btnNgayDi;
-    private javax.swing.JButton btnPDF;
     private javax.swing.JButton btnPre;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTuyenBay;

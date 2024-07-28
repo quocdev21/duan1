@@ -4,6 +4,7 @@
  */
 package DungChung;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import static java.awt.Frame.HAND_CURSOR;
@@ -13,8 +14,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -48,5 +56,94 @@ public class DungChung {
         }
         tbl.setModel(model);
         con.close();
+    }
+    
+    public void hoverButton(int so, JLabel lbl, String hinh) {
+        if (so == 1) {
+            ImageIcon icon = new ImageIcon("src//Hinh//" + hinh);
+            lbl.setIcon(icon);
+            lbl.setCursor(new Cursor(HAND_CURSOR));
+        } else {
+            ImageIcon icon = new ImageIcon("src//Hinh//" + hinh);
+            lbl.setIcon(icon);
+        }
+    }
+    
+    public void hoverButton5(int so, JButton btn, String hinh) {
+        if (so == 1) {
+            ImageIcon icon = new ImageIcon("src//Hinh//" + hinh);
+            btn.setIcon(icon);
+            btn.setCursor(new Cursor(HAND_CURSOR));
+        } else {
+            ImageIcon icon = new ImageIcon("src//Hinh//" + hinh);
+            btn.setIcon(icon);
+        }
+    }
+
+    public void transTXT(JTextField[] txts) {
+        for (JTextField txt : txts) {
+            txt.setBackground(new Color(0, 0, 0, 0));
+        }
+    }
+
+    public void hideLBLError(JLabel[] lbls) {
+        for (JLabel lbl : lbls) {
+            lbl.setVisible(false);
+        }
+    }
+
+    public boolean check(JLabel[] lbl, JTextField[] txt) {
+        for (int i = 0; i < txt.length; i++) {
+            if (txt[i].getText().isEmpty() || txt[i].getText().equals("0")) {
+                lbl[i].setVisible(true);
+                txt[i].requestFocus();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void reset(JTextField[] txts) {
+        for (JTextField txt : txts) {
+            txt.setText(null);
+        }
+        txts[0].requestFocus();
+        txts[0].setEditable(true);
+    }
+
+    public void thoat() {
+        int r = JOptionPane.showConfirmDialog(null, "Bạn thật sự muốn thoát?", "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (r == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+
+    public void xetSo(JTextField txt) {
+        txt.setText(txt.getText().replaceFirst("[ a-zA-Z]", ""));
+    }
+
+    public void editColumnWidth(int[] col, JTable tbl) {
+        for (int i = 0; i < tbl.getColumnCount(); i++) {
+            TableColumn column = tbl.getColumnModel().getColumn(i);
+            column.setMinWidth(col[i]);
+            column.setMaxWidth(col[i]);
+            column.setPreferredWidth(col[i]);
+        }
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tbl.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        ((DefaultTableCellRenderer) tbl.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+    }
+    
+    
+    public void hoverButtonqaz(int so, JButton btn, String hinh) {
+        if (so == 1) {
+            ImageIcon icon = new ImageIcon("src//Hinh//" + hinh);
+            btn.setIcon(icon);
+            btn.setCursor(new Cursor(HAND_CURSOR));
+        } else {
+            ImageIcon icon = new ImageIcon("src//Hinh//" + hinh);
+            btn.setIcon(icon);
+        }
     }
 }

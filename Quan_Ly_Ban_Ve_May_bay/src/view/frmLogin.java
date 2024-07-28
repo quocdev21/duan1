@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package UI;
 
-import entity.NhanVien;
+import DAO.DangNhapDAO;
+import Model.NhanVien;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import repository.DangNhapRepo;
 
 /**
  *
@@ -46,11 +46,11 @@ public class frmLogin extends javax.swing.JFrame {
     private void showHidePassword() {
         showHidePass++;
         if (showHidePass % 2 == 0) {
-            Image img = getToolkit().createImage("src//icon//showPass.png");
+            Image img = getToolkit().createImage("src//Icon//showPass.png");
             btnEye.setIcon(new ImageIcon(img));
             txtPassword.setEchoChar((char) 0);
         } else {
-            Image img = getToolkit().createImage("src//icon//hidePass.png");
+            Image img = getToolkit().createImage("src//Icon//hidePass.png");
             btnEye.setIcon(new ImageIcon(img));
             txtPassword.setEchoChar('\u25cf');
         }
@@ -80,7 +80,7 @@ public class frmLogin extends javax.swing.JFrame {
     private void login() {
         String user = txtUsername.getText().trim();
         String pass = txtPassword.getText().trim();
-        String vaiTro = new DangNhapRepo().checkLogin(new NhanVien(user, pass));
+        String vaiTro = new DangNhapDAO().checkLogin(new NhanVien(user, pass));
         if (vaiTro.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Đăng nhập thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             txtUsername.setText(null);
@@ -111,7 +111,6 @@ public class frmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BG = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         btnEye = new javax.swing.JButton();
@@ -123,8 +122,9 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BG1 = new javax.swing.JLabel();
+        BG = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,8 +137,6 @@ public class frmLogin extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Anh/BGLogin.png"))); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setOpacity(0.0F);
@@ -149,7 +147,6 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(51, 0, 102));
         jPanel2.setPreferredSize(new java.awt.Dimension(405, 736));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -162,6 +159,19 @@ public class frmLogin extends javax.swing.JFrame {
         btnLogin.setDefaultCapable(false);
         btnLogin.setFocusPainted(false);
         btnLogin.setFocusable(false);
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLoginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLoginMouseExited(evt);
+            }
+        });
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 130, 40));
 
         btnEye.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/hidePass.png"))); // NOI18N
@@ -172,6 +182,16 @@ public class frmLogin extends javax.swing.JFrame {
         btnEye.setFocusPainted(false);
         btnEye.setFocusable(false);
         btnEye.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEye.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEyeMouseEntered(evt);
+            }
+        });
+        btnEye.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEyeActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnEye, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 30, 30));
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/close.png"))); // NOI18N
@@ -182,6 +202,19 @@ public class frmLogin extends javax.swing.JFrame {
         btnClose.setFocusPainted(false);
         btnClose.setFocusable(false);
         btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCloseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCloseMouseExited(evt);
+            }
+        });
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
 
         btnMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/minus.png"))); // NOI18N
@@ -191,6 +224,19 @@ public class frmLogin extends javax.swing.JFrame {
         btnMinus.setFocusPainted(false);
         btnMinus.setFocusable(false);
         btnMinus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMinus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMinusMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMinusMouseExited(evt);
+            }
+        });
+        btnMinus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinusActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -213,30 +259,27 @@ public class frmLogin extends javax.swing.JFrame {
         txtPassword.setBorder(null);
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 300, 30));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(147, 48, 172));
+        jLabel5.setText("Design by TuanDuc");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, -1, -1));
+
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/people.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 410, 90));
-        jPanel2.add(BG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        BG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/BGLogin.png"))); // NOI18N
+        jPanel2.add(BG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -245,6 +288,50 @@ public class frmLogin extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loadOpenForm();
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
+        changeFore(1, btnLogin, 255, 0, 0);
+    }//GEN-LAST:event_btnLoginMouseEntered
+
+    private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
+        changeFore(2, btnLogin, 255, 255, 255);
+    }//GEN-LAST:event_btnLoginMouseExited
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        login();
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnEyeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEyeActionPerformed
+        showHidePassword();
+    }//GEN-LAST:event_btnEyeActionPerformed
+
+    private void btnEyeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEyeMouseEntered
+        btnEye.setCursor(new Cursor(HAND_CURSOR));
+    }//GEN-LAST:event_btnEyeMouseEntered
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        close();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseEntered
+        changeIcon(1, btnClose, "src//Icon//closeGray.png");
+    }//GEN-LAST:event_btnCloseMouseEntered
+
+    private void btnCloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseExited
+        changeIcon(2, btnClose, "src//Icon//close.png");
+    }//GEN-LAST:event_btnCloseMouseExited
+
+    private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
+        minus();
+    }//GEN-LAST:event_btnMinusActionPerformed
+
+    private void btnMinusMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinusMouseEntered
+        changeIcon(1, btnMinus, "src//Icon//minusGray.png");
+    }//GEN-LAST:event_btnMinusMouseEntered
+
+    private void btnMinusMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinusMouseExited
+        changeIcon(2, btnMinus, "src//Icon//minus.png");
+    }//GEN-LAST:event_btnMinusMouseExited
 
     /**
      * @param args the command line arguments
@@ -283,7 +370,6 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BG;
-    private javax.swing.JLabel BG1;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnEye;
     private javax.swing.JButton btnLogin;
@@ -291,6 +377,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
