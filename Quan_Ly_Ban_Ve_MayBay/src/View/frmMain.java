@@ -221,7 +221,7 @@ public class frmMain extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/user.png"))); // NOI18N
-        lblUser.setText("Nguyễn Vũ Huy Hoàng");
+        lblUser.setText("Ngô Tuấn Đức");
         pnlMenu.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 24, -1, -1));
 
         pnlTrangChu.setBackground(new java.awt.Color(55, 38, 91));
@@ -1524,7 +1524,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutMouseExited
 
     private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
-        JOptionPane.showMessageDialog(this, "Đang phát triển!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+       
     }//GEN-LAST:event_btnSettingActionPerformed
 
     private void btnSettingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSettingMouseEntered
@@ -1536,7 +1536,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSettingMouseExited
 
     private void btnAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountActionPerformed
-        JOptionPane.showMessageDialog(this, "Đang phát triển!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_btnAccountActionPerformed
 
     private void btnAccountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccountMouseEntered

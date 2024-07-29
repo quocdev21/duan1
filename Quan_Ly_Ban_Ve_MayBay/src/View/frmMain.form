@@ -76,7 +76,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Icon/user.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nguy&#x1ec5;n V&#x169; Huy Ho&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Ng&#xf4; Tu&#x1ea5;n &#x110;&#x1ee9;c"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
