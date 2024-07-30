@@ -1482,7 +1482,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlSubChuyenBay_HangMayBayMouseExited
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        close();
+        System.exit(0);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseEntered
@@ -1593,11 +1593,15 @@ public class frmMain extends javax.swing.JFrame {
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         if (!chucVu.isEmpty()) {
-            tbpForm.removeAll();
-            frmNhanVien nv = new frmNhanVien(chucVu);
-            tbpForm.addTab("", null, nv.getContentPane().getComponentAt(0, 0), null);
+            tbpForm.removeAll();           
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        } if(!chucVu.isEmpty() && chucVu.equals("Trưởng phòng")){
+            tbpForm.removeAll();
+            frmNhanVien nv = new frmNhanVien();
+            tbpForm.addTab("", null, nv.getContentPane().getComponentAt(0, 0), null);
+        }else{
+            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng có quyền truy cập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
@@ -1663,7 +1667,7 @@ public class frmMain extends javax.swing.JFrame {
             frmDoanhThuTheoThang quy = new frmDoanhThuTheoThang();
             tbpForm.addTab("", null, quy.getContentPane().getComponentAt(0, 0), null);
         }else{
-            JOptionPane.showMessageDialog(this, "Chỉ cấp quyền admin!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng có quyền truy cập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDoanhThuTheoQuyActionPerformed
 

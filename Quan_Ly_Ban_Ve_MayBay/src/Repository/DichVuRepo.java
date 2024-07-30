@@ -33,7 +33,7 @@ public class DichVuRepo extends getConnection{
                 arr.add(sb);
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return arr;
     }
@@ -44,7 +44,7 @@ public class DichVuRepo extends getConnection{
             String sql = "select ROW_NUMBER() Over (Order by MaDichVu), * from DICHVU";
             new DungChung().statement(sql, tbl, header);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -55,7 +55,7 @@ public class DichVuRepo extends getConnection{
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
     }
@@ -67,7 +67,7 @@ public class DichVuRepo extends getConnection{
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
     }
@@ -79,7 +79,7 @@ public class DichVuRepo extends getConnection{
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
     }
@@ -102,7 +102,7 @@ public class DichVuRepo extends getConnection{
                 return sb;
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }
@@ -127,7 +127,7 @@ public class DichVuRepo extends getConnection{
             tbl.removeAll();
             tbl.setModel(model);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
     

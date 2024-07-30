@@ -375,7 +375,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 196, -1));
 
         lblLoiMaNV.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiMaNV.setText("Mã nhân viên không chinh xác");
+        lblLoiMaNV.setText("Mã nhân viên bị trùng hoặc không chinh xác");
         jPanel1.add(lblLoiMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 180, -1));
 
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -402,7 +402,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 220, 10));
 
         lblLoiMatKhau.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiMatKhau.setText("Mật khẩu không chính xác");
+        lblLoiMatKhau.setText("Mật khẩu sai định dạng");
         jPanel1.add(lblLoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 150, -1));
 
         btnGroupVaiTro.add(rdbQuanTri);
@@ -474,7 +474,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         jPanel1.add(txtDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 220, 20));
 
         lblLoiSDT.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiSDT.setText("Số điện thoại không chính xác");
+        lblLoiSDT.setText("Số điện thoại sai định dạng");
         jPanel1.add(lblLoiSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 190, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -483,7 +483,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
         lblLoiHoTen.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiHoTen.setText("Họ tên không chính xác");
+        lblLoiHoTen.setText("Họ tên không hợp lệ");
         jPanel1.add(lblLoiHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 150, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -496,7 +496,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 220, 20));
 
         lblLoiEmail.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiEmail.setText("Email không chính xác");
+        lblLoiEmail.setText("Email sai định dạng");
         jPanel1.add(lblLoiEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 150, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

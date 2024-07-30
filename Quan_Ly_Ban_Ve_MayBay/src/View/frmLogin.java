@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 
+ * @author
  */
 public class frmLogin extends javax.swing.JFrame {
 
@@ -95,10 +95,18 @@ public class frmLogin extends javax.swing.JFrame {
     public frmLogin() {
         initComponents();
         setLocationRelativeTo(this);
+
+        // Thiết lập các thuộc tính của txtUsername
         txtUsername.setForeground(Color.white);
         txtUsername.setBackground(new Color(0, 0, 0, 0));
+        txtUsername.setOpaque(false);
+        txtUsername.setBorder(null);
+
+        // Thiết lập các thuộc tính của txtPassword
         txtPassword.setForeground(Color.white);
         txtPassword.setBackground(new Color(0, 0, 0, 0));
+        txtPassword.setOpaque(false);
+        txtPassword.setBorder(null);
     }
 
     /**
