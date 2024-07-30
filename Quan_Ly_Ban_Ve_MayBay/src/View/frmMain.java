@@ -221,7 +221,7 @@ public class frmMain extends javax.swing.JFrame {
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/user.png"))); // NOI18N
-        lblUser.setText("Ngô Tuấn Đức");
+        lblUser.setText("Nguyễn Vũ Huy Hoàng");
         pnlMenu.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 24, -1, -1));
 
         pnlTrangChu.setBackground(new java.awt.Color(55, 38, 91));
