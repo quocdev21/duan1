@@ -257,4 +257,8 @@ public class DoanhThuTheoNamDAO extends getConnection {
             e.printStackTrace();
         }
     }
+    
+    public static void main(String[] args) {
+        System.out.println(new DoanhThuTheoNamDAO().getTongNV());
+    }
 }

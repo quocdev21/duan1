@@ -130,7 +130,7 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         int cao = 3;
         ArrayList<JLabel> listLBL = new ArrayList<>();
         try {
-            for (int i = 2009; i < 2020; i++) {
+            for (int i = 2013; i < 2024; i++) {
                 JLabel lbl = new JLabel(String.valueOf(i));
                 lbl.setSize(pnlNam.getWidth(), 20);
                 lbl.setName("lblNam" + i);
@@ -267,8 +267,8 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         cbx_Quy();
         cbx_Nam();
-        txtQuy.setText("2");
-        txtNam.setText("2017");
+        txtQuy.setText("1");
+        txtNam.setText("2024");
         loadSLVe();
         loadTable_DoanhThu();
         loadChart();
