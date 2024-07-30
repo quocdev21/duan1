@@ -198,10 +198,8 @@ public class frmMain extends javax.swing.JFrame {
         pnlContent = new javax.swing.JPanel();
         tbpForm = new javax.swing.JTabbedPane();
         pnlFooter = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1300, 800));
         setMinimumSize(new java.awt.Dimension(1300, 800));
         setUndecorated(true);
         setOpacity(0.0F);
@@ -1327,12 +1325,6 @@ public class frmMain extends javax.swing.JFrame {
 
         pnlFooter.setBackground(new java.awt.Color(55, 38, 91));
         pnlFooter.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Design by TuanDuc");
-        pnlFooter.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, -1, 30));
-
         getContentPane().add(pnlFooter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 770, 1300, 30));
 
         pack();
@@ -1848,7 +1840,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnTuyenBay;
     private javax.swing.JButton btnVeMayBay;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblChucVu;
     private javax.swing.JLabel lblSlogan;
     private javax.swing.JLabel lblUser;

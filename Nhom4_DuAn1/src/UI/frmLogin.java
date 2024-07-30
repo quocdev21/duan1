@@ -122,7 +122,6 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         BG = new javax.swing.JLabel();
 
@@ -246,7 +245,6 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtUsername.setBorder(null);
-        txtUsername.setOpaque(false);
         jPanel2.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 330, 30));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 330, 10));
 
@@ -258,13 +256,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPassword.setBorder(null);
-        txtPassword.setOpaque(false);
         jPanel2.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 300, 30));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(147, 48, 172));
-        jLabel5.setText("Design by TuanDuc");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, -1, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/people.png"))); // NOI18N
@@ -379,7 +371,6 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

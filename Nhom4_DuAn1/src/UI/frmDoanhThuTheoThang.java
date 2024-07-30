@@ -298,7 +298,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         lblTongTien = new javax.swing.JLabel();
         splTable = new javax.swing.JScrollPane();
         tblDoanhThuThang = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
         pnlBieuDo = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -320,7 +319,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         btnPDF = new javax.swing.JButton();
         btnExcel = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -362,7 +360,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         txtNam.setEditable(false);
         txtNam.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNam.setBorder(null);
-        txtNam.setOpaque(false);
         txtNam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNamKeyReleased(evt);
@@ -406,7 +403,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         txtQuy.setEditable(false);
         txtQuy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtQuy.setBorder(null);
-        txtQuy.setOpaque(false);
         txtQuy.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtQuyKeyReleased(evt);
@@ -436,7 +432,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         tblDoanhThuThang.setOpaque(false);
         tblDoanhThuThang.setRequestFocusEnabled(false);
         tblDoanhThuThang.setRowHeight(30);
-        tblDoanhThuThang.setRowMargin(0);
         tblDoanhThuThang.setSelectionBackground(new java.awt.Color(55, 38, 91));
         tblDoanhThuThang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblDoanhThuThang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -447,12 +442,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         splTable.setViewportView(tblDoanhThuThang);
 
         jPanel5.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 640, 290));
-
-        jSeparator2.setBackground(new java.awt.Color(55, 38, 91));
-        jSeparator2.setForeground(new java.awt.Color(55, 38, 91));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator2.setPreferredSize(new java.awt.Dimension(40, 10));
-        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 620, 10, 40));
 
         javax.swing.GroupLayout pnlBieuDoLayout = new javax.swing.GroupLayout(pnlBieuDo);
         pnlBieuDo.setLayout(pnlBieuDoLayout);
@@ -486,7 +475,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         txtThuongGia_KhuHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtThuongGia_KhuHoi.setText("0");
         txtThuongGia_KhuHoi.setBorder(null);
-        txtThuongGia_KhuHoi.setOpaque(false);
         txtThuongGia_KhuHoi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtThuongGia_KhuHoiKeyReleased(evt);
@@ -500,7 +488,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         txtThuongGia_MotChieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtThuongGia_MotChieu.setText("0");
         txtThuongGia_MotChieu.setBorder(null);
-        txtThuongGia_MotChieu.setOpaque(false);
         txtThuongGia_MotChieu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtThuongGia_MotChieuKeyReleased(evt);
@@ -522,7 +509,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         txtPhoThong_KhuHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPhoThong_KhuHoi.setText("0");
         txtPhoThong_KhuHoi.setBorder(null);
-        txtPhoThong_KhuHoi.setOpaque(false);
         txtPhoThong_KhuHoi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPhoThong_KhuHoiKeyReleased(evt);
@@ -540,7 +526,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         txtPhoThong_MotChieu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPhoThong_MotChieu.setText("0");
         txtPhoThong_MotChieu.setBorder(null);
-        txtPhoThong_MotChieu.setOpaque(false);
         txtPhoThong_MotChieu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPhoThong_MotChieuKeyReleased(evt);
@@ -612,28 +597,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
             }
         });
         jPanel5.add(btnExcel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, -1, -1));
-
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonIn.png"))); // NOI18N
-        btnPrint.setBorder(null);
-        btnPrint.setBorderPainted(false);
-        btnPrint.setContentAreaFilled(false);
-        btnPrint.setFocusPainted(false);
-        btnPrint.setFocusable(false);
-        btnPrint.setIconTextGap(0);
-        btnPrint.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPrintMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPrintMouseExited(evt);
-            }
-        });
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 620, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -717,18 +680,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
         exportExcel();
     }//GEN-LAST:event_btnExcelActionPerformed
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        in_ThongKe();
-    }//GEN-LAST:event_btnPrintActionPerformed
-
-    private void btnPrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseEntered
-        new DungChung().hoverButton5(1, btnPrint, "bgButtonInHover.png");
-    }//GEN-LAST:event_btnPrintMouseEntered
-
-    private void btnPrintMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseExited
-        new DungChung().hoverButton5(2, btnPrint, "bgButtonIn.png");
-    }//GEN-LAST:event_btnPrintMouseExited
-
     /**
      * @param args the command line arguments
      */
@@ -768,7 +719,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
     private javax.swing.JButton btnExcel;
     private javax.swing.JLabel btnNam;
     private javax.swing.JButton btnPDF;
-    private javax.swing.JButton btnPrint;
     private javax.swing.JLabel btnThang;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
@@ -784,7 +734,6 @@ public class frmDoanhThuTheoThang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
     private javax.swing.JLabel lblTongSoGhe;
