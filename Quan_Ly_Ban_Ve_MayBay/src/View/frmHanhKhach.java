@@ -285,7 +285,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel3.setText("Chứng minh nhân dân");
+        jLabel3.setText("Căn cước công dân");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -340,7 +340,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "CMND", "Họ tên", "Giới tính", "Điện thoại", "Email", "Địa chỉ"
+                "STT", "CCCD", "Họ tên", "Giới tính", "Điện thoại", "Email", "Địa chỉ"
             }
         ) {
             Class[] types = new Class [] {

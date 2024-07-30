@@ -28,9 +28,9 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author 
+ * @author
  */
-public class frmHoaDon extends javax.swing.JFrame {
+public class frmTrangChu extends javax.swing.JFrame {
 
     String chucVu = "";
     int showHide_CMND = 1;
@@ -332,7 +332,7 @@ public class frmHoaDon extends javax.swing.JFrame {
         }
     }
 
-    public frmHoaDon() {
+    public frmTrangChu() {
         initComponents();
         setLocationRelativeTo(this);
         cbx_CMND();
@@ -348,7 +348,7 @@ public class frmHoaDon extends javax.swing.JFrame {
         splTable.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
     }
 
-    public frmHoaDon(String vt) {
+    public frmTrangChu(String vt) {
         initComponents();
         setLocationRelativeTo(this);
         cbx_CMND();
@@ -1035,20 +1035,20 @@ public class frmHoaDon extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmTrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmTrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmTrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmTrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmHoaDon().setVisible(true);
+                new frmTrangChu().setVisible(true);
             }
         });
     }

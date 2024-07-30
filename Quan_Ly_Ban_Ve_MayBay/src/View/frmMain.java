@@ -160,8 +160,7 @@ public class frmMain extends javax.swing.JFrame {
         btnQuanLyChuyenBay = new javax.swing.JButton();
         pnlNavigation = new javax.swing.JPanel();
         btnLogout = new javax.swing.JButton();
-        btnSetting = new javax.swing.JButton();
-        btnAccount = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         pnlQuanLyDoanhThu = new javax.swing.JPanel();
         btnDoanhThuTheoQuy = new javax.swing.JButton();
         pnlHeader = new javax.swing.JPanel();
@@ -513,72 +512,30 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
-        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/setting.png"))); // NOI18N
-        btnSetting.setBorder(null);
-        btnSetting.setBorderPainted(false);
-        btnSetting.setContentAreaFilled(false);
-        btnSetting.setDefaultCapable(false);
-        btnSetting.setFocusPainted(false);
-        btnSetting.setFocusable(false);
-        btnSetting.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSetting.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSettingMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSettingMouseExited(evt);
-            }
-        });
-        btnSetting.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSettingActionPerformed(evt);
-            }
-        });
-
-        btnAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/group.png"))); // NOI18N
-        btnAccount.setBorder(null);
-        btnAccount.setBorderPainted(false);
-        btnAccount.setContentAreaFilled(false);
-        btnAccount.setDefaultCapable(false);
-        btnAccount.setFocusPainted(false);
-        btnAccount.setFocusable(false);
-        btnAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAccount.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAccountMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAccountMouseExited(evt);
-            }
-        });
-        btnAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAccountActionPerformed(evt);
-            }
-        });
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Đăng Nhập");
 
         javax.swing.GroupLayout pnlNavigationLayout = new javax.swing.GroupLayout(pnlNavigation);
         pnlNavigation.setLayout(pnlNavigationLayout);
         pnlNavigationLayout.setHorizontalGroup(
             pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNavigationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSetting)
-                .addGap(18, 18, 18)
-                .addComponent(btnAccount)
-                .addGap(18, 18, 18)
+            .addGroup(pnlNavigationLayout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(btnLogout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addContainerGap())
         );
         pnlNavigationLayout.setVerticalGroup(
             pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNavigationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAccount)
-                    .addComponent(btnSetting)
+            .addGroup(pnlNavigationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addComponent(btnLogout))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlMenu.add(pnlNavigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 758, 230, -1));
@@ -1523,30 +1480,6 @@ public class frmMain extends javax.swing.JFrame {
         changeIcon(2, btnLogout, "src//Icon//logout.png");
     }//GEN-LAST:event_btnLogoutMouseExited
 
-    private void btnSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingActionPerformed
-       
-    }//GEN-LAST:event_btnSettingActionPerformed
-
-    private void btnSettingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSettingMouseEntered
-        changeIcon(1, btnSetting, "src//Icon//settingGray.png");
-    }//GEN-LAST:event_btnSettingMouseEntered
-
-    private void btnSettingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSettingMouseExited
-        changeIcon(2, btnSetting, "src//Icon//setting.png");
-    }//GEN-LAST:event_btnSettingMouseExited
-
-    private void btnAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountActionPerformed
-        
-    }//GEN-LAST:event_btnAccountActionPerformed
-
-    private void btnAccountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccountMouseEntered
-        changeIcon(1, btnAccount, "src//Icon//groupGray.png");
-    }//GEN-LAST:event_btnAccountMouseEntered
-
-    private void btnAccountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAccountMouseExited
-        changeIcon(2, btnAccount, "src//Icon//group.png");
-    }//GEN-LAST:event_btnAccountMouseExited
-
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         //menu();
         JOptionPane.showMessageDialog(this, "Đang phát triển!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
@@ -1880,7 +1813,6 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAccount;
     private javax.swing.JButton btnChuyenBay;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDichVu;
@@ -1899,11 +1831,11 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnQuanLyChuyenBay;
     private javax.swing.JButton btnQuanLyVe;
     private javax.swing.JButton btnSanBay;
-    private javax.swing.JButton btnSetting;
     private javax.swing.JButton btnThanhtoan;
     private javax.swing.JButton btnTrangChu;
     private javax.swing.JButton btnTuyenBay;
     private javax.swing.JButton btnVeMayBay;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblChucVu;
     private javax.swing.JLabel lblSlogan;
     private javax.swing.JLabel lblUser;
