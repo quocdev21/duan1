@@ -95,7 +95,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
                 HanhKhach hk = new HanhKhachDAO().timHKToDen(cmnd);
                 for (int i = 0; i < tblHanhKhach.getRowCount(); i++) {
                     String ma = String.valueOf(tblHanhKhach.getValueAt(i, 1));
-                    if (ma.equals(hk.getCccd())) {
+                    if (ma.equals(hk.getCmnd())) {
                         tblHanhKhach.setRowSelectionInterval(i, i);
                     }
                 }
@@ -147,7 +147,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
     private void hienThi(int row) {
         HanhKhach hk = new HanhKhach();
         new HanhKhachDAO().hienThi(tblHanhKhach, hk, row);
-        txtCMND.setText(hk.getCccd());
+        txtCMND.setText(hk.getCmnd());
         txtHoten.setText(hk.getHoTen());
         if (hk.isGioiTinh()) {
             rdbNam.setSelected(true);
@@ -287,7 +287,6 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTimKiem.setOpaque(false);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyPressed(evt);
@@ -310,7 +309,6 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         txtHoten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtHoten.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtHoten.setOpaque(false);
         jPanel1.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 390, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -322,14 +320,12 @@ public class frmHanhKhach extends javax.swing.JFrame {
         rdbNam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbNam.setText("Nam");
         rdbNam.setBorder(null);
-        rdbNam.setOpaque(false);
         jPanel1.add(rdbNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
 
         btnGroupGT.add(rdbNu);
         rdbNu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbNu.setText("Nữ");
         rdbNu.setBorder(null);
-        rdbNu.setOpaque(false);
         jPanel1.add(rdbNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -344,7 +340,6 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtEmail.setOpaque(false);
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 360, 20));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -359,7 +354,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "CMND", "Họ tên", "Giới tính", "Điện thoại", "Email", "Địa chỉ"
+                "STT", "CCCD", "Họ tên", "Giới tính", "Điện thoại", "Email", "Địa chỉ"
             }
         ) {
             Class[] types = new Class [] {
@@ -384,11 +379,8 @@ public class frmHanhKhach extends javax.swing.JFrame {
         tblHanhKhach.setOpaque(false);
         tblHanhKhach.setRequestFocusEnabled(false);
         tblHanhKhach.setRowHeight(30);
-        tblHanhKhach.setRowMargin(0);
         tblHanhKhach.setSelectionBackground(new java.awt.Color(55, 38, 91));
         tblHanhKhach.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblHanhKhach.setShowHorizontalLines(false);
-        tblHanhKhach.setShowVerticalLines(false);
         tblHanhKhach.getTableHeader().setReorderingAllowed(false);
         tblHanhKhach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -401,7 +393,6 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         txtDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDiaChi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtDiaChi.setOpaque(false);
         jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 390, 20));
 
         lblSTT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -409,32 +400,26 @@ public class frmHanhKhach extends javax.swing.JFrame {
         lblSTT.setText("0");
         jPanel1.add(lblSTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 640, -1, -1));
 
-        lblLoiCMND.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiCMND.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiCMND.setText("Căn cước công dân không chính xác");
+        lblLoiCMND.setText("Căn cước công dân không hợp lệ");
         jPanel1.add(lblLoiCMND, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, -1));
 
-        lblLoiSoDT.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiSoDT.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiSoDT.setText("Số điện thoại không chính xác");
+        lblLoiSoDT.setText("Số điện thoại không hợp lệ");
         jPanel1.add(lblLoiSoDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 190, -1));
 
-        lblLoiHoTen.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiHoTen.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiHoTen.setText("Họ tên không chính xác");
-        jPanel1.add(lblLoiHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 150, -1));
+        lblLoiHoTen.setText("Họ tên không hợp lệ");
+        jPanel1.add(lblLoiHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 150, 20));
 
-        lblLoiDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiDiaChi.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiDiaChi.setText("Địa chỉ không chính xác");
+        lblLoiDiaChi.setText("Địa chỉ không hợp lệ");
         jPanel1.add(lblLoiDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 150, -1));
 
-        lblLoiEmail.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiEmail.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiEmail.setText("Email không chính xác");
+        lblLoiEmail.setText("Email không hợp lệ");
         jPanel1.add(lblLoiEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 150, -1));
 
-        lblLoiGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiGioiTinh.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiGioiTinh.setText("Chưa chọn giới tính");
         jPanel1.add(lblLoiGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 150, -1));
@@ -543,7 +528,6 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         txtCMND.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCMND.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtCMND.setOpaque(false);
         txtCMND.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCMNDKeyTyped(evt);
@@ -553,7 +537,6 @@ public class frmHanhKhach extends javax.swing.JFrame {
 
         txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtSDT.setOpaque(false);
         txtSDT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSDTKeyReleased(evt);
@@ -765,7 +748,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
         if (chucVu.equals("Trưởng phòng")) {
             xoa();
         } else {
-            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Chỉ admin được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -801,7 +784,7 @@ public class frmHanhKhach extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSDTKeyTyped
 
     private void txtCMNDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCMNDKeyTyped
-        if (txtCMND.getText().length() > 8) {
+        if (txtCMND.getText().length() > 11) {
             evt.consume();
         }
     }//GEN-LAST:event_txtCMNDKeyTyped

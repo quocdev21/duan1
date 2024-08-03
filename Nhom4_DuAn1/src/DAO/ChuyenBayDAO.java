@@ -11,7 +11,7 @@ import DungChung.DungChung;
 import java.sql.PreparedStatement;
 import javax.swing.JTable;
 import Model.ChuyenBay;
-import Model.HanhKhach;
+import Model.HangMayBay;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -24,14 +24,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author TuanDuc
  */
-public class ChuyenBayDAO extends getConnection{
-    public ArrayList<TuyenBay> layDS_TB(){
+public class ChuyenBayDAO extends getConnection {
+
+    public ArrayList<TuyenBay> layDS_TB() {
         ArrayList<TuyenBay> arr = new ArrayList<>();
         try {
             String sql = "select MaTuyenBay from TUYENBAY";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 TuyenBay hk = new TuyenBay(rs.getString(1));
                 arr.add(hk);
             }
@@ -40,14 +41,14 @@ public class ChuyenBayDAO extends getConnection{
         }
         return arr;
     }
-    
-    public ArrayList<MayBay> layDS_MB(){
+
+    public ArrayList<MayBay> layDS_MB() {
         ArrayList<MayBay> arr = new ArrayList<>();
         try {
             String sql = "select MaMayBay from MAYBAY";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 MayBay hk = new MayBay(rs.getString(1));
                 arr.add(hk);
             }
@@ -56,64 +57,79 @@ public class ChuyenBayDAO extends getConnection{
         }
         return arr;
     }
-    
-    public void loadTable(JTable tbl){
+
+    public ArrayList<HangMayBay> layDS_HMB() {
+        ArrayList<HangMayBay> arr = new ArrayList<>();
         try {
-            String[] header = new String[]{"STT", "Mã chuyến bay", "Ngày đi", "Ngày đến", "Giờ khởi hành", "Ghế thương gia", "Ghế phổ thông", "Mã tuyến bay", "Mã máy bay"};
-            String sql = "select ROW_NUMBER() Over (Order by MaChuyenBay), * from CHUYENBAY";
+            String sql = "select MaHang from HANGMAYBAY";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                HangMayBay hmb = new HangMayBay(rs.getString(1));
+                arr.add(hmb);
+            }
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
+        return arr;
+    }
+
+    public void loadTable(JTable tbl) {
+        try {
+            String[] header = new String[]{"STT", "Mã chuyến bay", "Ngày đi", "Ngày đến", "Giờ khởi hành", "Mã tuyến bay", "Mã máy bay", "Giá"};
+            String sql = "SELECT ROW_NUMBER() Over (Order by MaChuyenBay), cb.MaChuyenBay, cb.NgayDi, cb.NgayDen, cb.GioKhoiHanh, cb.MaTuyenBay, cb.MaMayBay, CAST(cb.Gia AS int) AS Gia FROM CHUYENBAY cb JOIN TUYENBAY tb ON cb.MaTuyenBay = tb.MaTuyenBay JOIN MAYBAY mb ON cb.MaMayBay = mb.MaMayBay";
             new DungChung().statement(sql, tbl, header);
         } catch (Exception e) {
             //e.printStackTrace();
         }
     }
-    
+
     public int them(ChuyenBay cb) {
         try {
-            String sql = "set dateformat YMD insert into CHUYENBAY values(?, ?, ?, ?, ?, ?, ?, ?)";
-            Object[] obj = new Object[]{cb.getMaChuyenBay(), cb.getNgayDi(), cb.getNgayDen(), cb.getGioKhoiHanh(), cb.getSoGheThuongGia(), cb.getSoGhePhoThong(), cb.getMaTuyenBay(), cb.getMamayBay()};
-            PreparedStatement ps =  new DungChung().prepareStatement(sql, obj);
+            String sql = "set dateformat YMD insert into CHUYENBAY values(?, ?, ?, ?, ?, ?, ?)";
+            Object[] obj = new Object[]{cb.getMaChuyenBay(), cb.getNgayDi(), cb.getNgayDen(), cb.getGioKhoiHanh(), cb.getMaTuyenBay(), cb.getMamayBay(), cb.getGia()};
+            PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
             //e.printStackTrace();
         }
         return 0;
     }
-    
+
     public int sua(ChuyenBay cb) {
         try {
-            String sql = "set dateformat YMD update CHUYENBAY set NgayDi = ?, NgayDen = ?, GioKhoiHanh = ?, SoGheThuongGia = ?, SoGhePhoThong = ?, MaTuyenBay = ?, MaMayBay = ? where MaChuyenBay = ?";
-            Object[] obj = new Object[]{cb.getNgayDi(), cb.getNgayDen(), cb.getGioKhoiHanh(), cb.getSoGheThuongGia(), cb.getSoGhePhoThong(), cb.getMaTuyenBay(), cb.getMamayBay(), cb.getMaChuyenBay()};
-            PreparedStatement ps =  new DungChung().prepareStatement(sql, obj);
+            String sql = "set dateformat YMD update CHUYENBAY set NgayDi = ?, NgayDen = ?, GioKhoiHanh = ?, MaTuyenBay = ?, MaMayBay = ?, Gia = ? where MaChuyenBay = ?";
+            Object[] obj = new Object[]{cb.getNgayDi(), cb.getNgayDen(), cb.getGioKhoiHanh(), cb.getMaTuyenBay(), cb.getMamayBay(), cb.getGia(), cb.getMaChuyenBay()};
+            PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
-    
+
     public int xoa(ChuyenBay cb) {
         try {
             String sql = "delete from CHUYENBAY where MaChuyenBay = ?";
             Object[] obj = new Object[]{cb.getMaChuyenBay()};
-            PreparedStatement ps =  new DungChung().prepareStatement(sql, obj);
+            PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
             //e.printStackTrace();
         }
         return 0;
     }
-    
-    public void hienThi(JTable tbl, ChuyenBay cb, int q){
+
+    public void hienThi(JTable tbl, ChuyenBay cb, int q) {
         cb.setMaChuyenBay(String.valueOf(tbl.getValueAt(q, 1)));
         cb.setNgayDi(String.valueOf(tbl.getValueAt(q, 2)));
         cb.setNgayDen(String.valueOf(tbl.getValueAt(q, 3)));
         cb.setGioKhoiHanh(String.valueOf(tbl.getValueAt(q, 4)));
-        cb.setSoGheThuongGia(Integer.parseInt(String.valueOf(tbl.getValueAt(q, 5))));
-        cb.setSoGhePhoThong(Integer.parseInt(String.valueOf(tbl.getValueAt(q, 6))));
-        cb.setMaTuyenBay(String.valueOf(tbl.getValueAt(q, 7)));
-        cb.setMamayBay(String.valueOf(tbl.getValueAt(q, 8)));
+        cb.setMaTuyenBay(String.valueOf(tbl.getValueAt(q, 5)));
+        cb.setMamayBay(String.valueOf(tbl.getValueAt(q, 6)));
+        cb.setGia(Double.valueOf(String.valueOf(tbl.getValueAt(q, 7))));
     }
-    
+
     public ChuyenBay timCBToDen(String ma) {
         try {
             String sql = "select * from CHUYENBAY where MaChuyenBay = ?";
@@ -135,7 +151,7 @@ public class ChuyenBayDAO extends getConnection{
             String sql = "select ROW_NUMBER() Over (Order by MaChuyenBay), * from CHUYENBAY where MaChuyenBay like ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + ma + "%");
-            String[] header = new String[]{"STT", "Mã chuyến bay", "Ngày đi", "Ngày đến", "Giờ khởi hành", "Ghế thương gia", "Ghế phổ thông", "Mã tuyến bay", "Mã máy bay"};
+            String[] header = new String[]{"STT", "Mã chuyến bay", "Ngày đi", "Ngày đến", "Giờ khởi hành", "Mã tuyến bay", "Mã máy bay"};
             DefaultTableModel model = new DefaultTableModel(header, 0);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

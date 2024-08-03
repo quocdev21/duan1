@@ -456,7 +456,6 @@ public class frmTuyenBay extends javax.swing.JFrame {
 
         txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTimKiem.setOpaque(false);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -466,7 +465,6 @@ public class frmTuyenBay extends javax.swing.JFrame {
 
         txtMaTuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaTuyenBay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtMaTuyenBay.setOpaque(false);
         txtMaTuyenBay.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaTuyenBayKeyReleased(evt);
@@ -477,7 +475,6 @@ public class frmTuyenBay extends javax.swing.JFrame {
         });
         jPanel5.add(txtMaTuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 360, -1));
 
-        lblLoiMa.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMa.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMa.setText("Mã tuyến bay không chinh xác");
         jPanel5.add(lblLoiMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, -1));
@@ -489,20 +486,18 @@ public class frmTuyenBay extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel12.setText("Mã sân bay đi");
+        jLabel12.setText("Sân bay đi");
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, -1, -1));
 
         txtMaSanBayDi.setEditable(false);
         txtMaSanBayDi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaSanBayDi.setBorder(null);
-        txtMaSanBayDi.setOpaque(false);
         jPanel5.add(txtMaSanBayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 360, -1));
         jPanel5.add(sptMaSanBayDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 390, 10));
 
         lblLoiSBDi.setBackground(new java.awt.Color(194, 194, 194));
-        lblLoiSBDi.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiSBDi.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiSBDi.setText("Mã tuyến bay đi không chính xác");
+        lblLoiSBDi.setText("Vui lòng chọn sân bay đi");
         jPanel5.add(lblLoiSBDi, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 240, -1));
 
         tblTuyenBay.setAutoCreateRowSorter(true);
@@ -512,7 +507,7 @@ public class frmTuyenBay extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Mã tuyến bay", "Mã sân bay đi", "Mã sân bay đến"
+                "STT", "Mã tuyến bay", "Sân bay đi", "Sân bay đến"
             }
         ) {
             Class[] types = new Class [] {
@@ -530,10 +525,8 @@ public class frmTuyenBay extends javax.swing.JFrame {
         tblTuyenBay.setOpaque(false);
         tblTuyenBay.setRequestFocusEnabled(false);
         tblTuyenBay.setRowHeight(30);
-        tblTuyenBay.setRowMargin(0);
         tblTuyenBay.setSelectionBackground(new java.awt.Color(55, 38, 91));
         tblTuyenBay.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblTuyenBay.setShowHorizontalLines(false);
         tblTuyenBay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblTuyenBayMouseClicked(evt);
@@ -550,13 +543,12 @@ public class frmTuyenBay extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel13.setText("Mã sân bay đến");
+        jLabel13.setText("Sân bay đến");
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         txtMaSanBayDen.setEditable(false);
         txtMaSanBayDen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaSanBayDen.setBorder(null);
-        txtMaSanBayDen.setOpaque(false);
         txtMaSanBayDen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaSanBayDenKeyReleased(evt);
@@ -565,9 +557,8 @@ public class frmTuyenBay extends javax.swing.JFrame {
         jPanel5.add(txtMaSanBayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 330, -1));
         jPanel5.add(sptMaSanBayDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 360, 10));
 
-        lblLoiSBDen.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiSBDen.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiSBDen.setText("Mã tuyến bay đến không chính xác");
+        lblLoiSBDen.setText("Vui lòng chọn sân bay đến");
         jPanel5.add(lblLoiSBDen, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 190, -1));
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));

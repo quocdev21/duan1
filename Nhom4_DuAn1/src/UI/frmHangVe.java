@@ -626,7 +626,7 @@ public class frmHangVe extends javax.swing.JFrame {
         if (chucVu.equals("Trưởng phòng")) {
             xoa();
         } else {
-            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Chỉ admin được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 

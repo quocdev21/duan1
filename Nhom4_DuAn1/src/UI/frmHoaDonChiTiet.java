@@ -129,7 +129,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
                             }
                         }
                         new HoaDonChiTietDAO().donGia(txtMaVeMB, txtDonGia);
-                        new HoaDonChiTietDAO().thanhTien(txtSoGheDat, txtDonGia, txtThanhTien);
+                        new HoaDonChiTietDAO().thanhTien(txtSoVeMua, txtDonGia, txtThanhTien);
                     }
 
                     @Override
@@ -197,19 +197,19 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
 
     private boolean check() {
         JLabel[] lbl = new JLabel[]{lblLoiMaHD, lblLoiMaVe, lblLoiSoGheDat};
-        JTextField[] txt = new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoGheDat};
+        JTextField[] txt = new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoVeMua};
         return new DungChung().check(lbl, txt);
     }
 
     void moi() {
-        new DungChung().reset(new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoGheDat, txtDonGia, txtThanhTien});
+        new DungChung().reset(new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoVeMua, txtDonGia, txtThanhTien});
         an();
         txtMaHoaDon.setEditable(false);
         lblSTT.setText("0");
         dong = -1;
         txtDonGia.setText("0");
         txtThanhTien.setText("0");
-        txtSoGheDat.setText("0");
+        txtSoVeMua.setText("0");
     }
 
     private void bang() {
@@ -225,7 +225,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         if (check()) {
             String mahd = txtMaHoaDon.getText().trim();
             String maVe = txtMaVeMB.getText().trim();
-            int soGheDat = Integer.parseInt(String.valueOf(txtSoGheDat.getText().trim()));
+            int soGheDat = Integer.parseInt(String.valueOf(txtSoVeMua.getText().trim()));
             int kt = new HoaDonChiTietDAO().them(new HoaDonChiTiet(mahd, maVe, soGheDat));
             if (kt == 1) {
                 bang();
@@ -249,7 +249,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         if (!txtMaHoaDon.getText().isEmpty() && !txtMaVeMB.getText().isEmpty()) {
             String mahd = txtMaHoaDon.getText().trim();
             String maVe = txtMaVeMB.getText().trim();
-            int soGheDat = Integer.parseInt(String.valueOf(txtSoGheDat.getText().trim()));
+            int soGheDat = Integer.parseInt(String.valueOf(txtSoVeMua.getText().trim()));
             int kt = new HoaDonChiTietDAO().sua(new HoaDonChiTiet(mahd, maVe, soGheDat));
             if (kt == 1) {
                 bang();
@@ -284,7 +284,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         new HoaDonChiTietDAO().hienThi(tblHoaDonChiTiet, hdct, row);
         txtMaHoaDon.setText(hdct.getHoaDonChiTiet().getMaHoaDon());
         txtMaVeMB.setText(hdct.getHoaDonChiTiet().getMaVe());
-        txtSoGheDat.setText(String.valueOf(hdct.getHoaDonChiTiet().getSoGheDat()));
+        txtSoVeMua.setText(String.valueOf(hdct.getHoaDonChiTiet().getSoGheDat()));
         txtDonGia.setText(String.valueOf(hdct.getDonGia()));
         txtThanhTien.setText(String.valueOf(hdct.getThanhTien()));
         txtMaHoaDon.setEditable(false);
@@ -336,7 +336,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         cbx_MaHD();
         cbx_MaVe();
-        new DungChung().transTXT(new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoGheDat, txtDonGia, txtThanhTien});
+        new DungChung().transTXT(new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoVeMua, txtDonGia, txtThanhTien});
         an();
         bang();
         editColumnWidth();
@@ -348,7 +348,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         cbx_MaHD();
         cbx_MaVe();
-        new DungChung().transTXT(new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoGheDat, txtDonGia, txtThanhTien});
+        new DungChung().transTXT(new JTextField[]{txtMaHoaDon, txtMaVeMB, txtSoVeMua, txtDonGia, txtThanhTien});
         an();
         bang();
         editColumnWidth();
@@ -383,15 +383,13 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         tblHoaDonChiTiet = new javax.swing.JTable();
         lblSTT = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtSoGheDat = new javax.swing.JTextField();
+        txtSoVeMua = new javax.swing.JTextField();
         lblLoiSoGheDat = new javax.swing.JLabel();
         txtDonGia = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtThanhTien = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         btnMoi = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -455,7 +453,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
 
         txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTimKiem.setOpaque(false);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -467,7 +464,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         txtMaHoaDon.setEditable(false);
         txtMaHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaHoaDon.setBorder(null);
-        txtMaHoaDon.setOpaque(false);
         txtMaHoaDon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaHoaDonKeyReleased(evt);
@@ -475,7 +471,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         });
         jPanel5.add(txtMaHoaDon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 330, -1));
 
-        lblLoiMaHD.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaHD.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaHD.setText("Chưa chọn mã hóa đơn");
         jPanel5.add(lblLoiMaHD, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, -1));
@@ -493,7 +488,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         txtMaVeMB.setEditable(false);
         txtMaVeMB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaVeMB.setBorder(null);
-        txtMaVeMB.setOpaque(false);
         txtMaVeMB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaVeMBKeyReleased(evt);
@@ -502,7 +496,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         jPanel5.add(txtMaVeMB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 360, -1));
         jPanel5.add(sptMaVeMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 390, 10));
 
-        lblLoiMaVe.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaVe.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaVe.setText("Chưa chọn mã vé");
         jPanel5.add(lblLoiMaVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 240, -1));
@@ -514,7 +507,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Mã hóa đơn", "Mã vé máy bay", "Ghế đặt", "Đơn giá", "Thành tiền"
+                "STT", "Mã hóa đơn", "Mã vé máy bay", "Số vé mua", "Đơn giá", "Thành tiền"
             }
         ) {
             Class[] types = new Class [] {
@@ -532,10 +525,8 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         tblHoaDonChiTiet.setOpaque(false);
         tblHoaDonChiTiet.setRequestFocusEnabled(false);
         tblHoaDonChiTiet.setRowHeight(30);
-        tblHoaDonChiTiet.setRowMargin(0);
         tblHoaDonChiTiet.setSelectionBackground(new java.awt.Color(55, 38, 91));
         tblHoaDonChiTiet.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblHoaDonChiTiet.setShowHorizontalLines(false);
         tblHoaDonChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHoaDonChiTietMouseClicked(evt);
@@ -552,29 +543,27 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel13.setText("ghế");
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, -1, -1));
+        jLabel13.setText("Vé");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, -1));
 
-        txtSoGheDat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtSoGheDat.setText("0");
-        txtSoGheDat.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtSoGheDat.setOpaque(false);
-        txtSoGheDat.addActionListener(new java.awt.event.ActionListener() {
+        txtSoVeMua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSoVeMua.setText("0");
+        txtSoVeMua.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtSoVeMua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSoGheDatActionPerformed(evt);
+                txtSoVeMuaActionPerformed(evt);
             }
         });
-        txtSoGheDat.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSoVeMua.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSoGheDatKeyReleased(evt);
+                txtSoVeMuaKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSoGheDatKeyTyped(evt);
+                txtSoVeMuaKeyTyped(evt);
             }
         });
-        jPanel5.add(txtSoGheDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 360, -1));
+        jPanel5.add(txtSoVeMua, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 340, -1));
 
-        lblLoiSoGheDat.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiSoGheDat.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiSoGheDat.setText("Chưa chọn số ghế đặt");
         jPanel5.add(lblLoiSoGheDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 190, -1));
@@ -583,13 +572,12 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         txtDonGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDonGia.setText("0");
         txtDonGia.setBorder(null);
-        txtDonGia.setOpaque(false);
         txtDonGia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDonGiaKeyReleased(evt);
             }
         });
-        jPanel5.add(txtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 340, -1));
+        jPanel5.add(txtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 390, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(55, 38, 91));
@@ -605,7 +593,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         txtThanhTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtThanhTien.setText("0");
         txtThanhTien.setBorder(null);
-        txtThanhTien.setOpaque(false);
         txtThanhTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtThanhTienActionPerformed(evt);
@@ -616,18 +603,8 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
                 txtThanhTienKeyReleased(evt);
             }
         });
-        jPanel5.add(txtThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 310, -1));
+        jPanel5.add(txtThanhTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 360, -1));
         jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 390, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel1.setText("Triệu");
-        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel2.setText("Triệu");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 180, -1, -1));
         jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 360, -1));
 
         btnMoi.setBackground(new java.awt.Color(255, 255, 255));
@@ -902,7 +879,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel16.setText("Số ghế đặt");
+        jLabel16.setText("Số vé mua");
         jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -923,18 +900,18 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaHoaDonKeyReleased
 
-    private void txtSoGheDatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoGheDatKeyReleased
-        new DungChung().xetSo(txtSoGheDat);
-        new HoaDonChiTietDAO().thanhTien(txtSoGheDat, txtDonGia, txtThanhTien);
-    }//GEN-LAST:event_txtSoGheDatKeyReleased
+    private void txtSoVeMuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoVeMuaKeyReleased
+        new DungChung().xetSo(txtSoVeMua);
+        new HoaDonChiTietDAO().thanhTien(txtSoVeMua, txtDonGia, txtThanhTien);
+    }//GEN-LAST:event_txtSoVeMuaKeyReleased
 
     private void txtDonGiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDonGiaKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDonGiaKeyReleased
 
-    private void txtSoGheDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoGheDatActionPerformed
+    private void txtSoVeMuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoVeMuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoGheDatActionPerformed
+    }//GEN-LAST:event_txtSoVeMuaActionPerformed
 
     private void txtThanhTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhTienActionPerformed
         // TODO add your handling code here:
@@ -1088,11 +1065,11 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
         chucNang("cuoi");
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void txtSoGheDatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoGheDatKeyTyped
-        if (txtSoGheDat.getText().length() > 2) {
+    private void txtSoVeMuaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoVeMuaKeyTyped
+        if (txtSoVeMua.getText().length() > 2) {
             evt.consume();
         }
-    }//GEN-LAST:event_txtSoGheDatKeyTyped
+    }//GEN-LAST:event_txtSoVeMuaKeyTyped
 
     private void btnMaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaHoaDonActionPerformed
         showHideCBX_MaHD();
@@ -1152,7 +1129,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
     private javax.swing.JButton btnPre;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1160,7 +1136,6 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
@@ -1178,7 +1153,7 @@ public class frmHoaDonChiTiet extends javax.swing.JFrame {
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaHoaDon;
     private javax.swing.JTextField txtMaVeMB;
-    private javax.swing.JTextField txtSoGheDat;
+    private javax.swing.JTextField txtSoVeMua;
     private javax.swing.JTextField txtThanhTien;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables

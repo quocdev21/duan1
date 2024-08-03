@@ -13,17 +13,17 @@ import java.sql.DriverManager;
  * @author TuanDuc
  */
 public class getConnection {
-
     protected Connection con;
-
+    
     public getConnection() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=QLBanVeMayBay";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=moi";
+
             con = DriverManager.getConnection(url, "sa", "123456");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

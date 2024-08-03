@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import Model.HoaDon;
+import Model.HoaDonChiTiet;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,7 +36,23 @@ public class HoaDonDAO extends getConnection{
                 arr.add(hk);
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
+        }
+        return arr;
+    }
+    
+    public ArrayList<HoaDonChiTiet> layDS_HDCT(){
+        ArrayList<HoaDonChiTiet> arr = new ArrayList<>();
+        try {
+            String sql = "select MaHoaDonChiTiet, SoLuongVe from HOADONCHITIET";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                HoaDonChiTiet hdct = new HoaDonChiTiet(rs.getString(1), rs.getString(2));
+                arr.add(hdct);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return arr;
     }
@@ -51,37 +68,37 @@ public class HoaDonDAO extends getConnection{
                 arr.add(nv);
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return arr;
     }
     
     public void loadTable(JTable tbl) {
         try {
-            String[] header = new String[]{"STT", "Mã hóa đơn", "Ngày lập", "Chứng minh nhân dân", "Mã nhân viên"};
-            String sql = "select ROW_NUMBER() Over (Order by MaHoaDon), * from HOADON";
+            String[] header = new String[]{"STT", "Mã hóa đơn", "Ngày lập", "Tên hành khách", "Mã nhân viên", "Mã HDCT"};
+            String sql = "SELECT ROW_NUMBER() Over (Order by MaHoaDon), hd.MaHoaDon, hd.NgayLap, hk.HoTen, nv.MaNhanVien, hdct.MaHoaDonChiTiet FROM HOADON hd JOIN HANHKHACH hk ON hd.CCCD = hk.CCCD JOIN NHANVIEN nv ON hd.MaNhanVien = nv.MaNhanVien JOIN HOADONCHITIET hdct ON hd.MaHoaDonChiTiet = hdct.MaHoaDonChiTiet";
             new DungChung().statement(sql, tbl, header);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     public int them(HoaDon hd) {
         try {
-            String sql = "insert into HOADON values(?, ?, ?, ?)";
-            Object[] obj = new Object[]{hd.getMaHoaDon(), hd.getNgayLap(), hd.getCccd(), hd.getMaNhanVien()};
+            String sql = "insert into HOADON values(?, ?, ?, ?, ?)";
+            Object[] obj = new Object[]{hd.getMaHoaDon(), hd.getNgayLap(), hd.getCmnd(), hd.getMaNhanVien(), hd.getMaHDCT()};
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
     }
 
     public int sua(HoaDon hd) {
         try {
-            String sql = "update HOADON set NgayLap = ?, CMND = ?, MaNhanVien = ? where MaHoaDon = ?";
-            Object[] obj = new Object[]{hd.getNgayLap(), hd.getCccd(), hd.getMaNhanVien(), hd.getMaHoaDon()};
+            String sql = "update HOADON set NgayLap = ?, CCCD = ?, MaNhanVien = ?, MaHoaDonChiTiet = ? where MaHoaDon = ?";
+            Object[] obj = new Object[]{hd.getNgayLap(), hd.getCmnd(), hd.getMaNhanVien(), hd.getMaHoaDon()};
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -102,11 +119,12 @@ public class HoaDonDAO extends getConnection{
         return 0;
     }
 
-    public void hienThi(JTable tbl, HoaDon hd, int q) {
+    public void hienThi(JTable tbl, HoaDon hd, HanhKhach hk, int q) {
         hd.setMaHoaDon(String.valueOf(tbl.getValueAt(q, 1)));
         hd.setNgayLap(String.valueOf(tbl.getValueAt(q, 2)));
-        hd.setCccd(String.valueOf(tbl.getValueAt(q, 3)));
+        hk.setHoTen(String.valueOf(tbl.getValueAt(q, 3)));
         hd.setMaNhanVien(String.valueOf(tbl.getValueAt(q, 4)));
+        hd.setMaHDCT(String.valueOf(tbl.getValueAt(q, 5)));
     }
     
     public HoaDon timHDToDen(String ma) {
@@ -120,7 +138,7 @@ public class HoaDonDAO extends getConnection{
                 return sb;
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }
@@ -130,7 +148,7 @@ public class HoaDonDAO extends getConnection{
             String sql = "select ROW_NUMBER() Over (Order by MaHoaDon), * from HOADON where MaHoaDon like ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + ma + "%");
-            String[] header = new String[]{"STT", "Mã hóa đơn", "Ngày lập", "Chứng minh nhân dân", "Mã nhân viên"};
+            String[] header = new String[]{"STT", "Mã hóa đơn", "Ngày lập", "Tên hành khách", "Mã nhân viên", "Mã HDCT"};
             DefaultTableModel model = new DefaultTableModel(header, 0);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -145,7 +163,7 @@ public class HoaDonDAO extends getConnection{
             tbl.removeAll();
             tbl.setModel(model);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

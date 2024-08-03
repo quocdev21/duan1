@@ -88,16 +88,16 @@ public class frmNhanVien extends javax.swing.JFrame {
             txtEmail.requestFocus();
             return false;
         }
-        if (txtDiaChi.getText().trim().isEmpty()) {
+        if (txtNgaySinh.getText().trim().isEmpty()) {
             lblLoiDiaChi.setVisible(true);
-            txtDiaChi.requestFocus();
+            txtNgaySinh.requestFocus();
             return false;
         }
         return true;
     }
 
     private void moi() {
-        new DungChung().reset(new JTextField[]{txtMaNV, txtPassword, txtHoTen, txtDienThoai, txtEmail, txtDiaChi});
+        new DungChung().reset(new JTextField[]{txtMaNV, txtPassword, txtHoTen, txtDienThoai, txtEmail, txtNgaySinh});
         btnGroupVaiTro.clearSelection();
         btnGroupGioiTinh.clearSelection();
         lblHinh.setIcon(null);
@@ -124,7 +124,7 @@ public class frmNhanVien extends javax.swing.JFrame {
             boolean gioitinh = rdbNam.isSelected();
             String sdt = txtDienThoai.getText().trim();
             String email = txtEmail.getText().trim();
-            String diachi = txtDiaChi.getText().trim();
+            String diachi = txtNgaySinh.getText().trim();
             String hinh = "";
             if (arr.size() == 0) {
                 hinh = "defaultIMG.png";
@@ -158,7 +158,7 @@ public class frmNhanVien extends javax.swing.JFrame {
             boolean gioitinh = rdbNam.isSelected();
             String sdt = txtDienThoai.getText().trim();
             String email = txtEmail.getText().trim();
-            String diachi = txtDiaChi.getText().trim();
+            String diachi = txtNgaySinh.getText().trim();
             String hinh = "";
             if (arr.size() == 0) {
                 hinh = "defaultIMG.png";
@@ -211,7 +211,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         }
         txtDienThoai.setText(hk.getSoDT());
         txtEmail.setText(hk.getEmail());
-        txtDiaChi.setText(hk.getDiaChi());
+        txtNgaySinh.setText(hk.getDiaChi());
         Image img = getToolkit().createImage("src//HinhDuLieu//" + tblNhanVien.getValueAt(row, 9));
         Image anh = img.getScaledInstance(lblHinh.getWidth(), lblHinh.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(anh);
@@ -285,7 +285,7 @@ public class frmNhanVien extends javax.swing.JFrame {
     public frmNhanVien() {
         initComponents();
         setLocationRelativeTo(this);
-        new DungChung().transTXT(new JTextField[]{txtMaNV, txtPassword, txtHoTen, txtDienThoai, txtEmail, txtDiaChi, txtTimKiem});
+        new DungChung().transTXT(new JTextField[]{txtMaNV, txtPassword, txtHoTen, txtDienThoai, txtEmail, txtNgaySinh, txtTimKiem});
         an();
         bang();
         editColumnWidth();
@@ -295,7 +295,7 @@ public class frmNhanVien extends javax.swing.JFrame {
     public frmNhanVien(String vt) {
         initComponents();
         setLocationRelativeTo(this);
-        new DungChung().transTXT(new JTextField[]{txtMaNV, txtPassword, txtHoTen, txtDienThoai, txtEmail, txtDiaChi, txtTimKiem});
+        new DungChung().transTXT(new JTextField[]{txtMaNV, txtPassword, txtHoTen, txtDienThoai, txtEmail, txtNgaySinh, txtTimKiem});
         an();
         bang();
         editColumnWidth();
@@ -342,13 +342,12 @@ public class frmNhanVien extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         lblLoiEmail = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtDiaChi = new javax.swing.JTextField();
+        txtNgaySinh = new javax.swing.JTextField();
         lblLoiHinh = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         lblSTT = new javax.swing.JLabel();
         splTable = new javax.swing.JScrollPane();
         tblNhanVien = new javax.swing.JTable();
-        jLabel12 = new javax.swing.JLabel();
         lblHinh = new javax.swing.JLabel();
         lblLoiDiaChi = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
@@ -362,6 +361,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         btnFirst = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -381,7 +381,6 @@ public class frmNhanVien extends javax.swing.JFrame {
 
         txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTimKiem.setOpaque(false);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -389,14 +388,12 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(txtTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 196, -1));
 
-        lblLoiMaNV.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaNV.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaNV.setText("Mã nhân viên không chinh xác");
         jPanel1.add(lblLoiMaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 180, -1));
 
         txtMaNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaNV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtMaNV.setOpaque(false);
         txtMaNV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaNVKeyReleased(evt);
@@ -418,7 +415,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 220, 10));
 
-        lblLoiMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMatKhau.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMatKhau.setText("Mật khẩu không chính xác");
         jPanel1.add(lblLoiMatKhau, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 150, -1));
@@ -427,14 +423,12 @@ public class frmNhanVien extends javax.swing.JFrame {
         rdbQuanTri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbQuanTri.setText("Trưởng phòng");
         rdbQuanTri.setBorder(null);
-        rdbQuanTri.setOpaque(false);
         jPanel1.add(rdbQuanTri, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, -1, -1));
 
         btnGroupVaiTro.add(rdbNhanVien);
         rdbNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbNhanVien.setText("Nhân viên");
         rdbNhanVien.setBorder(null);
-        rdbNhanVien.setOpaque(false);
         rdbNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdbNhanVienActionPerformed(evt);
@@ -442,7 +436,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(rdbNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, -1, -1));
 
-        lblLoiVaiTro.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiVaiTro.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiVaiTro.setText("Chưa chọn vai trò");
         jPanel1.add(lblLoiVaiTro, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 150, -1));
@@ -454,7 +447,6 @@ public class frmNhanVien extends javax.swing.JFrame {
 
         txtHoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtHoTen.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtHoTen.setOpaque(false);
         jPanel1.add(txtHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 220, 20));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -466,17 +458,14 @@ public class frmNhanVien extends javax.swing.JFrame {
         rdbNam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbNam.setText("Nam");
         rdbNam.setBorder(null);
-        rdbNam.setOpaque(false);
         jPanel1.add(rdbNam, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 90, -1, -1));
 
         btnGroupGioiTinh.add(rdbNu);
         rdbNu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdbNu.setText("Nữ");
         rdbNu.setBorder(null);
-        rdbNu.setOpaque(false);
         jPanel1.add(rdbNu, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, -1, -1));
 
-        lblLoiGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiGioiTinh.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiGioiTinh.setText("Chưa chọn giới tính");
         jPanel1.add(lblLoiGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 110, 150, -1));
@@ -488,7 +477,6 @@ public class frmNhanVien extends javax.swing.JFrame {
 
         txtDienThoai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDienThoai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtDienThoai.setOpaque(false);
         txtDienThoai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDienThoaiKeyReleased(evt);
@@ -499,7 +487,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(txtDienThoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 220, 20));
 
-        lblLoiSDT.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiSDT.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiSDT.setText("Số điện thoại không chính xác");
         jPanel1.add(lblLoiSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 190, -1));
@@ -509,7 +496,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         jLabel9.setText("Họ tên");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
-        lblLoiHoTen.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiHoTen.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiHoTen.setText("Họ tên không chính xác");
         jPanel1.add(lblLoiHoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 150, -1));
@@ -521,10 +507,8 @@ public class frmNhanVien extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtEmail.setOpaque(false);
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 220, 20));
 
-        lblLoiEmail.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiEmail.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiEmail.setText("Email không chính xác");
         jPanel1.add(lblLoiEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 150, -1));
@@ -532,21 +516,23 @@ public class frmNhanVien extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(55, 38, 91));
         jLabel11.setText("Hình");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 250, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 230, -1, -1));
 
-        txtDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDiaChi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtDiaChi.setOpaque(false);
-        jPanel1.add(txtDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 220, 20));
+        txtNgaySinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNgaySinh.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtNgaySinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNgaySinhActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNgaySinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 220, 20));
 
-        lblLoiHinh.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiHinh.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiHinh.setText("Nhấp chọn hình");
-        jPanel1.add(lblLoiHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 100, -1));
+        jPanel1.add(lblLoiHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 100, -1));
 
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPassword.setBorder(null);
-        txtPassword.setOpaque(false);
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPasswordKeyTyped(evt);
@@ -566,7 +552,7 @@ public class frmNhanVien extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Mã nhân viên", "Mật khẩu", "Vai trò", "Họ tên", "Giới tính", "Dien thoại", "Email", "Địa chỉ", "Hình"
+                "STT", "Mã nhân viên", "Mật khẩu", "Vai trò", "Họ tên", "Giới tính", "Điện thoại", "Email", "Địa chỉ", "Hình"
             }
         ) {
             Class[] types = new Class [] {
@@ -584,10 +570,8 @@ public class frmNhanVien extends javax.swing.JFrame {
         tblNhanVien.setOpaque(false);
         tblNhanVien.setRequestFocusEnabled(false);
         tblNhanVien.setRowHeight(30);
-        tblNhanVien.setRowMargin(0);
         tblNhanVien.setSelectionBackground(new java.awt.Color(55, 38, 91));
         tblNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblNhanVien.setShowHorizontalLines(false);
         tblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblNhanVienMouseClicked(evt);
@@ -596,11 +580,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         splTable.setViewportView(tblNhanVien);
 
         jPanel1.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 950, 200));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel12.setText("Địa chỉ");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
 
         lblHinh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHinh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -613,14 +592,12 @@ public class frmNhanVien extends javax.swing.JFrame {
                 lblHinhMouseEntered(evt);
             }
         });
-        jPanel1.add(lblHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 110, 140));
+        jPanel1.add(lblHinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 260, 130, 140));
 
-        lblLoiDiaChi.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiDiaChi.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiDiaChi.setText("Địa chỉ không chính xác");
         jPanel1.add(lblLoiDiaChi, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 150, -1));
 
-        btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonThem.png"))); // NOI18N
         btnThem.setBorder(null);
@@ -645,7 +622,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
 
-        btnCapNhat.setBackground(new java.awt.Color(255, 255, 255));
         btnCapNhat.setForeground(new java.awt.Color(255, 255, 255));
         btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonCapNhat.png"))); // NOI18N
         btnCapNhat.setBorder(null);
@@ -669,7 +645,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, -1, -1));
 
-        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonXoa.png"))); // NOI18N
         btnXoa.setBorder(null);
@@ -693,7 +668,6 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, -1, -1));
 
-        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonMoi.png"))); // NOI18N
         btnMoi.setBorder(null);
@@ -876,6 +850,11 @@ public class frmNhanVien extends javax.swing.JFrame {
         });
         jPanel1.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 640, -1, -1));
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel13.setText("Địa chỉ");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -965,7 +944,7 @@ public class frmNhanVien extends javax.swing.JFrame {
         if (chucVu.equals("Trưởng phòng")) {
             xoa();
         } else {
-            JOptionPane.showMessageDialog(this, "Chỉ admin được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -1080,6 +1059,10 @@ public class frmNhanVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtDienThoaiKeyTyped
 
+    private void txtNgaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNgaySinhActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1137,7 +1120,7 @@ public class frmNhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -1164,11 +1147,11 @@ public class frmNhanVien extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbQuanTri;
     private javax.swing.JScrollPane splTable;
     private javax.swing.JTable tblNhanVien;
-    private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtDienThoai;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMaNV;
+    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables

@@ -3,7 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/BT/duan1/Nhom4_DuAn1/src/UI/frmMain.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/DAO/HoaDonChiTietDAO.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmVeMayBay.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmHangVe.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/Model/DoanhThuTheoThang.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/DAO/NhanVienDAO.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmDoanhThuTheoThang.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmNhanVien.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmHoaDonChiTiet.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/DAO/DoanhThuTheoThangDAO.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/DAO/HoaDonDAO.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/Model/NhanVien.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmMain.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/Model/VeMayBay.java</file>
+            <file>file:/C:/Users/pc/Documents/GitHub/duan1/Nhom4_DuAn1/src/UI/frmHoaDon.java</file>
         </group>
     </open-files>
 </project-private>

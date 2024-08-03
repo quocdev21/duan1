@@ -5,17 +5,69 @@
  */
 package UI;
 
+import DAO.DoanhThuTheoNamDAO;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
  * @author TuanDuc
  */
 public class frmTrangChu extends javax.swing.JFrame {
+    void loadBieuDo(){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String str = "Doanh thu bán vé máy bay hằng năm";
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2024), str, "2024");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2023), str, "2023");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2022), str, "2022");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2021), str, "2021");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2020), str, "2020");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2019), str, "2019");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2018), str, "2018");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2017), str, "2017");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2016), str, "2016");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2015), str, "2015");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2014), str, "2014");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2013), str, "2013");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2012), str, "2012");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2011), str, "2011");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2010), str, "2010");
+        dataset.addValue(new DoanhThuTheoNamDAO().getDoanhThu(2009), str, "2009");
+        JFreeChart barChart = ChartFactory.createBarChart("BIỂU ĐỒ THỐNG KÊ DOANH THU THEO NĂM", "Năm", "Tiền (Triệu)", dataset , PlotOrientation.VERTICAL, true, true, true);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+
+    }
     
+    
+    
+    void loadPercentDT(){
+//        int nam2018 = Integer.parseInt(String.valueOf(Math.round(new DoanhThuTheoNamDAO().getDoanhThu(2023))));
+//        int nam2019 = Integer.parseInt(String.valueOf(Math.round(new DoanhThuTheoNamDAO().getDoanhThu(2024))));
+//        int per = nam2019 * 100 / nam2018;
+//        lblPercentDT.setText(String.valueOf(per) + "%");
+//        if(nam2019 < nam2018){
+//            ImageIcon icon = new ImageIcon("src//Icon//downHome.png");
+//            lblPercentDT.setIcon(icon);
+//            lblPercentDT.setForeground(new Color(231, 76, 60));
+//        }else{
+//            ImageIcon icon = new ImageIcon("src//Icon//upHome.png");
+//            lblPercentDT.setIcon(icon);
+//            lblPercentDT.setForeground(new Color(26,187,156));
+//        }
+
+            
+    }
     
     public frmTrangChu() {
         initComponents();
-        
+        setLocationRelativeTo(this);
+        loadPercentDT();
     }
 
     /**
@@ -28,24 +80,7 @@ public class frmTrangChu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblTongNV = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        lblTongHK = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        lblTien = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        lblPercentDT = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -53,91 +88,9 @@ public class frmTrangChu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(115, 135, 156));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/staffHome.png"))); // NOI18N
-        jLabel1.setText("Tổng số nhân viên");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        lblTongNV.setFont(new java.awt.Font("Tahoma", 1, 42)); // NOI18N
-        lblTongNV.setForeground(new java.awt.Color(115, 135, 156));
-        lblTongNV.setText("9235");
-        jPanel2.add(lblTongNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLabel5.setText("so với tháng trước");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 73, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(26, 187, 156));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/upHome.png"))); // NOI18N
-        jLabel7.setText("4%");
-        jLabel7.setIconTextGap(0);
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 73, -1, -1));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 250, 90));
-
-        jPanel3.setPreferredSize(new java.awt.Dimension(260, 100));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(115, 135, 156));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/customerHome.png"))); // NOI18N
-        jLabel2.setText("Tổng số hành khách");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        lblTongHK.setFont(new java.awt.Font("Tahoma", 1, 42)); // NOI18N
-        lblTongHK.setForeground(new java.awt.Color(115, 135, 156));
-        lblTongHK.setText("6249");
-        jPanel3.add(lblTongHK, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(231, 76, 60));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/downHome.png"))); // NOI18N
-        jLabel8.setText("3%");
-        jLabel8.setIconTextGap(0);
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 73, -1, -1));
-
-        jLabel9.setText("so với tháng trước");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 73, -1, -1));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 250, 90));
-
-        jPanel4.setPreferredSize(new java.awt.Dimension(260, 100));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(115, 135, 156));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/moneyHome.png"))); // NOI18N
-        jLabel3.setText("Doanh thu cả năm");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        lblTien.setFont(new java.awt.Font("Tahoma", 1, 42)); // NOI18N
-        lblTien.setForeground(new java.awt.Color(115, 135, 156));
-        lblTien.setText("1491.0");
-        jPanel4.add(lblTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(115, 135, 156));
-        jLabel11.setText("triệu");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 55, -1, -1));
-
-        jLabel13.setText("so với năm trước");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 73, -1, -1));
-
-        lblPercentDT.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        lblPercentDT.setForeground(new java.awt.Color(26, 187, 156));
-        lblPercentDT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/upHome.png"))); // NOI18N
-        lblPercentDT.setText("16%");
-        lblPercentDT.setIconTextGap(0);
-        jPanel4.add(lblPercentDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 73, -1, -1));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 240, 90));
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HinhDuLieu/maybay.jpg"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HinhDuLieu/banner.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 1, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,23 +143,6 @@ public class frmTrangChu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lblPercentDT;
-    private javax.swing.JLabel lblTien;
-    private javax.swing.JLabel lblTongHK;
-    private javax.swing.JLabel lblTongNV;
     // End of variables declaration//GEN-END:variables
 }

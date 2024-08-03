@@ -58,7 +58,7 @@ public class HanhKhachDAO extends getConnection{
     public int them(HanhKhach hk) {
         try {
             String sql = "insert into HANHKHACH values(?, ?, ?, ?, ?, ?)";
-            Object[] obj = new Object[]{hk.getCccd(), hk.getHoTen(), hk.isGioiTinh(), hk.getSoDT(), hk.getEmail(), hk.getDiaChi()};
+            Object[] obj = new Object[]{hk.getCmnd(), hk.getHoTen(), hk.isGioiTinh(), hk.getSoDT(), hk.getEmail(), hk.getDiaChi()};
             PreparedStatement ps =  new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -70,7 +70,7 @@ public class HanhKhachDAO extends getConnection{
     public int sua(HanhKhach hk) {
         try {
             String sql = "update HANHKHACH set HoTen = ?, GioiTinh = ?, DienThoai = ?, Email = ?, DiaChi = ? where CCCD = ?";
-            Object[] obj = new Object[]{hk.getHoTen(), hk.isGioiTinh(), hk.getSoDT(), hk.getEmail(), hk.getDiaChi(), hk.getCccd()};
+            Object[] obj = new Object[]{hk.getHoTen(), hk.isGioiTinh(), hk.getSoDT(), hk.getEmail(), hk.getDiaChi(), hk.getCmnd()};
             PreparedStatement ps =  new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -82,7 +82,7 @@ public class HanhKhachDAO extends getConnection{
     public int xoa(HanhKhach hk) {
         try {
             String sql = "delete from HANHKHACH where CCCD = ?";
-            Object[] obj = new Object[]{hk.getCccd()};
+            Object[] obj = new Object[]{hk.getCmnd()};
             PreparedStatement ps =  new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -92,7 +92,7 @@ public class HanhKhachDAO extends getConnection{
     }
     
     public void hienThi(JTable tbl, HanhKhach hk, int q){
-        hk.setCccd(String.valueOf(tbl.getValueAt(q, 1)));
+        hk.setCmnd(String.valueOf(tbl.getValueAt(q, 1)));
         hk.setHoTen(String.valueOf(tbl.getValueAt(q, 2)));
         hk.setGioiTinh(Boolean.parseBoolean(String.valueOf(tbl.getValueAt(q, 3).equals("Nam"))));
         hk.setSoDT(String.valueOf(tbl.getValueAt(q, 4)));

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author TuanDuc
  */
 public class HanhKhach implements Serializable{
-    private String cccd;
+    private String cmnd;
     private String hoTen;
     private boolean gioiTinh;
     private String soDT;
@@ -22,17 +22,17 @@ public class HanhKhach implements Serializable{
     public HanhKhach() {
     }
 
-    public HanhKhach(String cccd) {
-        this.cccd = cccd;
+    public HanhKhach(String cmnd) {
+        this.cmnd = cmnd;
     }
 
-    public HanhKhach(String cccd, String hoTen) {
-        this.cccd = cccd;
+    public HanhKhach(String cmnd, String hoTen) {
+        this.cmnd = cmnd;
         this.hoTen = hoTen;
     }
 
-    public HanhKhach(String cccd, String hoTen, boolean gioiTinh, String soDT, String email, String diaChi) {
-        this.cccd = cccd;
+    public HanhKhach(String cmnd, String hoTen, boolean gioiTinh, String soDT, String email, String diaChi) {
+        this.cmnd = cmnd;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.soDT = soDT;
@@ -40,12 +40,12 @@ public class HanhKhach implements Serializable{
         this.diaChi = diaChi;
     }
 
-    public String getCccd() {
-        return cccd;
+    public String getCmnd() {
+        return cmnd;
     }
 
-    public void setCccd(String cccd) {
-        this.cccd = cccd;
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
     public String getHoTen() {

@@ -11,12 +11,13 @@ import java.io.Serializable;
  *
  * @author TuanDuc
  */
-public class VeMayBay implements Serializable{
+public class VeMayBay implements Serializable {
+
     private String maVe;
     private String maHangVe;
     private String maLoaiVe;
     private String maChuyenBay;
-    private float giaBan;
+    private String soGhe;
 
     public VeMayBay() {
     }
@@ -25,12 +26,12 @@ public class VeMayBay implements Serializable{
         this.maVe = maVe;
     }
 
-    public VeMayBay(String maVe, String maHangVe, String maLoaiVe, String maChuyenBay, float giaBan) {
+    public VeMayBay(String maVe, String maHangVe, String maLoaiVe, String maChuyenBay, String soGhe) {
         this.maVe = maVe;
         this.maHangVe = maHangVe;
         this.maLoaiVe = maLoaiVe;
         this.maChuyenBay = maChuyenBay;
-        this.giaBan = giaBan;
+        this.soGhe = soGhe;
     }
 
     public String getMaVe() {
@@ -65,11 +66,12 @@ public class VeMayBay implements Serializable{
         this.maChuyenBay = maChuyenBay;
     }
 
-    public float getGiaBan() {
-        return giaBan;
+    public String getSoGhe() {
+        return soGhe;
     }
 
-    public void setGiaBan(float giaBan) {
-        this.giaBan = giaBan;
+    public void setSoGhe(String soGhe) {
+        this.soGhe = soGhe;
     }
+
 }

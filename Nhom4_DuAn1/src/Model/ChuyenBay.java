@@ -16,10 +16,9 @@ public class ChuyenBay implements Serializable{
     private String ngayDi;
     private String ngayDen;
     private String gioKhoiHanh;
-    private int soGheThuongGia;
-    private int soGhePhoThong;
     private String maTuyenBay;
     private String mamayBay;
+    private double Gia;
 
     public ChuyenBay() {
     }
@@ -28,16 +27,17 @@ public class ChuyenBay implements Serializable{
         this.maChuyenBay = maChuyenBay;
     }
 
-    public ChuyenBay(String maChuyenBay, String ngayDi, String ngayDen, String gioKhoiHanh, int soGheThuongGia, int soGhePhoThong, String maTuyenBay, String mamayBay) {
+    public ChuyenBay(String maChuyenBay, String ngayDi, String ngayDen, String gioKhoiHanh, String maTuyenBay, String mamayBay, double Gia) {
         this.maChuyenBay = maChuyenBay;
         this.ngayDi = ngayDi;
         this.ngayDen = ngayDen;
         this.gioKhoiHanh = gioKhoiHanh;
-        this.soGheThuongGia = soGheThuongGia;
-        this.soGhePhoThong = soGhePhoThong;
         this.maTuyenBay = maTuyenBay;
         this.mamayBay = mamayBay;
+        this.Gia = Gia;
     }
+
+    
 
     public String getMaChuyenBay() {
         return maChuyenBay;
@@ -71,22 +71,6 @@ public class ChuyenBay implements Serializable{
         this.gioKhoiHanh = gioKhoiHanh;
     }
 
-    public int getSoGheThuongGia() {
-        return soGheThuongGia;
-    }
-
-    public void setSoGheThuongGia(int soGheThuongGia) {
-        this.soGheThuongGia = soGheThuongGia;
-    }
-
-    public int getSoGhePhoThong() {
-        return soGhePhoThong;
-    }
-
-    public void setSoGhePhoThong(int soGhePhoThong) {
-        this.soGhePhoThong = soGhePhoThong;
-    }
-
     public String getMaTuyenBay() {
         return maTuyenBay;
     }
@@ -101,5 +85,13 @@ public class ChuyenBay implements Serializable{
 
     public void setMamayBay(String mamayBay) {
         this.mamayBay = mamayBay;
+    }
+
+    public double getGia() {
+        return Gia;
+    }
+
+    public void setGia(double Gia) {
+        this.Gia = Gia;
     }
 }

@@ -41,7 +41,7 @@ public class MayBayDAO extends getConnection {
 
     public void loadTable(JTable tbl) {
         try {
-            String[] header = new String[]{"STT", "Mã máy bay", "Mã hãng máy bay"};
+            String[] header = new String[]{"STT", "Mã máy bay", "Mã hãng máy bay", "Số ghế thương gia", "Số ghế phổ thông"};
             String sql = "select ROW_NUMBER() Over (Order by MaMayBay), * from MAYBAY";
             new DungChung().statement(sql, tbl, header);
         } catch (Exception e) {
@@ -51,8 +51,8 @@ public class MayBayDAO extends getConnection {
 
     public int them(MayBay mb) {
         try {
-            String sql = "insert into MAYBAY values(?, ?)";
-            Object[] obj = new Object[]{mb.getMaMaybay(), mb.getMaHang()};
+            String sql = "insert into MAYBAY values(?, ?, ?, ?)";
+            Object[] obj = new Object[]{mb.getMaMaybay(), mb.getMaHang(), mb.getThuongia(), mb.getPhothong()};
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -63,8 +63,8 @@ public class MayBayDAO extends getConnection {
 
     public int sua(MayBay mb) {
         try {
-            String sql = "update MAYBAY set MaHang = ? where MaMayBay = ?";
-            Object[] obj = new Object[]{mb.getMaHang(), mb.getMaMaybay()};
+            String sql = "update MAYBAY set MaHang = ?, SoGheThuongGia = ?, SoGhePhoThong = ? where MaMayBay = ?";
+            Object[] obj = new Object[]{mb.getMaHang(), mb.getThuongia(), mb.getPhothong(), mb.getMaMaybay()};
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -88,6 +88,8 @@ public class MayBayDAO extends getConnection {
     public void hienThi(JTable tbl, MayBay mb, int q) {
         mb.setMaMaybay(String.valueOf(tbl.getValueAt(q, 1)));
         mb.setMaHang(String.valueOf(tbl.getValueAt(q, 2)));
+        mb.setThuongia(Integer.parseInt(String.valueOf(tbl.getValueAt(q, 3))));
+        mb.setPhothong(Integer.parseInt(String.valueOf(tbl.getValueAt(q, 4))));
     }
     
     public MayBay timMBToDen(String cmnd) {

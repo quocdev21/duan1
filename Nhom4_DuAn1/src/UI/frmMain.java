@@ -6,6 +6,7 @@
 package UI;
 
 import DAO.MainDAO;
+import DungChung.DungChung;
 import Model.ChuyenBay;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -22,6 +23,7 @@ import javax.swing.JPanel;
  */
 public class frmMain extends javax.swing.JFrame {
 
+    private DungChung dc = new DungChung();
     int showHideMenu = 1;
     int showHideSubMenu_ThanhToan = 1;
     int showHideSubMenu_Ve = 1;
@@ -113,7 +115,7 @@ public class frmMain extends javax.swing.JFrame {
         } else {
             pnlSubMenu.setVisible(false);
         }
-        JPanel[] pnl = new JPanel[]{pnlSubThanhToan, pnlSubVe, pnlSubChuyenBay};
+        JPanel[] pnl = new JPanel[]{pnlSubVe, pnlSubChuyenBay};
         for (int i = 0; i < pnl.length; i++) {
             pnl[i].setVisible(false);
         }
@@ -171,14 +173,10 @@ public class frmMain extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
         pnlSubMenu = new javax.swing.JPanel();
         pnlSubVe = new javax.swing.JPanel();
-        pnlSubVe_VeMB = new javax.swing.JPanel();
-        btnVeMayBay = new javax.swing.JButton();
         pnlSubVe_HangVe = new javax.swing.JPanel();
         btnHangVe = new javax.swing.JButton();
         pnlSubVe_LoaiVe = new javax.swing.JPanel();
         btnLoaiVe = new javax.swing.JButton();
-        pnlSubVe_DichVu = new javax.swing.JPanel();
-        btnDichVu = new javax.swing.JButton();
         pnlSubChuyenBay = new javax.swing.JPanel();
         pnlSubChuyenBay_ChuyenBay = new javax.swing.JPanel();
         btnChuyenBay = new javax.swing.JButton();
@@ -190,16 +188,12 @@ public class frmMain extends javax.swing.JFrame {
         btnMayBay = new javax.swing.JButton();
         pnlSubChuyenBay_HangMayBay = new javax.swing.JPanel();
         btnHangMayBay = new javax.swing.JButton();
-        pnlSubThanhToan = new javax.swing.JPanel();
-        pnlSubThanhToan_HD = new javax.swing.JPanel();
-        btnHoaDon = new javax.swing.JButton();
-        pnlSubThanhToan_HDCT = new javax.swing.JPanel();
-        btnHDCT = new javax.swing.JButton();
         pnlContent = new javax.swing.JPanel();
         tbpForm = new javax.swing.JTabbedPane();
         pnlFooter = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1300, 800));
         setMinimumSize(new java.awt.Dimension(1300, 800));
         setUndecorated(true);
         setOpacity(0.0F);
@@ -314,7 +308,6 @@ public class frmMain extends javax.swing.JFrame {
 
         pnlNhanVien.setBackground(new java.awt.Color(55, 38, 91));
 
-        btnNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/officer.png"))); // NOI18N
@@ -362,7 +355,7 @@ public class frmMain extends javax.swing.JFrame {
         btnThanhtoan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThanhtoan.setForeground(new java.awt.Color(255, 255, 255));
         btnThanhtoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/money.png"))); // NOI18N
-        btnThanhtoan.setText("Thanh toán");
+        btnThanhtoan.setText("Bán Hàng");
         btnThanhtoan.setBorder(null);
         btnThanhtoan.setBorderPainted(false);
         btnThanhtoan.setContentAreaFilled(false);
@@ -513,17 +506,16 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Đăng Nhập");
+        jLabel1.setText("Đăng nhập");
 
         javax.swing.GroupLayout pnlNavigationLayout = new javax.swing.GroupLayout(pnlNavigation);
         pnlNavigation.setLayout(pnlNavigationLayout);
         pnlNavigationLayout.setHorizontalGroup(
             pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNavigationLayout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+            .addGroup(pnlNavigationLayout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addComponent(btnLogout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -532,14 +524,14 @@ public class frmMain extends javax.swing.JFrame {
         pnlNavigationLayout.setVerticalGroup(
             pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNavigationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(btnLogout))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(pnlNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnLogout)
+                    .addComponent(jLabel1))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        pnlMenu.add(pnlNavigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 758, 230, -1));
+        pnlMenu.add(pnlNavigation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 760, 230, 50));
 
         pnlQuanLyDoanhThu.setBackground(new java.awt.Color(55, 38, 91));
 
@@ -679,61 +671,6 @@ public class frmMain extends javax.swing.JFrame {
         });
         pnlSubVe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSubVe_VeMB.setBackground(new java.awt.Color(55, 38, 91));
-        pnlSubVe_VeMB.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlSubVe_VeMBMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlSubVe_VeMBMouseExited(evt);
-            }
-        });
-
-        btnVeMayBay.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnVeMayBay.setForeground(new java.awt.Color(255, 255, 255));
-        btnVeMayBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/airportVe.png"))); // NOI18N
-        btnVeMayBay.setText("Vé máy bay");
-        btnVeMayBay.setBorder(null);
-        btnVeMayBay.setBorderPainted(false);
-        btnVeMayBay.setContentAreaFilled(false);
-        btnVeMayBay.setDefaultCapable(false);
-        btnVeMayBay.setFocusPainted(false);
-        btnVeMayBay.setFocusable(false);
-        btnVeMayBay.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnVeMayBay.setIconTextGap(13);
-        btnVeMayBay.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVeMayBayMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVeMayBayMouseExited(evt);
-            }
-        });
-        btnVeMayBay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVeMayBayActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlSubVe_VeMBLayout = new javax.swing.GroupLayout(pnlSubVe_VeMB);
-        pnlSubVe_VeMB.setLayout(pnlSubVe_VeMBLayout);
-        pnlSubVe_VeMBLayout.setHorizontalGroup(
-            pnlSubVe_VeMBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSubVe_VeMBLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(btnVeMayBay, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
-        pnlSubVe_VeMBLayout.setVerticalGroup(
-            pnlSubVe_VeMBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSubVe_VeMBLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVeMayBay)
-                .addContainerGap())
-        );
-
-        pnlSubVe.add(pnlSubVe_VeMB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 200, -1));
-
         pnlSubVe_HangVe.setBackground(new java.awt.Color(55, 38, 91));
         pnlSubVe_HangVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -787,7 +724,7 @@ public class frmMain extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlSubVe.add(pnlSubVe_HangVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 200, -1));
+        pnlSubVe.add(pnlSubVe_HangVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, -1));
 
         pnlSubVe_LoaiVe.setBackground(new java.awt.Color(55, 38, 91));
         pnlSubVe_LoaiVe.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -844,62 +781,7 @@ public class frmMain extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlSubVe.add(pnlSubVe_LoaiVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 200, -1));
-
-        pnlSubVe_DichVu.setBackground(new java.awt.Color(55, 38, 91));
-        pnlSubVe_DichVu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlSubVe_DichVuMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlSubVe_DichVuMouseExited(evt);
-            }
-        });
-
-        btnDichVu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnDichVu.setForeground(new java.awt.Color(255, 255, 255));
-        btnDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/service.png"))); // NOI18N
-        btnDichVu.setText("Dịch vụ");
-        btnDichVu.setBorder(null);
-        btnDichVu.setBorderPainted(false);
-        btnDichVu.setContentAreaFilled(false);
-        btnDichVu.setDefaultCapable(false);
-        btnDichVu.setFocusPainted(false);
-        btnDichVu.setFocusable(false);
-        btnDichVu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDichVu.setIconTextGap(13);
-        btnDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDichVuMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDichVuMouseExited(evt);
-            }
-        });
-        btnDichVu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDichVuActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlSubVe_DichVuLayout = new javax.swing.GroupLayout(pnlSubVe_DichVu);
-        pnlSubVe_DichVu.setLayout(pnlSubVe_DichVuLayout);
-        pnlSubVe_DichVuLayout.setHorizontalGroup(
-            pnlSubVe_DichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSubVe_DichVuLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(btnDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        pnlSubVe_DichVuLayout.setVerticalGroup(
-            pnlSubVe_DichVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSubVe_DichVuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDichVu)
-                .addContainerGap())
-        );
-
-        pnlSubVe.add(pnlSubVe_DichVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 200, -1));
+        pnlSubVe.add(pnlSubVe_LoaiVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 200, -1));
 
         pnlSubMenu.add(pnlSubVe, "card3");
 
@@ -1191,128 +1073,6 @@ public class frmMain extends javax.swing.JFrame {
 
         pnlSubMenu.add(pnlSubChuyenBay, "card4");
 
-        pnlSubThanhToan.setBackground(new java.awt.Color(55, 38, 91));
-        pnlSubThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlSubThanhToanMouseExited(evt);
-            }
-        });
-        pnlSubThanhToan.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlSubThanhToan_HD.setBackground(new java.awt.Color(55, 38, 91));
-        pnlSubThanhToan_HD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlSubThanhToan_HDMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlSubThanhToan_HDMouseExited(evt);
-            }
-        });
-
-        btnHoaDon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/bill.png"))); // NOI18N
-        btnHoaDon.setText("Hóa đơn");
-        btnHoaDon.setBorder(null);
-        btnHoaDon.setBorderPainted(false);
-        btnHoaDon.setContentAreaFilled(false);
-        btnHoaDon.setDefaultCapable(false);
-        btnHoaDon.setFocusPainted(false);
-        btnHoaDon.setFocusable(false);
-        btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnHoaDon.setIconTextGap(13);
-        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseExited(evt);
-            }
-        });
-        btnHoaDon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHoaDonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlSubThanhToan_HDLayout = new javax.swing.GroupLayout(pnlSubThanhToan_HD);
-        pnlSubThanhToan_HD.setLayout(pnlSubThanhToan_HDLayout);
-        pnlSubThanhToan_HDLayout.setHorizontalGroup(
-            pnlSubThanhToan_HDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSubThanhToan_HDLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnlSubThanhToan_HDLayout.setVerticalGroup(
-            pnlSubThanhToan_HDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSubThanhToan_HDLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnHoaDon)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlSubThanhToan.add(pnlSubThanhToan_HD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 190, -1));
-        pnlSubThanhToan_HD.getAccessibleContext().setAccessibleParent(pnlSubMenu);
-
-        pnlSubThanhToan_HDCT.setBackground(new java.awt.Color(55, 38, 91));
-        pnlSubThanhToan_HDCT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlSubThanhToan_HDCTMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlSubThanhToan_HDCTMouseExited(evt);
-            }
-        });
-
-        btnHDCT.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnHDCT.setForeground(new java.awt.Color(255, 255, 255));
-        btnHDCT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/billDetail.png"))); // NOI18N
-        btnHDCT.setText("Hóa đơn chi tiết");
-        btnHDCT.setActionCommand("btnHoaDonChiTiet");
-        btnHDCT.setBorder(null);
-        btnHDCT.setBorderPainted(false);
-        btnHDCT.setContentAreaFilled(false);
-        btnHDCT.setDefaultCapable(false);
-        btnHDCT.setFocusPainted(false);
-        btnHDCT.setFocusable(false);
-        btnHDCT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnHDCT.setIconTextGap(13);
-        btnHDCT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHDCTMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHDCTMouseExited(evt);
-            }
-        });
-        btnHDCT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHDCTActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlSubThanhToan_HDCTLayout = new javax.swing.GroupLayout(pnlSubThanhToan_HDCT);
-        pnlSubThanhToan_HDCT.setLayout(pnlSubThanhToan_HDCTLayout);
-        pnlSubThanhToan_HDCTLayout.setHorizontalGroup(
-            pnlSubThanhToan_HDCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSubThanhToan_HDCTLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(btnHDCT, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnlSubThanhToan_HDCTLayout.setVerticalGroup(
-            pnlSubThanhToan_HDCTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSubThanhToan_HDCTLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHDCT)
-                .addContainerGap())
-        );
-
-        pnlSubThanhToan.add(pnlSubThanhToan_HDCT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 69, 190, -1));
-
-        pnlSubMenu.add(pnlSubThanhToan, "pnlSThanhToan");
-
         getContentPane().add(pnlSubMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 200, 310));
 
         pnlContent.setBackground(new java.awt.Color(211, 211, 211));
@@ -1335,37 +1095,9 @@ public class frmMain extends javax.swing.JFrame {
         loadOpenForm();
     }//GEN-LAST:event_formWindowOpened
 
-    private void pnlSubThanhToanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubThanhToanMouseExited
-        pnlSubMenu.setVisible(false);
-    }//GEN-LAST:event_pnlSubThanhToanMouseExited
-
-    private void pnlSubThanhToan_HDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubThanhToan_HDMouseEntered
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubThanhToan_HDMouseEntered
-
-    private void pnlSubThanhToan_HDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubThanhToan_HDMouseExited
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubThanhToan_HDMouseExited
-
-    private void pnlSubThanhToan_HDCTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubThanhToan_HDCTMouseEntered
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubThanhToan_HDCTMouseEntered
-
-    private void pnlSubThanhToan_HDCTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubThanhToan_HDCTMouseExited
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubThanhToan_HDCTMouseExited
-
     private void pnlSubVeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVeMouseExited
         pnlSubMenu.setVisible(false);
     }//GEN-LAST:event_pnlSubVeMouseExited
-
-    private void pnlSubVe_VeMBMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVe_VeMBMouseEntered
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubVe_VeMBMouseEntered
-
-    private void pnlSubVe_VeMBMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVe_VeMBMouseExited
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubVe_VeMBMouseExited
 
     private void pnlSubVe_HangVeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVe_HangVeMouseEntered
         pnlSubMenu.setVisible(true);
@@ -1382,14 +1114,6 @@ public class frmMain extends javax.swing.JFrame {
     private void pnlSubVe_LoaiVeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVe_LoaiVeMouseExited
         pnlSubMenu.setVisible(true);
     }//GEN-LAST:event_pnlSubVe_LoaiVeMouseExited
-
-    private void pnlSubVe_DichVuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVe_DichVuMouseEntered
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubVe_DichVuMouseEntered
-
-    private void pnlSubVe_DichVuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubVe_DichVuMouseExited
-        pnlSubMenu.setVisible(true);
-    }//GEN-LAST:event_pnlSubVe_DichVuMouseExited
 
     private void pnlSubChuyenBayMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSubChuyenBayMouseEntered
         // TODO add your handling code here:
@@ -1440,7 +1164,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlSubChuyenBay_HangMayBayMouseExited
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        System.exit(0);
+        dc.thoat();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnCloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseEntered
@@ -1484,7 +1208,7 @@ public class frmMain extends javax.swing.JFrame {
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         //menu();
-        JOptionPane.showMessageDialog(this, "Đang phát triển!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseExited
@@ -1528,17 +1252,12 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhachHangMouseExited
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        if (!chucVu.isEmpty()) {
+        if (!chucVu.isEmpty() && chucVu.equals("Trưởng Phòng")) {
             tbpForm.removeAll();
-        } else {
-            JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
-        if(!chucVu.isEmpty() && chucVu.equals("Trưởng phòng")){
-            tbpForm.removeAll();
-            frmNhanVien nv = new frmNhanVien();
+            frmNhanVien nv = new frmNhanVien(chucVu);
             tbpForm.addTab("", null, nv.getContentPane().getComponentAt(0, 0), null);
-        }else{
-            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng truy cập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Chỉ cấp quyền trưởng phòng!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
@@ -1551,11 +1270,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienMouseExited
 
     private void btnThanhtoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhtoanActionPerformed
-        if (!chucVu.isEmpty()) {
-            showHideSubMenu(showHideSubMenu_ThanhToan, pnlSubThanhToan);
-        } else {
-            JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
-        }
+        
     }//GEN-LAST:event_btnThanhtoanActionPerformed
 
     private void btnThanhtoanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhtoanMouseEntered
@@ -1599,12 +1314,12 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuanLyChuyenBayMouseExited
 
     private void btnDoanhThuTheoQuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThuTheoQuyActionPerformed
-        if(!chucVu.isEmpty() && chucVu.equals("Trưởng phòng")){
+        if (!chucVu.isEmpty() && chucVu.equals("Trưởng phòng")) {
             tbpForm.removeAll();
             frmDoanhThuTheoThang quy = new frmDoanhThuTheoThang();
             tbpForm.addTab("", null, quy.getContentPane().getComponentAt(0, 0), null);
-        }else{
-            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng truy cập!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Chỉ cấp quyền trưởng phòng!", "Thông báo", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnDoanhThuTheoQuyActionPerformed
 
@@ -1615,17 +1330,6 @@ public class frmMain extends javax.swing.JFrame {
     private void btnDoanhThuTheoQuyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoanhThuTheoQuyMouseExited
         hover(2, pnlQuanLyDoanhThu);
     }//GEN-LAST:event_btnDoanhThuTheoQuyMouseExited
-
-    private void btnVeMayBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeMayBayActionPerformed
-        tbpForm.removeAll();
-        frmVeMayBay vemb = new frmVeMayBay(chucVu);
-        tbpForm.addTab("", null, vemb.getContentPane().getComponentAt(0, 0), null);
-        pnlSubMenu.setVisible(false);
-    }//GEN-LAST:event_btnVeMayBayActionPerformed
-
-    private void btnVeMayBayMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVeMayBayMouseEntered
-        hover(1, pnlSubVe_VeMB);
-    }//GEN-LAST:event_btnVeMayBayMouseEntered
 
     private void btnHangVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangVeActionPerformed
         tbpForm.removeAll();
@@ -1642,10 +1346,6 @@ public class frmMain extends javax.swing.JFrame {
         hover(2, pnlSubVe_HangVe);
     }//GEN-LAST:event_btnHangVeMouseExited
 
-    private void btnVeMayBayMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVeMayBayMouseExited
-        hover(2, pnlSubVe_VeMB);
-    }//GEN-LAST:event_btnVeMayBayMouseExited
-
     private void btnLoaiVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoaiVeActionPerformed
         tbpForm.removeAll();
         frmLoaiVe lv = new frmLoaiVe(chucVu);
@@ -1660,51 +1360,6 @@ public class frmMain extends javax.swing.JFrame {
     private void btnLoaiVeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoaiVeMouseExited
         hover(2, pnlSubVe_LoaiVe);
     }//GEN-LAST:event_btnLoaiVeMouseExited
-
-    private void btnDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDichVuActionPerformed
-        tbpForm.removeAll();
-        frmDichVu dv = new frmDichVu(chucVu);
-        tbpForm.addTab("", null, dv.getContentPane().getComponentAt(0, 0), null);
-        pnlSubMenu.setVisible(false);
-    }//GEN-LAST:event_btnDichVuActionPerformed
-
-    private void btnDichVuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDichVuMouseEntered
-        hover(1, pnlSubVe_DichVu);
-    }//GEN-LAST:event_btnDichVuMouseEntered
-
-    private void btnDichVuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDichVuMouseExited
-        hover(2, pnlSubVe_DichVu);
-    }//GEN-LAST:event_btnDichVuMouseExited
-
-    private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
-        tbpForm.removeAll();
-        frmHoaDon hd = new frmHoaDon(chucVu);
-        tbpForm.addTab("", null, hd.getContentPane().getComponentAt(0, 0), null);
-        pnlSubMenu.setVisible(false);
-    }//GEN-LAST:event_btnHoaDonActionPerformed
-
-    private void btnHoaDonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseEntered
-        hover(1, pnlSubThanhToan_HD);
-    }//GEN-LAST:event_btnHoaDonMouseEntered
-
-    private void btnHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseExited
-        hover(2, pnlSubThanhToan_HD);
-    }//GEN-LAST:event_btnHoaDonMouseExited
-
-    private void btnHDCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHDCTActionPerformed
-        tbpForm.removeAll();
-        frmHoaDonChiTiet cthd = new frmHoaDonChiTiet(chucVu);
-        tbpForm.addTab("", null, cthd.getContentPane().getComponentAt(0, 0), null);
-        pnlSubMenu.setVisible(false);
-    }//GEN-LAST:event_btnHDCTActionPerformed
-
-    private void btnHDCTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHDCTMouseEntered
-        hover(1, pnlSubThanhToan_HDCT);
-    }//GEN-LAST:event_btnHDCTMouseEntered
-
-    private void btnHDCTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHDCTMouseExited
-        hover(2, pnlSubThanhToan_HDCT);
-    }//GEN-LAST:event_btnHDCTMouseExited
 
     private void btnChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenBayActionPerformed
         tbpForm.removeAll();
@@ -1819,12 +1474,9 @@ public class frmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChuyenBay;
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnDichVu;
     private javax.swing.JButton btnDoanhThuTheoQuy;
-    private javax.swing.JButton btnHDCT;
     private javax.swing.JButton btnHangMayBay;
     private javax.swing.JButton btnHangVe;
-    private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnLoaiVe;
     private javax.swing.JButton btnLogout;
@@ -1838,7 +1490,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnThanhtoan;
     private javax.swing.JButton btnTrangChu;
     private javax.swing.JButton btnTuyenBay;
-    private javax.swing.JButton btnVeMayBay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblChucVu;
     private javax.swing.JLabel lblSlogan;
@@ -1860,14 +1511,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSubChuyenBay_SanBay;
     private javax.swing.JPanel pnlSubChuyenBay_TuyenBay;
     private javax.swing.JPanel pnlSubMenu;
-    private javax.swing.JPanel pnlSubThanhToan;
-    private javax.swing.JPanel pnlSubThanhToan_HD;
-    private javax.swing.JPanel pnlSubThanhToan_HDCT;
     private javax.swing.JPanel pnlSubVe;
-    private javax.swing.JPanel pnlSubVe_DichVu;
     private javax.swing.JPanel pnlSubVe_HangVe;
     private javax.swing.JPanel pnlSubVe_LoaiVe;
-    private javax.swing.JPanel pnlSubVe_VeMB;
     private javax.swing.JPanel pnlThanhToan;
     private javax.swing.JPanel pnlTrangChu;
     private javax.swing.JTabbedPane tbpForm;

@@ -14,8 +14,9 @@ import java.io.Serializable;
 public class HoaDon implements Serializable{
     private String maHoaDon;
     private String ngayLap;
-    private String cccd;
+    private String cmnd;
     private String maNhanVien;
+    private String maHDCT;
 
     public HoaDon() {
     }
@@ -24,13 +25,15 @@ public class HoaDon implements Serializable{
         this.maHoaDon = maHoaDon;
     }
 
-    public HoaDon(String maHoaDon, String ngayLap, String cccd, String maNhanVien) {
+    public HoaDon(String maHoaDon, String ngayLap, String cmnd, String maNhanVien, String maHDCT) {
         this.maHoaDon = maHoaDon;
         this.ngayLap = ngayLap;
-        this.cccd = cccd;
+        this.cmnd = cmnd;
         this.maNhanVien = maNhanVien;
+        this.maHDCT = maHDCT;
     }
 
+    
     public String getMaHoaDon() {
         return maHoaDon;
     }
@@ -47,12 +50,12 @@ public class HoaDon implements Serializable{
         this.ngayLap = ngayLap;
     }
 
-    public String getCccd() {
-        return cccd;
+    public String getCmnd() {
+        return cmnd;
     }
 
-    public void setCccd(String cccd) {
-        this.cccd = cccd;
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
     public String getMaNhanVien() {
@@ -62,4 +65,13 @@ public class HoaDon implements Serializable{
     public void setMaNhanVien(String maNhanVien) {
         this.maNhanVien = maNhanVien;
     }
+
+    public String getMaHDCT() {
+        return maHDCT;
+    }
+
+    public void setMaHDCT(String maHDCT) {
+        this.maHDCT = maHDCT;
+    }
+    
 }

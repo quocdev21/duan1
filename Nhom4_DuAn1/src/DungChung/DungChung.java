@@ -81,7 +81,7 @@ public class DungChung extends getConnection {
 
     public void transTXT(JTextField[] txts) {
         for (JTextField txt : txts) {
-            txt.setBackground(new Color(0, 0, 0, 0));
+            txt.setBackground(new Color(255, 255, 255, 255));
         }
     }
 

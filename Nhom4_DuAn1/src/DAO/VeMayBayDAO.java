@@ -35,7 +35,7 @@ public class VeMayBayDAO extends getConnection{
                 arr.add(hv);
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return arr;
     }
@@ -51,7 +51,7 @@ public class VeMayBayDAO extends getConnection{
                 arr.add(lv);
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return arr;
     }
@@ -67,41 +67,41 @@ public class VeMayBayDAO extends getConnection{
                 arr.add(cb);
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return arr;
     }
     
     public void loadTable(JTable tbl) {
         try {
-            String[] header = new String[]{"STT", "Mã vé", "Mã hạng vé", "Mã loại vé", "Mã chuyến bay", "Giá bán (triệu)"};
+            String[] header = new String[]{"STT", "Mã vé", "Mã hạng vé", "Mã loại vé", "Mã chuyến bay", "Số ghế"};
             String sql = "select ROW_NUMBER() Over (Order by MaVe), * from VEMAYBAY";
             new DungChung().statement(sql, tbl, header);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     public int them(VeMayBay vmb) {
         try {
             String sql = "insert into VEMAYBAY values(?, ?, ?, ?, ?)";
-            Object[] obj = new Object[]{vmb.getMaVe(), vmb.getMaHangVe(), vmb.getMaLoaiVe(), vmb.getMaChuyenBay(), vmb.getGiaBan()};
+            Object[] obj = new Object[]{vmb.getMaVe(), vmb.getMaHangVe(), vmb.getMaLoaiVe(), vmb.getMaChuyenBay(), vmb.getSoGhe()};
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
     }
 
     public int sua(VeMayBay vmb) {
         try {
-            String sql = "update VEMAYBAY set MaHangVe = ?, MaLoaiVe = ?, MaChuyenBay = ?, GiaBan = ? where MaVe = ?";
-            Object[] obj = new Object[]{vmb.getMaHangVe(), vmb.getMaLoaiVe(), vmb.getMaChuyenBay(), vmb.getGiaBan(), vmb.getMaVe()};
+            String sql = "update VEMAYBAY set MaHangVe = ?, MaLoaiVe = ?, MaChuyenBay = ?, SoGhe = ? where MaVe = ?";
+            Object[] obj = new Object[]{vmb.getMaHangVe(), vmb.getMaLoaiVe(), vmb.getMaChuyenBay(), vmb.getSoGhe(), vmb.getMaVe()};
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
     }
@@ -113,9 +113,23 @@ public class VeMayBayDAO extends getConnection{
             PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
             return ps.executeUpdate();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return 0;
+    }
+    
+    public boolean checksoGhe (String soGhe){
+        try {
+            String sql = "select * from VEMAYBAY where soGhe = ?";
+            Object[] obj = new Object[]{soGhe};
+            PreparedStatement ps = new DungChung().prepareStatement(sql, obj);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void hienThi(JTable tbl, VeMayBay vmb, int q) {
@@ -123,7 +137,7 @@ public class VeMayBayDAO extends getConnection{
         vmb.setMaHangVe(String.valueOf(tbl.getValueAt(q, 2)));
         vmb.setMaLoaiVe(String.valueOf(tbl.getValueAt(q, 3)));
         vmb.setMaChuyenBay(String.valueOf(tbl.getValueAt(q, 4)));
-        vmb.setGiaBan(Float.parseFloat(String.valueOf(tbl.getValueAt(q, 5))));
+        vmb.setSoGhe(String.valueOf(tbl.getValueAt(q, 5)));
     }
     
     public VeMayBay timDVToDen(String ma) {
@@ -137,7 +151,7 @@ public class VeMayBayDAO extends getConnection{
                 return sb;
             }
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }
@@ -163,7 +177,7 @@ public class VeMayBayDAO extends getConnection{
             tbl.removeAll();
             tbl.setModel(model);
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 

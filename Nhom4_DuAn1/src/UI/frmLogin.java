@@ -96,9 +96,9 @@ public class frmLogin extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         txtUsername.setForeground(Color.white);
-        txtUsername.setBackground(new Color(0, 0, 0, 0));
+        txtUsername.setBackground(new Color(50,19,52,255));
         txtPassword.setForeground(Color.white);
-        txtPassword.setBackground(new Color(0, 0, 0, 0));
+        txtPassword.setBackground(new Color(50,19,52,255));
     }
 
     /**

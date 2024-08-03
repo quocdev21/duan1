@@ -18,6 +18,7 @@ import Model.HoaDonChiTiet;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import DTO.HoaDonChiTietDTO;
+import Model.ChuyenBay;
 import java.awt.Cursor;
 import java.awt.Font;
 import static java.awt.Frame.HAND_CURSOR;
@@ -95,7 +96,7 @@ public class HoaDonChiTietDAO extends getConnection {
 
     float getDonGiaVe(String ma) {
         try {
-            String sql = "select GiaBan from VEMAYBAY where MaVe = ?";
+            String sql = "select cb.Gia from VEMAYBAY v JOIN CHUYENBAY cb ON v.MaChuyenBay = cb.MaChuyenBay WHERE cb.MaChuyenBay = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
@@ -107,6 +108,21 @@ public class HoaDonChiTietDAO extends getConnection {
         }
         return 0;
     }
+    
+     public String layDS_CB(String ma) {
+        try {
+            String sql = "select MaChuyenBay from VEMAYBAY where MaVe = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, ma);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public void loadTable(JTable tbl) {
         //Phần hạng vé
@@ -117,8 +133,8 @@ public class HoaDonChiTietDAO extends getConnection {
         // + LV01: khứ hồi * 1.9 (90%)
         // + LV02: 1 chiều * 1 (0%)
         try {
-            String[] header = new String[]{"STT", "Mã hóa đơn", "Mã vé", "Số ghế đặt"};
-            String sql = "select ROW_NUMBER() Over (Order by MaHoaDon), * from HOADONCHITIET";
+            String[] header = new String[]{"STT", "Mã hóa đơn chi tiết", "Mã vé máy bay", "Số vé mua"};
+            String sql = "select ROW_NUMBER() Over (Order by MaHoaDonChiTiet), * from HOADONCHITIET";
             DefaultTableModel model = new DefaultTableModel(header, 0);
             tbl.setDefaultEditor(Object.class, null);
             tbl.getTableHeader().setCursor(new Cursor(HAND_CURSOR));
@@ -132,26 +148,28 @@ public class HoaDonChiTietDAO extends getConnection {
                 }
                 model.addRow(data);
             }
-            model.addColumn("Đơn giá (triệu)");
+            model.addColumn("Đơn giá");
             for (int i = 0; i < model.getRowCount(); i++) {
                 String maVe = String.valueOf(model.getValueAt(i, 2));
                 String hangVe = String.valueOf(checkHangVe(maVe));
                 String loaiVe = String.valueOf(checkLoaiVe(maVe));
-                float donGia = getDonGiaVe(maVe);
+                String maChuyenBay = String.valueOf(layDS_CB(String.valueOf(model.getValueAt(i, 2))));
+                System.out.print(String.valueOf(model.getValueAt(i, 2)));
+                float donGia = getDonGiaVe(maChuyenBay);
                 if (hangVe.equals("HV01") && loaiVe.equals("LV01")) {
                     model.setValueAt(donGia * 1.5 * 1.9, i, 4);
                 } else if (hangVe.equals("HV01") && loaiVe.equals("LV02")) {
                     model.setValueAt(donGia * 1.5, i, 4);
                 } else if (hangVe.equals("HV02") && loaiVe.equals("LV01")) {
-                    model.setValueAt(donGia * 1.1 * 1.9 + new DichVuDAO().getTienDV(maVe), i, 4);
+                    model.setValueAt(donGia * 1.1 * 1.9 , i, 4);
                 } else if (hangVe.equals("HV02") && loaiVe.equals("LV02")) {
-                    model.setValueAt(donGia * 1.1 + new DichVuDAO().getTienDV(maVe), i, 4);
+                    model.setValueAt(donGia * 1.1, i, 4);
                 }
             }
             for (int i = 0; i < model.getRowCount(); i++) {
                 model.setValueAt(Math.round(Double.parseDouble(String.valueOf(model.getValueAt(i, 4)))), i, 4);
             }
-            model.addColumn("Thành tiền (triệu)");
+            model.addColumn("Thành tiền");
             for (int i = 0; i < model.getRowCount(); i++) {
                 int soGhe = Integer.parseInt(String.valueOf(model.getValueAt(i, 3)));
                 double gia = Double.parseDouble(String.valueOf(model.getValueAt(i, 4)));
@@ -232,7 +250,7 @@ public class HoaDonChiTietDAO extends getConnection {
             String sql = "select ROW_NUMBER() Over (Order by MaHoaDon), * from HOADONCHITIET where MaHoaDon like ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + ma + "%");
-            String[] header = new String[]{"STT", "Mã hóa đơn", "Mã vé", "Số ghế đặt"};
+            String[] header = new String[]{"STT", "Mã hóa đơn", "Mã vé", "Số Vé Mua"};
             DefaultTableModel model = new DefaultTableModel(header, 0);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -243,12 +261,13 @@ public class HoaDonChiTietDAO extends getConnection {
                 data.add(rs.getString(4));
                 model.addRow(data);
             }
-            model.addColumn("Đơn giá (triệu)");
+            model.addColumn("Đơn giá");
             for (int i = 0; i < model.getRowCount(); i++) {
                 String maVe = String.valueOf(model.getValueAt(i, 2));
                 String hangVe = String.valueOf(checkHangVe(maVe));
                 String loaiVe = String.valueOf(checkLoaiVe(maVe));
-                float donGia = getDonGiaVe(maVe);
+                String maChuyenBay = String.valueOf(model.getValueAt(i, 3));
+                float donGia = getDonGiaVe(maChuyenBay);
                 if (hangVe.equals("HV01") && loaiVe.equals("LV01")) {
                     model.setValueAt(donGia * 1.5 * 1.9, i, 4);
                 } else if (hangVe.equals("HV01") && loaiVe.equals("LV02")) {
@@ -262,7 +281,7 @@ public class HoaDonChiTietDAO extends getConnection {
             for (int i = 0; i < model.getRowCount(); i++) {
                 model.setValueAt(Math.round(Double.parseDouble(String.valueOf(model.getValueAt(i, 4)))), i, 4);
             }
-            model.addColumn("Thành tiền (triệu)");
+            model.addColumn("Thành tiền");
             for (int i = 0; i < model.getRowCount(); i++) {
                 int soGhe = Integer.parseInt(String.valueOf(model.getValueAt(i, 3)));
                 double gia = Double.parseDouble(String.valueOf(model.getValueAt(i, 4)));
@@ -279,7 +298,8 @@ public class HoaDonChiTietDAO extends getConnection {
             String maVe = String.valueOf(ma.getText().trim());
             String hangVe = String.valueOf(checkHangVe(maVe));
             String loaiVe = String.valueOf(checkLoaiVe(maVe));
-            float donGia = getDonGiaVe(maVe);
+            String maChuyenBay = String.valueOf(ma.getText().trim());
+            float donGia = getDonGiaVe(maChuyenBay);
             if (hangVe.equals("HV01") && loaiVe.equals("LV01")) {
                 txt.setText(String.valueOf(donGia * 1.5 * 1.9));
             } else if (hangVe.equals("HV01") && loaiVe.equals("LV02")) {
@@ -289,7 +309,7 @@ public class HoaDonChiTietDAO extends getConnection {
             } else if (hangVe.equals("HV02") && loaiVe.equals("LV02")) {
                 txt.setText(String.valueOf(donGia * 1.1));
             }
-            txt.setText(String.valueOf(Math.round(Double.parseDouble(String.valueOf(txt.getText().trim())))));
+            txt.setText(String.valueOf(Math.round(Double.valueOf(String.valueOf(txt.getText().trim())))));
         } catch (Exception e) {
             e.printStackTrace();
         }

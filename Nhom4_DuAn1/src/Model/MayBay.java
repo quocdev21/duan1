@@ -14,17 +14,37 @@ import java.io.Serializable;
 public class MayBay implements Serializable{
     private String maMaybay;
     private String maHang;
+    private int thuongia;
+    private int phothong;
+
+    public int getThuongia() {
+        return thuongia;
+    }
+
+    public void setThuongia(int thuongia) {
+        this.thuongia = thuongia;
+    }
+
+    public int getPhothong() {
+        return phothong;
+    }
+
+    public void setPhothong(int phothong) {
+        this.phothong = phothong;
+    }
 
     public MayBay() {
     }
-
+    
     public MayBay(String maMaybay) {
         this.maMaybay = maMaybay;
     }
 
-    public MayBay(String maMaybay, String maHang) {
+    public MayBay(String maMaybay, String maHang, int thuongia, int phothong) {
         this.maMaybay = maMaybay;
         this.maHang = maHang;
+        this.thuongia = thuongia;
+        this.phothong = phothong;
     }
 
     public String getMaMaybay() {

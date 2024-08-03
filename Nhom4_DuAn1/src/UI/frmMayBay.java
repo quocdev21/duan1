@@ -110,18 +110,31 @@ public class frmMayBay extends javax.swing.JFrame {
     }
 
     private void an() {
-        new DungChung().hideLBLError(new JLabel[]{lblLoiMaMayBay, lblLoiMaHangMB});
+        new DungChung().hideLBLError(new JLabel[]{lblLoiMaMayBay, lblLoiMaHangMB, lblLoiGheThuongGia, lblLoiGhePhoThong});
     }
 
     private boolean check() {
-        return new DungChung().check(new JLabel[]{lblLoiMaMayBay, lblLoiMaHangMB}, new JTextField[]{txtMaMayBay, txtMaHangMB});
+        
+        if (txtGheThuongGia.getText().trim().isEmpty() || Integer.parseInt(txtGheThuongGia.getText().trim()) <= 0) {
+            lblLoiGheThuongGia.setVisible(true);
+            txtGheThuongGia.requestFocus();
+            return false;
+        }
+        if (txtGhePhoThong.getText().trim().isEmpty() || Integer.parseInt(txtGhePhoThong.getText().trim()) <= 0) {
+            lblLoiGhePhoThong.setVisible(true);
+            txtGhePhoThong.requestFocus();
+            return false;
+        }
+        return new DungChung().check(new JLabel[]{lblLoiMaMayBay, lblLoiMaHangMB, lblLoiGheThuongGia, lblLoiGhePhoThong}, new JTextField[]{txtMaMayBay,txtMaMayBay, txtMaHangMB});
     }
 
     private void moi() {
-        new DungChung().reset(new JTextField[]{txtMaMayBay, txtMaHangMB});
+        new DungChung().reset(new JTextField[]{txtMaMayBay, txtMaHangMB, txtGheThuongGia, txtGhePhoThong});
         an();
         lblSTT.setText("0");
         dong = -1;
+        txtGheThuongGia.setText("0");
+        txtGhePhoThong.setText("0");
     }
 
     private void bang() {
@@ -129,7 +142,7 @@ public class frmMayBay extends javax.swing.JFrame {
     }
 
     private void editColumnWidth() {
-        int[] col = new int[]{40, 450, 450};
+        int[] col = new int[]{40, 310, 310,140,140};
         new DungChung().editColumnWidth(col, tblMayBay);
     }
 
@@ -137,8 +150,10 @@ public class frmMayBay extends javax.swing.JFrame {
         if (check()) {
             String ma = txtMaMayBay.getText().trim();
             String[] str = txtMaHangMB.getText().trim().split("-");
+            String thuongia = txtGheThuongGia.getText().trim();
+            String phothong = txtGhePhoThong.getText().trim();
             String mahang = str[0].trim();
-            int kt = new MayBayDAO().them(new MayBay(ma, mahang));
+            int kt = new MayBayDAO().them(new MayBay(ma, mahang, Integer.parseInt(thuongia), Integer.parseInt(phothong)));
             if (kt == 1) {
                 bang();
                 MayBay lv = new MayBayDAO().timMBToDen(ma);
@@ -160,8 +175,10 @@ public class frmMayBay extends javax.swing.JFrame {
         if (!txtMaMayBay.getText().isEmpty()) {
             String ma = txtMaMayBay.getText().trim();
             String[] str = txtMaHangMB.getText().trim().split("-");
+            String thuongia = txtGheThuongGia.getText().trim();
+            String phothong = txtGhePhoThong.getText().trim();
             String mahang = str[0].trim();
-            int kt = new MayBayDAO().sua(new MayBay(ma, mahang));
+            int kt = new MayBayDAO().sua(new MayBay(ma, mahang, Integer.parseInt(thuongia), Integer.parseInt(phothong)));
             if (kt == 1) {
                 bang();
                 tblMayBay.setRowSelectionInterval(dong, dong);
@@ -196,6 +213,8 @@ public class frmMayBay extends javax.swing.JFrame {
         txtMaMayBay.setText(mb.getMaMaybay());
         txtMaHangMB.setText(mb.getMaHang());
         txtMaMayBay.setEditable(false);
+        txtGheThuongGia.setText(mb.getThuongia() + "");
+        txtGhePhoThong.setText(mb.getPhothong() + "");
         lblSTT.setText(String.valueOf(tblMayBay.getValueAt(dong, 0)));
     }
 
@@ -243,7 +262,7 @@ public class frmMayBay extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         cbx();
-        new DungChung().transTXT(new JTextField[]{txtMaMayBay, txtMaHangMB, txtTimKiem});
+        new DungChung().transTXT(new JTextField[]{txtMaMayBay, txtMaHangMB, txtTimKiem, txtGheThuongGia, txtGhePhoThong});
         an();
         bang();
         editColumnWidth();
@@ -254,7 +273,7 @@ public class frmMayBay extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         cbx();
-        new DungChung().transTXT(new JTextField[]{txtMaMayBay, txtMaHangMB, txtTimKiem});
+        new DungChung().transTXT(new JTextField[]{txtMaMayBay, txtMaHangMB, txtTimKiem, txtGheThuongGia, txtGhePhoThong});
         an();
         bang();
         editColumnWidth();
@@ -297,6 +316,14 @@ public class frmMayBay extends javax.swing.JFrame {
         btnLast = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnChonCBX = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtGhePhoThong = new javax.swing.JTextField();
+        lblLoiGhePhoThong = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lblLoiGheThuongGia = new javax.swing.JLabel();
+        txtGheThuongGia = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -332,7 +359,6 @@ public class frmMayBay extends javax.swing.JFrame {
 
         txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTimKiem.setOpaque(false);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -342,7 +368,11 @@ public class frmMayBay extends javax.swing.JFrame {
 
         txtMaMayBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaMayBay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtMaMayBay.setOpaque(false);
+        txtMaMayBay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaMayBayActionPerformed(evt);
+            }
+        });
         txtMaMayBay.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaMayBayKeyReleased(evt);
@@ -353,14 +383,13 @@ public class frmMayBay extends javax.swing.JFrame {
         });
         jPanel1.add(txtMaMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 360, -1));
 
-        lblLoiMaMayBay.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaMayBay.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaMayBay.setText("Mã máy bay không chinh xác");
         jPanel1.add(lblLoiMaMayBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel3.setText("Mã máy bay");
+        jLabel3.setText("Mã");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -371,11 +400,9 @@ public class frmMayBay extends javax.swing.JFrame {
         txtMaHangMB.setEditable(false);
         txtMaHangMB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaHangMB.setBorder(null);
-        txtMaHangMB.setOpaque(false);
         jPanel1.add(txtMaHangMB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 360, -1));
         jPanel1.add(sptMaMB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 390, 10));
 
-        lblLoiMaHangMB.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaHangMB.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaHangMB.setText("Mã hãng bay không chính xác");
         jPanel1.add(lblLoiMaHangMB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 180, -1));
@@ -387,11 +414,11 @@ public class frmMayBay extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Mã máy bay", "Mã hãng bay"
+                "STT", "Mã máy bay", "Mã hãng bay", "Ghế phổ thông", "Ghế thương gia"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -405,9 +432,7 @@ public class frmMayBay extends javax.swing.JFrame {
         tblMayBay.setOpaque(false);
         tblMayBay.setRequestFocusEnabled(false);
         tblMayBay.setRowHeight(30);
-        tblMayBay.setRowMargin(0);
         tblMayBay.setSelectionBackground(new java.awt.Color(55, 38, 91));
-        tblMayBay.setShowHorizontalLines(false);
         tblMayBay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMayBayMouseClicked(evt);
@@ -415,14 +440,13 @@ public class frmMayBay extends javax.swing.JFrame {
         });
         splTable.setViewportView(tblMayBay);
 
-        jPanel1.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 930, 320));
+        jPanel1.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 930, 210));
 
         lblSTT.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSTT.setForeground(new java.awt.Color(55, 38, 91));
         lblSTT.setText("0");
         jPanel1.add(lblSTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 560, -1, -1));
 
-        btnMoi.setBackground(new java.awt.Color(255, 255, 255));
         btnMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonMoi.png"))); // NOI18N
         btnMoi.setBorder(null);
@@ -444,9 +468,8 @@ public class frmMayBay extends javax.swing.JFrame {
                 btnMoiActionPerformed(evt);
             }
         });
-        jPanel1.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, -1, -1));
+        jPanel1.add(btnMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, -1, -1));
 
-        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonXoa.png"))); // NOI18N
         btnXoa.setBorder(null);
@@ -468,9 +491,8 @@ public class frmMayBay extends javax.swing.JFrame {
                 btnXoaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
+        jPanel1.add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
-        btnCapNhat.setBackground(new java.awt.Color(255, 255, 255));
         btnCapNhat.setForeground(new java.awt.Color(255, 255, 255));
         btnCapNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonCapNhat.png"))); // NOI18N
         btnCapNhat.setBorder(null);
@@ -492,9 +514,8 @@ public class frmMayBay extends javax.swing.JFrame {
                 btnCapNhatActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
+        jPanel1.add(btnCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
-        btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonThem.png"))); // NOI18N
         btnThem.setBorder(null);
@@ -517,7 +538,7 @@ public class frmMayBay extends javax.swing.JFrame {
                 btnThemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
+        jPanel1.add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
 
         btnExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hinh/bgButtonExcel.png"))); // NOI18N
         btnExcel.setBorder(null);
@@ -675,6 +696,52 @@ public class frmMayBay extends javax.swing.JFrame {
         });
         jPanel1.add(btnChonCBX, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 90, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel9.setText("Ghế phổ thông");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        txtGhePhoThong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtGhePhoThong.setText("0");
+        txtGhePhoThong.setBorder(null);
+        txtGhePhoThong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGhePhoThongKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGhePhoThongKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtGhePhoThong, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 220, 20));
+
+        lblLoiGhePhoThong.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiGhePhoThong.setText("Ghế phổ thông không chính xác");
+        jPanel1.add(lblLoiGhePhoThong, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 190, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(55, 38, 91));
+        jLabel10.setText("Ghế thương gia");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
+
+        lblLoiGheThuongGia.setForeground(new java.awt.Color(255, 0, 0));
+        lblLoiGheThuongGia.setText("Ghế thương gia không chính xác");
+        jPanel1.add(lblLoiGheThuongGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 180, -1));
+
+        txtGheThuongGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtGheThuongGia.setText("0");
+        txtGheThuongGia.setBorder(null);
+        txtGheThuongGia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGheThuongGiaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGheThuongGiaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtGheThuongGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 220, 20));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 220, 10));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 220, 10));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -688,10 +755,6 @@ public class frmMayBay extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtMaMayBayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaMayBayKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaMayBayKeyReleased
 
     private void tblMayBayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMayBayMouseClicked
         txtTimKiem.setText(null);
@@ -729,7 +792,7 @@ public class frmMayBay extends javax.swing.JFrame {
         if (chucVu.equals("Trưởng phòng")) {
             xoa();
         } else {
-            JOptionPane.showMessageDialog(this, "Chỉ admin được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Chỉ trưởng phòng được phép xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -833,15 +896,41 @@ public class frmMayBay extends javax.swing.JFrame {
         chucNang("cuoi");
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void txtMaMayBayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaMayBayKeyTyped
-        if (txtMaMayBay.getText().length() > 9) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtMaMayBayKeyTyped
-
     private void btnChonCBXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonCBXActionPerformed
         showHideCBX();
     }//GEN-LAST:event_btnChonCBXActionPerformed
+
+    private void txtMaMayBayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaMayBayKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaMayBayKeyReleased
+
+    private void txtMaMayBayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaMayBayKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaMayBayKeyTyped
+
+    private void txtMaMayBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaMayBayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaMayBayActionPerformed
+
+    private void txtGhePhoThongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGhePhoThongKeyReleased
+        new DungChung().xetSo(txtGhePhoThong);
+    }//GEN-LAST:event_txtGhePhoThongKeyReleased
+
+    private void txtGhePhoThongKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGhePhoThongKeyTyped
+        if (txtGhePhoThong.getText().length() > 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGhePhoThongKeyTyped
+
+    private void txtGheThuongGiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGheThuongGiaKeyReleased
+        new DungChung().xetSo(txtGheThuongGia);
+    }//GEN-LAST:event_txtGheThuongGiaKeyReleased
+
+    private void txtGheThuongGiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGheThuongGiaKeyTyped
+        if (txtGheThuongGia.getText().length() > 3) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGheThuongGiaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -891,10 +980,16 @@ public class frmMayBay extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JLabel lblLoiGhePhoThong;
+    private javax.swing.JLabel lblLoiGheThuongGia;
     private javax.swing.JLabel lblLoiMaHangMB;
     private javax.swing.JLabel lblLoiMaMayBay;
     private javax.swing.JLabel lblSTT;
@@ -902,6 +997,8 @@ public class frmMayBay extends javax.swing.JFrame {
     private javax.swing.JScrollPane splTable;
     private javax.swing.JSeparator sptMaMB;
     private javax.swing.JTable tblMayBay;
+    private javax.swing.JTextField txtGhePhoThong;
+    private javax.swing.JTextField txtGheThuongGia;
     private javax.swing.JTextField txtMaHangMB;
     private javax.swing.JTextField txtMaMayBay;
     private javax.swing.JTextField txtTimKiem;

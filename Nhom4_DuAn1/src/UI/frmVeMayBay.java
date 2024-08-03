@@ -297,29 +297,38 @@ public class frmVeMayBay extends javax.swing.JFrame {
 
     private void them() {
         if (check()) {
+
             String mave = txtMaVeMayBay.getText().trim();
             String[] hang = txtHangVe.getText().trim().split("-");
             String mahang = hang[0].trim();
             String[] loai = txtMaLoaiVe.getText().trim().split("-");
             String maloai = loai[0].trim();
             String machuyenbay = txtMaChuyenBay.getText().trim();
-            String gia = txtGiaBan.getText().trim();
-            float giaf = Float.parseFloat(gia);
-            int kt = new VeMayBayDAO().them(new VeMayBay(mave, mahang, maloai, machuyenbay, giaf));
-            if (kt == 1) {
-                bang();
-                VeMayBay vmb = new VeMayBayDAO().timDVToDen(mave);
-                for (int i = 0; i < tblVeMB.getRowCount(); i++) {
-                    String id = String.valueOf(tblVeMB.getValueAt(i, 1));
-                    if (id.equals(vmb.getMaVe())) {
-                        tblVeMB.setRowSelectionInterval(i, i);
+            String soGhe = txtGiaBan.getText().trim();
+            int r = JOptionPane.showConfirmDialog(this, "Bạn có muốn thêm vé ?", "Thông báo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.YES_NO_OPTION);
+            if (r == JOptionPane.YES_OPTION) {
+                if (new VeMayBayDAO().checksoGhe(soGhe) == false) {
+                    int kt = new VeMayBayDAO().them(new VeMayBay(mave, mahang, maloai, machuyenbay, soGhe));
+                    if (kt == 1) {
+                        bang();
+                        VeMayBay vmb = new VeMayBayDAO().timDVToDen(mave);
+                        for (int i = 0; i < tblVeMB.getRowCount(); i++) {
+                            String id = String.valueOf(tblVeMB.getValueAt(i, 1));
+                            if (id.equals(vmb.getMaVe())) {
+                                tblVeMB.setRowSelectionInterval(i, i);
+                            }
+                        }
+                        moi();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Thêm thất bại! Trùng khóa chính.", "Thông báo", JOptionPane.ERROR_MESSAGE);
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Số ghế bị trùng!", "Thông báo", JOptionPane.ERROR_MESSAGE);
                 }
-                moi();
-            } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại! Trùng khóa chính.", "Thông báo", JOptionPane.ERROR_MESSAGE);
             }
+
         }
+
         editColumnWidth();
     }
 
@@ -331,23 +340,28 @@ public class frmVeMayBay extends javax.swing.JFrame {
             String[] loai = txtMaLoaiVe.getText().trim().split("-");
             String maloai = loai[0].trim();
             String machuyenbay = txtMaChuyenBay.getText().trim();
-            String gia = txtGiaBan.getText().trim();
-            float giaf = Float.parseFloat(gia);
-            int kt = new VeMayBayDAO().sua(new VeMayBay(mave, mahang, maloai, machuyenbay, giaf));
-            if (kt == 1) {
-                bang();
-                tblVeMB.setRowSelectionInterval(dong, dong);
-                an();
-                editColumnWidth();
+            String soGhe = txtGiaBan.getText().trim();
+
+            if (!new VeMayBayDAO().checksoGhe(soGhe)) {
+                int kt = new VeMayBayDAO().sua(new VeMayBay(mave, mahang, maloai, machuyenbay, soGhe));
+                if (kt == 1) {
+                    bang();
+                    tblVeMB.setRowSelectionInterval(dong, dong);
+                    an();
+                    editColumnWidth();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Cập nhật thất bại!", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Số ghế bị trùng!", "Thông báo", JOptionPane.ERROR_MESSAGE);
             }
+
         }
     }
 
     private void xoa() {
         if (dong >= 0) {
-            int r = JOptionPane.showConfirmDialog(this, "Bạn cần xóa vé " + tblVeMB.getValueAt(dong, 1) + "?", "Thông báo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.YES_NO_OPTION);
+            int r = JOptionPane.showConfirmDialog(this, "Bạn muốn xóa vé " + tblVeMB.getValueAt(dong, 1) + "?", "Thông báo", JOptionPane.INFORMATION_MESSAGE, JOptionPane.YES_NO_OPTION);
             if (r == JOptionPane.YES_OPTION) {
                 String mave = txtMaVeMayBay.getText().trim();
                 int kt = new VeMayBayDAO().xoa(new VeMayBay(mave));
@@ -368,7 +382,7 @@ public class frmVeMayBay extends javax.swing.JFrame {
         txtHangVe.setText(vmb.getMaHangVe());
         txtMaLoaiVe.setText(vmb.getMaLoaiVe());
         txtMaChuyenBay.setText(vmb.getMaChuyenBay());
-        txtGiaBan.setText(vmb.getGiaBan() + "");
+        txtGiaBan.setText(vmb.getSoGhe() + "");
         txtMaVeMayBay.setEditable(false);
         lblSTT.setText(String.valueOf(tblVeMB.getValueAt(dong, 0)));
     }
@@ -478,7 +492,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
         lblLoiGiaBan = new javax.swing.JLabel();
         splTable = new javax.swing.JScrollPane();
         tblVeMB = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -561,7 +574,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
 
         txtTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtTimKiem.setOpaque(false);
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -576,7 +588,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
 
         txtMaVeMayBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaVeMayBay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtMaVeMayBay.setOpaque(false);
         txtMaVeMayBay.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaVeMayBayKeyReleased(evt);
@@ -595,7 +606,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
         txtHangVe.setEditable(false);
         txtHangVe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtHangVe.setBorder(null);
-        txtHangVe.setOpaque(false);
         jPanel1.add(txtHangVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 360, -1));
         jPanel1.add(sptHangVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 390, 10));
 
@@ -606,13 +616,12 @@ public class frmVeMayBay extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel6.setText("Mã loại vé");
+        jLabel6.setText("Tên loại vé");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         txtMaLoaiVe.setEditable(false);
         txtMaLoaiVe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaLoaiVe.setBorder(null);
-        txtMaLoaiVe.setOpaque(false);
         txtMaLoaiVe.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtMaLoaiVeKeyReleased(evt);
@@ -624,7 +633,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
         txtGiaBan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtGiaBan.setText("0");
         txtGiaBan.setBorder(null);
-        txtGiaBan.setOpaque(false);
         txtGiaBan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtGiaBanKeyReleased(evt);
@@ -633,18 +641,17 @@ public class frmVeMayBay extends javax.swing.JFrame {
                 txtGiaBanKeyTyped(evt);
             }
         });
-        jPanel1.add(txtGiaBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 320, 20));
+        jPanel1.add(txtGiaBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 360, 20));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 360, 10));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel8.setText("Giá bán");
+        jLabel8.setText("Số ghế");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         txtMaChuyenBay.setEditable(false);
         txtMaChuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMaChuyenBay.setBorder(null);
-        txtMaChuyenBay.setOpaque(false);
         jPanel1.add(txtMaChuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 360, 20));
         jPanel1.add(sptChuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 390, 10));
 
@@ -653,29 +660,24 @@ public class frmVeMayBay extends javax.swing.JFrame {
         lblSTT.setText("0");
         jPanel1.add(lblSTT, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 640, -1, -1));
 
-        lblLoiMaVe.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaVe.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaVe.setText("Mã vé máy bay không chính xác");
         jPanel1.add(lblLoiMaVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, -1));
 
-        lblLoiMaLoai.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaLoai.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaLoai.setText("Loại vé không chính xác");
         jPanel1.add(lblLoiMaLoai, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 190, -1));
 
-        lblLoiMaHangVe.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaHangVe.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaHangVe.setText("Hạng vé không chính xác");
         jPanel1.add(lblLoiMaHangVe, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 160, -1));
 
-        lblLoiMaChuyenBay.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiMaChuyenBay.setForeground(new java.awt.Color(255, 0, 0));
         lblLoiMaChuyenBay.setText("Mã chuyến bay không chính xác");
         jPanel1.add(lblLoiMaChuyenBay, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 200, -1));
 
-        lblLoiGiaBan.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblLoiGiaBan.setForeground(new java.awt.Color(255, 0, 0));
-        lblLoiGiaBan.setText("GIá không chính xác");
+        lblLoiGiaBan.setText("Số ghế không hợp lệ");
         jPanel1.add(lblLoiGiaBan, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 150, -1));
 
         tblVeMB.setAutoCreateRowSorter(true);
@@ -685,7 +687,7 @@ public class frmVeMayBay extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STT", "Mã vé máy bay", "Mã hạng vé", "Mã loại vé", "Mã chuyến bay", "Giá bán"
+                "STT", "Mã vé máy bay", "Mã hạng vé", "Mã loại vé", "Mã chuyến bay", "Số ghế"
             }
         ) {
             Class[] types = new Class [] {
@@ -703,10 +705,8 @@ public class frmVeMayBay extends javax.swing.JFrame {
         tblVeMB.setOpaque(false);
         tblVeMB.setRequestFocusEnabled(false);
         tblVeMB.setRowHeight(30);
-        tblVeMB.setRowMargin(0);
         tblVeMB.setSelectionBackground(new java.awt.Color(55, 38, 91));
         tblVeMB.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblVeMB.setShowHorizontalLines(false);
         tblVeMB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblVeMBMouseClicked(evt);
@@ -715,11 +715,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
         splTable.setViewportView(tblVeMB);
 
         jPanel1.add(splTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 920, 240));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(55, 38, 91));
-        jLabel7.setText("Triệu");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
@@ -1177,12 +1172,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
         editColumnWidth();
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
-    private void txtGiaBanKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaBanKeyTyped
-        if (txtGiaBan.getText().length() > 3) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtGiaBanKeyTyped
-
     private void txtMaVeMayBayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaVeMayBayKeyTyped
         if (txtMaVeMayBay.getText().length() > 9) {
             evt.consume();
@@ -1206,6 +1195,10 @@ public class frmVeMayBay extends javax.swing.JFrame {
         pnlhangVe.setVisible(false);
         pnlLoaiVe.setVisible(false);
     }//GEN-LAST:event_btnChuyenBayActionPerformed
+
+    private void txtGiaBanKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaBanKeyTyped
+        new DungChung().xetSo(txtGiaBan);
+    }//GEN-LAST:event_txtGiaBanKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1262,7 +1255,6 @@ public class frmVeMayBay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator5;

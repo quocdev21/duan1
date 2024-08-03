@@ -40,8 +40,8 @@ public class TuyenBayDAO extends getConnection {
     
     public void loadTable(JTable tbl) {
         try {
-            String[] header = new String[]{"STT", "Mã tuyến bay", "Mã sân bay đi", "Mã sân bay đến"};
-            String sql = "select ROW_NUMBER() Over (Order by MaTuyenBay), * from TUYENBAY";
+            String[] header = new String[]{"STT", "Mã tuyến bay", "Sân bay đi", "Sân bay đến"};
+            String sql = "	SELECT ROW_NUMBER() Over (Order by MaTuyenBay), tb.MaTuyenBay, sb_di.TenSanBay AS TenSanBayDi, sb_den.TenSanBay AS TenSanBayDen FROM TUYENBAY tb JOIN SANBAY sb_di ON tb.MaSanBayDi = sb_di.MaSanBay JOIN SANBAY sb_den ON tb.MaSanBayDen = sb_den.MaSanBay";
             new DungChung().statement(sql, tbl, header);
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,10 +108,10 @@ public class TuyenBayDAO extends getConnection {
 
     public void tim(JTable tbl, String ma) {
         try {
-            String sql = "select ROW_NUMBER() Over (Order by MaTuyenBay), * from TUYENBAY where MaTuyenBay like ?";
+            String sql = "SELECT ROW_NUMBER() Over (Order by MaTuyenBay), tb.MaTuyenBay, sb_di.TenSanBay AS TenSanBayDi, sb_den.TenSanBay AS TenSanBayDen FROM TUYENBAY tb JOIN SANBAY sb_di ON tb.MaSanBayDi = sb_di.MaSanBay JOIN SANBAY sb_den ON tb.MaSanBayDen = sb_den.MaSanBay where tb.MaTuyenBay like ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + ma + "%");
-            String[] header = new String[]{"STT", "Mã tuyến bay", "Mã sân bay đi", "Mã sân bay đến"};
+            String[] header = new String[]{"STT", "Mã tuyến bay", "Sân bay đi", "Sân bay đến"};
             DefaultTableModel model = new DefaultTableModel(header, 0);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
